@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new PMS\ApiBundle\PMSApiBundle(),
             new PMS\ViewerBundle\PMSViewerBundle(),
+            new Deploy\HtmlBundle\DeployHtmlBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
