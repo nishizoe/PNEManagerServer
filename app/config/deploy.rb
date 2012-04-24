@@ -9,7 +9,7 @@ set :deploy_via,  :copy
 
 set :model_manager, "doctrine"
 # Or: `propel`
-set :shared_files,      ["app/config/parameters.ini", "web/.htaccess"]
+set :shared_files,      ["app/config/parameters.ini", "web/.htaccess", "src/Deploy/Resource/config/routing.yml"]
 set :shared_children,     [app_path + "/cache", app_path + "/logs", web_path + "/uploads", "vendor"]
 set :update_vendors, true
 set :deploy_via, :rsync_with_remote_cache
