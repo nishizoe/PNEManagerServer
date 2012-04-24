@@ -1,15 +1,14 @@
-PMSViewerBundle:
-    resource: "@PMSViewerBundle/Resources/config/routing.yml"
-    prefix:   /
-
-PMSApiBundle:
-    resource: "@PMSApiBundle/Resources/config/routing.yml"
-    prefix:   /
-
 DeployHtmlBundle:
     resource: "@DeployHtmlBundle/Resources/config/routing.yml"
     prefix:   /
 
+PMSViewerBundle:
+    resource: "@PMSViewerBundle/Resources/config/routing.yml"
+    prefix:   /viewer
+
+PMSApiBundle:
+    resource: "@PMSApiBundle/Resources/config/routing.yml"
+    prefix:   /api
 
 # Internal routing configuration to handle ESI
 #_internal:

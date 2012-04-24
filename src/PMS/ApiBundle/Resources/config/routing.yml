@@ -1,71 +1,71 @@
 # api
 PMSApiBundle_api:
-    pattern:  /api
+    pattern:  /
     defaults: { _controller: PMSApiBundle:Api:index }
 
 PMSApiBundle_api_list:
-    pattern:  /api/list
+    pattern:  /list
     defaults: { _controller: PMSApiBundle:Api:list }
 
 # domain
 PMSApiBundle_domain_index:
-    pattern:  /api/domain
+    pattern:  /domain
     defaults: { _controller: PMSApiBundle:Domain:index }
 
 PMSApiBundle_domain_list:
-    pattern:  /api/domain/list
+    pattern:  /domain/list
     defaults: { _controller: PMSApiBundle:Domain:list }
 
 PMSApiBundle_domain_add:
-    pattern:  /api/domain/add
+    pattern:  /domain/add
     defaults: { _controller: PMSApiBundle:Domain:add }
 
 PMSApiBundle_domain_available:
-    pattern:  /api/domain/available
+    pattern:  /domain/available
     defaults: { _controller: PMSApiBundle:Domain:available }
 
 # server
 PMSApiBundle_server_index:
-    pattern:  /api/server
+    pattern:  /server
     defaults: { _controller: PMSApiBundle:Server:index }
 
 PMSApiBundle_server_list:
-    pattern:  /api/server/list
+    pattern:  /server/list
     defaults: { _controller: PMSApiBundle:Server:list }
 
 PMSApiBundle_server_ping:
-    pattern:  /api/server/ping
+    pattern:  /server/ping
     defaults: { _controller: PMSApiBundle:Server:ping }
 
 PMSApiBundle_server_add:
-    pattern:  /api/server/add
+    pattern:  /server/add
     defaults: { _controller: PMSApiBundle:Server:add }
 
 PMSApiBundle_server_detail:
-    pattern:  /api/server/detail
+    pattern:  /server/detail
     defaults: { _controller: PMSApiBundle:Server:detail }
 
 PMSApiBundle_server_update:
-    pattern:  /api/server/update
+    pattern:  /server/update
     defaults: { _controller: PMSApiBundle:Server:update }
 
 # sns
 PMSApiBundle_sns_index:
-    pattern:  /api/sns
+    pattern:  /sns
     defaults: { _controller: PMSApiBundle:Sns:index }
 
 PMSApiBundle_sns_list:
-    pattern:  /api/sns/list
+    pattern:  /sns/list
     defaults: { _controller: PMSApiBundle:Sns:list }
 
 PMSApiBundle_sns_apply:
-    pattern:  /api/sns/apply
+    pattern:  /sns/apply
     defaults: { _controller: PMSApiBundle:Sns:apply }
 
 PMSApiBundle_sns_detail:
-    pattern:  /api/sns/detail
+    pattern:  /sns/detail
     defaults: { _controller: PMSApiBundle:Sns:detail }
     
 PMSApiBundle_sns_setpass:
-    pattern:  /api/sns/setpass
+    pattern:  /sns/setpass
     defaults: { _controller: PMSApiBundle:Sns:setpass }
