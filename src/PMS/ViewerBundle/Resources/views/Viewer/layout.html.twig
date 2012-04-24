@@ -1,0 +1,12 @@
+{% extends "PMSViewerBundle::layout.html.twig" %}
+
+{% block content %}
+<div class="container_16">
+{% block header %}{% include "PMSViewerBundle::header.html.twig" %}{% endblock %}
+  <div id="main" role="main">
+    <div id="content">
+{% block main %}{% endblock %}
+    </div>
+  </div>
+</div>
+{% endblock %}

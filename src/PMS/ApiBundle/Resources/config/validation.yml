@@ -1,0 +1,4 @@
+PMS\ApiBundle\Entity\Account:
+    properties:
+        email:
+            - Email: ~

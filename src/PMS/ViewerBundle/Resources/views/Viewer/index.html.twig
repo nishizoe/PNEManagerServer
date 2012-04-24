@@ -1,0 +1,92 @@
+{% extends "PMSViewerBundle:Viewer:layout.html.twig" %}
+
+{% block main %}
+<div class="grid_16">
+  <h2 id="page-heading">ホーム</h2>
+</div>
+<div class="clear"></div>
+<div class="grid_12">
+  <div class="box">
+    <h2><a href="#" id="toggle-list">ドメインリスト</a></h2>
+    <div class="block" id="list">
+      <table cellpadding="0" cellspacing="0" border="0" class="display" id="domains">
+        <thead><tr><th>ドメイン名</th><th>タイプ</th></tr></thead>
+        <tfoot><tr><th>ドメイン名</th><th>タイプ</th></tr></tfoot>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function(){
+    app = function(domain, type){
+      return '<tr class="odd">' + 
+      '<td>' + domain + '</td>' + 
+      '<td>' + type + '</td>' + 
+      '</tr>';
+    };
+    // add data
+    reset = function(){
+      $.getJSON("/api/domain/list", function(json){
+        $('#domains>tbody>*').remove();
+        for(var i=0; i < json.length; ++i){
+          $('#domains>tbody').append(
+            app(json[i].domain, json[i].type)
+          );
+        }
+      });
+    };
+    reset();
+    send = function() {
+      $.ajax({
+        type: "POST",
+        url: "/api/domain/add",
+        data: "domain=" + $("#domain").val() + "&domainType="+$("#domain_type").val(),
+        dataType: "json",
+        success: function(msg) {
+          if (msg.result == true) {
+            alert("success");
+            reset();
+          } else {
+            alert("fail");
+          }
+        }
+      });
+    }
+  });
+</script>
+<div class="grid_8">
+  <div class="box">
+    <h2>使用済みドメイン追加</h2>
+    <div class="block">
+      <form onsubmit="send()">
+      <fieldset class="install">
+        <legend>使用済みドメイン追加</legend>
+        <div class="sixteen_column section">
+          <div class="sixteen column">
+            <div class="column_content">
+              <label>ドメイン: </label>
+              <input type="text" id="domain" value=""/>
+            </div>
+          </div>
+          <div class="sixteen column">
+            <div class="column_content">
+              <label>ドメインタイプ: </label>
+              <input type="text" id="domain_type" value=""/>
+            </div>
+          </div>
+        </div>
+        <div class="sixteen_column section">
+          <div class="ten column"><div class="column_content"></div></div>
+          <div class="six column">
+            <div class="column_content">
+              <input type="button" class="ui-state-default ui-corner-somne floatRight" onclick="send()" value="送信"><span class="ui-icon ui-icon-desk"></span></input>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

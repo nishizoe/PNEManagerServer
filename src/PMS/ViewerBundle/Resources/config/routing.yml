@@ -1,0 +1,25 @@
+PMSViewerBundle_viewer:
+    pattern:  /viewer
+    defaults: { _controller: PMSViewerBundle:Viewer:index }
+
+PMSViewerBundle_viewer_sns:
+    pattern:  /viewer/sns
+    defaults: { _controller: PMSViewerBundle:Viewer:sns }
+
+PMSViewerBundle_viewer_server:
+    pattern:  /viewer/server
+    defaults: { _controller: PMSViewerBundle:Viewer:server }
+
+PMSViewerBundle_viewer_help:
+    pattern:  /viewer/help
+    defaults: { _controller: PMSViewerBundle:Viewer:help }
+
+PMSViewerBundle_viewer_login:
+    pattern:  /viewer/login
+    defaults: { _controller: PMSViewerBundle:Viewer:login }
+
+PMSViewerBundle_viewer_login_check:
+    pattern:  /viewer/login/check
+
+PMSViewerBundle_viewer_logout:
+    pattern:  /viewer/logout

@@ -1,0 +1,7 @@
+parameters:
+#    pms_viewer.example.class: PMS\ViewerBundle\Example
+
+services:
+#    pms_viewer.example:
+#        class: %pms_viewer.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

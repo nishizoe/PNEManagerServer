@@ -1,0 +1,2874 @@
+
+/*
+ *  File:         demo_table_jui.css
+ *  CVS:          $Id$
+ *  Description:  CSS descriptions for DataTables demo pages
+ *  Author:       Allan Jardine
+ *  Created:      Tue May 12 06:47:22 BST 2009
+ *  Modified:     $Date$ by $Author$
+ *  Language:     CSS
+ *  Project:      DataTables
+ *
+ *  Copyright 2009 Allan Jardine. All Rights Reserved.
+ *
+ * ***************************************************************************
+ * DESCRIPTION
+ *
+ * The styles given here are suitable for the demos that are used with the standard DataTables
+ * distribution (see www.datatables.net). You will most likely wish to modify these styles to
+ * meet the layout requirements of your site.
+ *
+ * Common issues:
+ *   'full_numbers' pagination - I use an extra selector on the body tag to ensure that there is
+ *     no conflict between the two pagination types. If you want to use full_numbers pagination
+ *     ensure that you either have "example_alt_pagination" as a body class name, or better yet,
+ *     modify that selector.
+ *   Note that the path used for Images is relative. All images are by default located in
+ *     ../images/ - relative to this CSS file.
+ */
+
+
+/*
+ * jQuery UI specific styling
+ */
+
+.paging_two_button .ui-button {
+	float: left;
+	cursor: pointer;
+	* cursor: hand;
+}
+
+.paging_full_numbers .ui-button {
+	padding: 2px 6px;
+	margin: 0;
+	cursor: pointer;
+	* cursor: hand;
+}
+
+.dataTables_paginate .ui-button {
+	margin-right: -0.1em !important;
+}
+
+.paging_full_numbers {
+	width: 350px !important;
+}
+
+.dataTables_wrapper .ui-toolbar {
+	padding: 5px;
+}
+
+.dataTables_paginate {
+	width: auto;
+}
+
+.dataTables_info {
+	padding-top: 3px;
+}
+
+table.display thead th {
+	padding: 3px 0px 3px 10px;
+	cursor: pointer;
+	* cursor: hand;
+}
+
+div.dataTables_wrapper .ui-widget-header {
+	font-weight: normal;
+}
+
+
+/*
+ * Sort arrow icon positioning
+ */
+table.display thead th div.DataTables_sort_wrapper {
+	position: relative;
+	padding-right: 20px;
+	padding-right: 20px;
+}
+
+table.display thead th div.DataTables_sort_wrapper span {
+	position: absolute;
+	top: 50%;
+	margin-top: -8px;
+	right: 0;
+}
+
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *
+ * Everything below this line is the same as demo_table.css. This file is
+ * required for 'cleanliness' of the markup
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables features
+ */
+
+.dataTables_wrapper {
+	position: relative;
+	min-height: 302px;
+	_height: 302px;
+	clear: both;
+}
+
+.dataTables_processing {
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	width: 250px;
+	margin-left: -125px;
+	border: 1px solid #ddd;
+	text-align: center;
+	color: #999;
+	font-size: 11px;
+	padding: 2px 0;
+}
+
+.dataTables_length {
+	width: 40%;
+	float: left;
+}
+
+.dataTables_filter {
+	width: 50%;
+	float: right;
+	text-align: right;
+}
+.dataTables_filter input, .dataTables_length select {
+	width: 40%;
+}
+
+.dataTables_info {
+	width: 50%;
+	float: left;
+}
+
+.dataTables_paginate {
+	float: right;
+	text-align: right;
+}
+
+/* Pagination nested */
+.paginate_disabled_previous, .paginate_enabled_previous, .paginate_disabled_next, .paginate_enabled_next {
+	height: 19px;
+	width: 19px;
+	margin-left: 3px;
+	float: left;
+}
+
+.paginate_disabled_previous {
+	background-image: url('../images/back_disabled.jpg');
+}
+
+.paginate_enabled_previous {
+	background-image: url('../images/back_enabled.jpg');
+}
+
+.paginate_disabled_next {
+	background-image: url('../images/forward_disabled.jpg');
+}
+
+.paginate_enabled_next {
+	background-image: url('../images/forward_enabled.jpg');
+}
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables display
+ */
+table.display {
+	margin: 0 auto;
+	width: 100%;
+	clear: both;
+	border-collapse: collapse;
+}
+
+table.display tfoot th {
+	padding: 3px 0px 3px 10px;
+	font-weight: bold;
+	font-weight: normal;
+}
+
+table.display tr.heading2 td {
+	border-bottom: 1px solid #aaa;
+}
+
+table.display td {
+	padding: 3px 10px;
+}
+
+table.display td.center {
+	text-align: center;
+}
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables sorting
+ */
+
+.sorting_asc {
+	background: url('../images/sort_asc.png') no-repeat center right;
+}
+
+.sorting_desc {
+	background: url('../images/sort_desc.png') no-repeat center right;
+}
+
+.sorting {
+	background: url('../images/sort_both.png') no-repeat center right;
+}
+
+.sorting_asc_disabled {
+	background: url('../images/sort_asc_disabled.png') no-repeat center right;
+}
+
+.sorting_desc_disabled {
+	background: url('../images/sort_desc_disabled.png') no-repeat center right;
+}
+
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables row classes
+ */
+table.display tr.odd.gradeA {
+	background-color: #ddffdd;
+}
+
+table.display tr.even.gradeA {
+	background-color: #eeffee;
+}
+
+
+
+
+table.display tr.odd.gradeA {
+	background-color: #ddffdd;
+}
+
+table.display tr.even.gradeA {
+	background-color: #eeffee;
+}
+
+table.display tr.odd.gradeC {
+	background-color: #ddddff;
+}
+
+table.display tr.even.gradeC {
+	background-color: #eeeeff;
+}
+
+table.display tr.odd.gradeX {
+	background-color: #ffdddd;
+}
+
+table.display tr.even.gradeX {
+	background-color: #ffeeee;
+}
+
+table.display tr.odd.gradeU {
+	background-color: #ddd;
+}
+
+table.display tr.even.gradeU {
+	background-color: #eee;
+}
+
+
+tr.odd {
+	background-color: #E2E4FF;
+}
+
+tr.even {
+	background-color: white;
+}
+
+
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Misc
+ */
+.dataTables_scroll {
+	clear: both;
+}
+
+.top, .bottom {
+	padding: 15px;
+	background-color: #F5F5F5;
+	border: 1px solid #CCCCCC;
+}
+
+.top .dataTables_info {
+	float: none;
+}
+
+.clear {
+	clear: both;
+}
+
+.dataTables_empty {
+	text-align: center;
+}
+
+tfoot input {
+	margin: 0.5em 0;
+	width: 100%;
+	color: #444;
+}
+
+tfoot input.search_init {
+	color: #999;
+}
+
+td.group {
+	background-color: #d1cfd0;
+	border-bottom: 2px solid #A19B9E;
+	border-top: 2px solid #A19B9E;
+}
+
+td.details {
+	background-color: #d1cfd0;
+	border: 2px solid #A19B9E;
+}
+
+
+.example_alt_pagination div.dataTables_info {
+	width: 40%;
+}
+
+.paging_full_numbers span.paginate_button,
+ 	.paging_full_numbers span.paginate_active {
+	border: 1px solid #aaa;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	padding: 2px 5px;
+	margin: 0 3px;
+	cursor: pointer;
+	*cursor: hand;
+}
+
+.paging_full_numbers span.paginate_button {
+	background-color: #ddd;
+}
+
+.paging_full_numbers span.paginate_button:hover {
+	background-color: #ccc;
+}
+
+.paging_full_numbers span.paginate_active {
+	background-color: #99B3FF;
+}
+
+table.display tr.even.row_selected td {
+	background-color: #B0BED9;
+}
+
+table.display tr.odd.row_selected td {
+	background-color: #9FAFD1;
+}
+
+
+/*
+ * Sorting classes for columns
+ */
+/* For the standard odd/even */
+tr.odd td.sorting_1 {
+	background-color: #D3D6FF;
+}
+
+tr.odd td.sorting_2 {
+	background-color: #DADCFF;
+}
+
+tr.odd td.sorting_3 {
+	background-color: #E0E2FF;
+}
+
+tr.even td.sorting_1 {
+	background-color: #EAEBFF;
+}
+
+tr.even td.sorting_2 {
+	background-color: #F2F3FF;
+}
+
+tr.even td.sorting_3 {
+	background-color: #F9F9FF;
+}
+
+
+/* For the Conditional-CSS grading rows */
+/*
+ 	Colour calculations (based off the main row colours)
+  Level 1:
+		dd > c4
+		ee > d5
+	Level 2:
+	  dd > d1
+	  ee > e2
+ */
+tr.odd.gradeA td.sorting_1 {
+	background-color: #c4ffc4;
+}
+
+tr.odd.gradeA td.sorting_2 {
+	background-color: #d1ffd1;
+}
+
+tr.odd.gradeA td.sorting_3 {
+	background-color: #d1ffd1;
+}
+
+tr.even.gradeA td.sorting_1 {
+	background-color: #d5ffd5;
+}
+
+tr.even.gradeA td.sorting_2 {
+	background-color: #e2ffe2;
+}
+
+tr.even.gradeA td.sorting_3 {
+	background-color: #e2ffe2;
+}
+
+tr.odd.gradeC td.sorting_1 {
+	background-color: #c4c4ff;
+}
+
+tr.odd.gradeC td.sorting_2 {
+	background-color: #d1d1ff;
+}
+
+tr.odd.gradeC td.sorting_3 {
+	background-color: #d1d1ff;
+}
+
+tr.even.gradeC td.sorting_1 {
+	background-color: #d5d5ff;
+}
+
+tr.even.gradeC td.sorting_2 {
+	background-color: #e2e2ff;
+}
+
+tr.even.gradeC td.sorting_3 {
+	background-color: #e2e2ff;
+}
+
+tr.odd.gradeX td.sorting_1 {
+	background-color: #ffc4c4;
+}
+
+tr.odd.gradeX td.sorting_2 {
+	background-color: #ffd1d1;
+}
+
+tr.odd.gradeX td.sorting_3 {
+	background-color: #ffd1d1;
+}
+
+tr.even.gradeX td.sorting_1 {
+	background-color: #ffd5d5;
+}
+
+tr.even.gradeX td.sorting_2 {
+	background-color: #ffe2e2;
+}
+
+tr.even.gradeX td.sorting_3 {
+	background-color: #ffe2e2;
+}
+
+tr.odd.gradeU td.sorting_1 {
+	background-color: #c4c4c4;
+}
+
+tr.odd.gradeU td.sorting_2 {
+	background-color: #d1d1d1;
+}
+
+tr.odd.gradeU td.sorting_3 {
+	background-color: #d1d1d1;
+}
+
+tr.even.gradeU td.sorting_1 {
+	background-color: #d5d5d5;
+}
+
+tr.even.gradeU td.sorting_2 {
+	background-color: #e2e2e2;
+}
+
+tr.even.gradeU td.sorting_3 {
+	background-color: #e2e2e2;
+}
+
+
+/*
+ * Row highlighting example
+ */
+.ex_highlight #example tbody tr.even:hover, #example tbody tr.even td.highlighted {
+	background-color: #ECFFB3;
+}
+
+.ex_highlight #example tbody tr.odd:hover, #example tbody tr.odd td.highlighted {
+	background-color: #E6FF99;
+}
+/*
+ *
+ * everything here take inspiration from:
+ *
+ */
+
+
+
+/*
+ * Fluid Grid System
+ * http://fluid.gs/
+ * http://fluid.newgoldleaf.com/
+ *
+ * Copyright (c) 2009 Joseph Silvashy and New Gold Leaf LP
+ * Licensed under the MIT, GPL, and CC licenses.
+ *
+ * Date: 2009-06-22 (Mon, 22 Jun 2009)
+ * Revision: 3
+ *
+ * Modifications and fixes made from:
+ * http://meyerweb.com/eric/tools/css/reset/
+ * http://code.google.com/p/blueprintcss/
+ */
+
+/* .section and .column are required in your HTML */
+div.section {display:table; width:100%; border-collapse:collapse;}
+div.column {display: table-cell; padding:5px;}
+
+div.sixteen_column.section div.one {width:6%;}
+div.sixteen_column.section div.two {width:12%;}
+div.sixteen_column.section div.three {width:18%;}
+div.sixteen_column.section div.four {width:24%;}
+div.sixteen_column.section div.five {width:30%;}
+div.sixteen_column.section div.six {width:36%;}
+div.sixteen_column.section div.seven {width:42%;}
+div.sixteen_column.section div.eight {width:48%;}
+div.sixteen_column.section div.nine {width:54%;}
+div.sixteen_column.section div.ten {width:60%;}
+div.sixteen_column.section div.eleven {width:66%;}
+div.sixteen_column.section div.twelve {width:72%;}
+div.sixteen_column.section div.thirteen {width:78%;}
+div.sixteen_column.section div.fourteen {width:84%;}
+div.sixteen_column.section div.fifteen {width:90%;}
+div.sixteen_column.section div.sixteen {width:96%;}
+div.section {display:block; width:100%;}
+div.column {float:left; display:block;}
+/*
+	960 Grid System ~ Core CSS.
+	Learn more ~ http://960.gs/
+
+	Licensed under GPL and MIT.
+*/
+
+/* =Containers
+--------------------------------------------------------------------------------*/
+
+.container_12,
+.container_16
+{
+/*	width: 92%;
+	margin-left: 4%;
+	margin-right: 4%;*/
+	width: 95%;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
+/* =Grid >> Global
+--------------------------------------------------------------------------------*/
+
+.grid_1,
+.grid_2,
+.grid_3,
+.grid_4,
+.grid_5,
+.grid_6,
+.grid_7,
+.grid_8,
+.grid_9,
+.grid_10,
+.grid_11,
+.grid_12,
+.grid_13,
+.grid_14,
+.grid_15,
+.grid_16
+{
+	display: inline;
+	float: left;
+	margin-left: 1%;
+	margin-right: 1%;
+}
+
+.noMargin{
+	margin:0;
+	background-color:#ff0;
+}
+
+.container_12 .grid_3,
+.container_16 .grid_4
+{
+	width: 23%;
+}
+
+.container_12 .grid_6,
+.container_16 .grid_8
+{
+	width: 48%;
+}
+
+.container_12 .grid_9,
+.container_16 .grid_12
+{
+	width: 73%;
+}
+
+.container_12 .grid_12,
+.container_16 .grid_16
+{
+	width: 98%;
+}
+
+/* =Grid >> Children (Alpha ~ First, Omega ~ Last)
+--------------------------------------------------------------------------------*/
+
+.alpha
+{
+	margin-left: 0;
+}
+
+.omega
+{
+	margin-right: 0;
+}
+
+/* =Grid >> 12 Columns
+--------------------------------------------------------------------------------*/
+
+.container_12 .grid_1
+{
+	width: 6.333%;
+}
+
+.container_12 .grid_2
+{
+	width: 14.666%;
+}
+
+.container_12 .grid_4
+{
+	width: 31.333%;
+}
+
+.container_12 .grid_5
+{
+	width: 39.666%;
+}
+
+.container_12 .grid_7
+{
+	width: 56.333%;
+}
+
+.container_12 .grid_8
+{
+	width: 64.666%;
+}
+
+.container_12 .grid_10
+{
+	width: 81.333%;
+}
+
+.container_12 .grid_11
+{
+	width: 89.666%;
+}
+
+/* =Grid >> 16 Columns
+--------------------------------------------------------------------------------*/
+
+.container_16 .grid_1
+{
+	width: 4.25%;
+}
+
+.container_16 .grid_2
+{
+	width: 10.5%;
+}
+
+.container_16 .grid_3
+{
+	width: 16.75%;
+}
+
+.container_16 .grid_5
+{
+	width: 29.25%;
+}
+
+.container_16 .grid_6
+{
+	width: 35.5%;
+}
+
+.container_16 .grid_7
+{
+	width: 41.75%;
+}
+
+.container_16 .grid_9
+{
+	width: 54.25%;
+}
+
+.container_16 .grid_10
+{
+	width: 60.5%;
+}
+
+.container_16 .grid_11
+{
+	width: 66.75%;
+}
+
+.container_16 .grid_13
+{
+	width: 79.25%;
+}
+
+.container_16 .grid_14
+{
+	width: 85.5%;
+}
+
+.container_16 .grid_15
+{
+	width: 91.75%;
+}
+
+/* =Prefix Extra Space >> Global
+--------------------------------------------------------------------------------*/
+
+.container_12 .prefix_3,
+.container_16 .prefix_4
+{
+	padding-left: 25%;
+}
+
+.container_12 .prefix_6,
+.container_16 .prefix_8
+{
+	padding-left: 50%;
+}
+
+.container_12 .prefix_9,
+.container_16 .prefix_12
+{
+	padding-left: 75%;
+}
+
+/* =Prefix Extra Space >> 12 Columns
+--------------------------------------------------------------------------------*/
+
+.container_12 .prefix_1
+{
+	padding-left: 8.333%;
+}
+
+.container_12 .prefix_2
+{
+	padding-left: 16.666%;
+}
+
+.container_12 .prefix_4
+{
+	padding-left: 33.333%;
+}
+
+.container_12 .prefix_5
+{
+	padding-left: 41.666%;
+}
+
+.container_12 .prefix_7
+{
+	padding-left: 58.333%;
+}
+
+.container_12 .prefix_8
+{
+	padding-left: 66.666%;
+}
+
+.container_12 .prefix_10
+{
+	padding-left: 83.333%;
+}
+
+.container_12 .prefix_11
+{
+	padding-left: 91.666%;
+}
+
+/* =Prefix Extra Space >> 16 Columns
+--------------------------------------------------------------------------------*/
+
+.container_16 .prefix_1
+{
+	padding-left: 6.25%;
+}
+
+.container_16 .prefix_2
+{
+	padding-left: 12.5%;
+}
+
+.container_16 .prefix_3
+{
+	padding-left: 18.75%;
+}
+
+.container_16 .prefix_5
+{
+	padding-left: 31.25%;
+}
+
+.container_16 .prefix_6
+{
+	padding-left: 37.5%;
+}
+
+.container_16 .prefix_7
+{
+	padding-left: 43.75%;
+}
+
+.container_16 .prefix_9
+{
+	padding-left: 56.25%;
+}
+
+.container_16 .prefix_10
+{
+	padding-left: 62.5%;
+}
+
+.container_16 .prefix_11
+{
+	padding-left: 68.75%;
+}
+
+.container_16 .prefix_13
+{
+	padding-left: 81.25%;
+}
+
+.container_16 .prefix_14
+{
+	padding-left: 87.5%;
+}
+
+.container_16 .prefix_15
+{
+	padding-left: 93.75%;
+}
+
+/* =Suffix Extra Space >> Global
+--------------------------------------------------------------------------------*/
+
+.container_12 .suffix_3,
+.container_16 .suffix_4
+{
+	padding-right: 25%;
+}
+
+.container_12 .suffix_6,
+.container_16 .suffix_8
+{
+	padding-right: 50%;
+}
+
+.container_12 .suffix_9,
+.container_16 .suffix_12
+{
+	padding-right: 75%;
+}
+
+/* =Suffix Extra Space >> 12 Columns
+--------------------------------------------------------------------------------*/
+
+.container_12 .suffix_1
+{
+	padding-right: 8.333%;
+}
+
+.container_12 .suffix_2
+{
+	padding-right: 16.666%;
+}
+
+.container_12 .suffix_4
+{
+	padding-right: 33.333%;
+}
+
+.container_12 .suffix_5
+{
+	padding-right: 41.666%;
+}
+
+.container_12 .suffix_7
+{
+	padding-right: 58.333%;
+}
+
+.container_12 .suffix_8
+{
+	padding-right: 66.666%;
+}
+
+.container_12 .suffix_10
+{
+	padding-right: 83.333%;
+}
+
+.container_12 .suffix_11
+{
+	padding-right: 91.666%;
+}
+
+/* =Suffix Extra Space >> 16 Columns
+--------------------------------------------------------------------------------*/
+
+.container_16 .suffix_1
+{
+	padding-right: 6.25%;
+}
+
+.container_16 .suffix_2
+{
+	padding-right: 16.5%;
+}
+
+.container_16 .suffix_3
+{
+	padding-right: 18.75%;
+}
+
+.container_16 .suffix_5
+{
+	padding-right: 31.25%;
+}
+
+.container_16 .suffix_6
+{
+	padding-right: 37.5%;
+}
+
+.container_16 .suffix_7
+{
+	padding-right: 43.75%;
+}
+
+.container_16 .suffix_9
+{
+	padding-right: 56.25%;
+}
+
+.container_16 .suffix_10
+{
+	padding-right: 62.5%;
+}
+
+.container_16 .suffix_11
+{
+	padding-right: 68.75%;
+}
+
+.container_16 .suffix_13
+{
+	padding-right: 81.25%;
+}
+
+.container_16 .suffix_14
+{
+	padding-right: 87.5%;
+}
+
+.container_16 .suffix_15
+{
+	padding-right: 93.75%;
+}
+
+/* =Clear Floated Elements
+--------------------------------------------------------------------------------*/
+
+/* http://sonspring.com/journal/clearing-floats */
+
+html body * span.clear,
+html body * div.clear,
+html body * li.clear,
+html body * dd.clear
+{
+	background: none;
+	border: 0;
+	clear: both;
+	display: block;
+	float: none;
+	font-size: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+/* http://www.positioniseverything.net/easyclearing.html */
+
+.clearfix:after
+{
+	clear: both;
+	content: '.';
+	display: block;
+	visibility: hidden;
+	height: 0;
+}
+
+.clearfix
+{
+	display: inline-block;
+}
+
+* html .clearfix
+{
+	height: 1%;
+}
+
+.clearfix
+{
+	display: block;
+}
+/*
+	Fluid 960 Grid System - IE Fixes (IE7 and greater)
+	Learn more ~ http://www.designinfluences.com/
+
+	Licensed under GPL and MIT.
+*/
+
+/* =Grid >> Global
+--------------------------------------------------------------------------------*/
+
+.grid_1,
+.grid_2,
+.grid_3,
+.grid_4,
+.grid_5,
+.grid_6,
+.grid_7,
+.grid_8,
+.grid_9,
+.grid_10,
+.grid_11,
+.grid_12,
+.grid_13,
+.grid_14,
+.grid_15,
+.grid_16
+{
+	margin-left: .92%;
+	margin-right: .92%;
+}
+
+
+/*
+	Fluid 960 Grid System - IE6 Fixes
+	Learn more ~ http://www.designinfluences.com/
+
+	Licensed under GPL and MIT.
+*/
+
+/* =Grid >> Global
+--------------------------------------------------------------------------------*/
+
+.grid_1,
+.grid_2,
+.grid_3,
+.grid_4,
+.grid_5,
+.grid_6,
+.grid_7,
+.grid_8,
+.grid_9,
+.grid_10,
+.grid_11,
+.grid_12,
+.grid_13,
+.grid_14,
+.grid_15,
+.grid_16
+{
+	margin-left: .8%;
+	margin-right: .8%;
+}
+
+
+div.tagsinput { border:1px solid #CCC; background: #FFF; padding:5px; width:97%; height:50px; overflow-y: auto;}
+div.tagsinput span.tag { border: 1px solid #D8D8D8; -moz-border-radius:15px; -webkit-border-radius:15px; display: block; float: left; padding: 0; padding-left:15px; padding-right:15px; text-decoration:none; background: #f4f4f4; color: #666; margin-right: 5px; margin-bottom:5px;font-family: helvetica;  font-size:11px;}
+span.tag { border: 1px solid #D8D8D8; -moz-border-radius:15px; -webkit-border-radius:15px; display: block; float: left; padding: 0; padding-left:15px; padding-right:15px; text-decoration:none; background: #f4f4f4; color: #666; margin-right: 5px; margin-bottom:5px;font-family: helvetica;  font-size:11px;}
+div.tagsinput span.tag a { font-weight: bold; color: #ccc; text-decoration:none; font-size: 11px;  }
+span.tag a { font-weight: bold; color: #ccc; text-decoration:none; font-size: 11px;  }
+div.tagsinput input { width:80px; margin:0px; font-family: helvetica; font-size: 11px; border:1px solid transparent; padding:5px; background: transparent; color: #666; outline:0px;  margin-right:5px; margin-bottom:5px; }
+div.tagsinput div { display:block; float: left; } 
+.tags_clear { clear: both; width: 100%; height: 0px; }
+.treeview, .treeview ul { 
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.treeview ul {
+	background-color: transparent;
+	margin-top: 4px;
+}
+
+.treeview .hitarea {
+	background: url(../img/treeview-default.gif) -64px -25px no-repeat;
+	height: 16px;
+	width: 16px;
+	margin-left: -16px;
+	float: left;
+	cursor: pointer;
+}
+/* fix for IE6 */
+* html .hitarea {
+	display: inline;
+	float:none;
+}
+
+.treeview li { 
+	margin: 0;
+	padding: 3px 0pt 3px 16px;
+}
+
+.treeview a.selected {
+	background-color: #eee;
+}
+
+#treecontrol { margin: 1em 0; display: none; }
+
+.treeview .hover { color: #364C50; cursor: pointer; }
+
+.treeview li { background: url(../img/treeview-default-line.gif) 0 0 no-repeat; }
+.treeview li.collapsable, .treeview li.expandable { background-position: 0 -176px; }
+
+.treeview .expandable-hitarea { background-position: -80px -3px; }
+
+.treeview li.last { background-position: 0 -1766px }
+.treeview li.lastCollapsable, .treeview li.lastExpandable { background-image: url(../img/treeview-default.gif); }  
+.treeview li.lastCollapsable { background-position: 0 -111px }
+.treeview li.lastExpandable { background-position: -32px -67px }
+
+.treeview div.lastCollapsable-hitarea, .treeview div.lastExpandable-hitarea { background-position: 0; }
+
+.treeview-red li { background-image: url(../img/treeview-red-line.gif); }
+.treeview-red .hitarea, .treeview-red li.lastCollapsable, .treeview-red li.lastExpandable { background-image: url(../img/treeview-red.gif); } 
+
+.treeview-black li { background-image: url(../img/treeview-black-line.gif); }
+.treeview-black .hitarea, .treeview-black li.lastCollapsable, .treeview-black li.lastExpandable { background-image: url(../img/treeview-black.gif); }  
+
+.treeview-gray li { background-image: url(../img/treeview-gray-line.gif); }
+.treeview-gray .hitarea, .treeview-gray li.lastCollapsable, .treeview-gray li.lastExpandable { background-image: url(../img/treeview-gray.gif); } 
+
+.treeview-famfamfam li { background-image: url(../img/treeview-famfamfam-line.gif); }
+.treeview-famfamfam .hitarea, .treeview-famfamfam li.lastCollapsable, .treeview-famfamfam li.lastExpandable { background-image: url(../img/treeview-famfamfam.gif); } 
+
+.treeview .placeholder {
+	background: url(../img/ajax-loader.gif) 0 0 no-repeat;
+	height: 16px;
+	width: 16px;
+	display: block;
+}
+
+.filetree li { padding: 3px 0 2px 16px; }
+.filetree span.folder, .filetree span.file { padding: 1px 0 1px 16px; display: block; color: #7BA0AF;}
+.filetree span.folder { background: url(../img/folder.gif) 0 0 no-repeat; }
+.filetree li.expandable span.folder { background: url(../img/folder-closed.gif) 0 0 no-repeat; }
+.filetree span.file { background: url(../img/file.gif) 0 0 no-repeat; }
+
+/*
+ * html5 admin
+ *
+ * is double licensed under the MIT and Creative Commons Attribution 3.0 Unported License.
+ * - https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt
+ * 
+ * - http://creativecommons.org/licenses/by/3.0/
+ */
+
+/*
+-----------------------------------------------
+Grey Box Method - Layout CSS
+----------------------------------------------- */
+
+body {
+	background: #f4f4f4;
+	border-top: 5px solid #efefef;
+	color: #333;
+	font-size: 11px;
+	padding: 0 0 40px;
+}
+
+/* 960 grid system container background
+----------------------------------------------- */
+.container_12,
+.container_16 {
+	background:#f4f4f4;
+}
+
+
+/* headings
+----------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {line-height:1.2em; margin-bottom:.3em;}
+h2 {margin-top:1em;}
+h5 {font-size:1.2em;}
+h6 {font-size:1em; text-transform:uppercase;}
+
+
+h1 a {
+	font-weight:normal;
+}
+
+
+/* branding
+----------------------------------------------- */
+h1#branding {
+	font-weight:normal;
+	font-size:3em;
+	text-align:left;
+	background:#f4f4f4;
+	padding:.7em 1em;
+	margin-bottom:0;
+}
+
+
+/* page heading
+----------------------------------------------- */
+h2#page-heading {
+	font-weight:bold;
+	padding:.5em;
+	padding-top:40px;
+	margin:0;
+	border-bottom:1px solid #ccc;
+}
+
+h2#page-heading-left{
+	font-weight:bold;
+	padding:.3em;
+	padding-top:0;
+	margin:0;
+	border-bottom:1px solid #ccc;
+}
+
+h5#page-sub-heading-left{
+	font-weight:normal;
+	padding:.3em;
+	padding-top:10px;
+	padding-left:5px;
+	margin:0;
+	border-bottom:1px solid #ccc;
+}
+
+/* page crumbs
+----------------------------------------------- */
+h2#page-crumbs {
+	font-weight:normal;
+	font-size:1em;
+	padding-top:10px;
+	padding-bottom:5px;
+	margin-bottom:50px;
+	border-bottom:1px solid #ccc;
+	text-weight:normal;
+}
+
+h2#page-crumbs .here{
+	font-weight:bold;
+}
+
+/* boxes
+----------------------------------------------- */
+.box {
+	background:#FCFCFC;
+	margin-bottom:20px;
+	/*padding:10px 10px 1px 10px;*/
+	padding:5px 10px 5px 10px;
+	box-shadow: 0 0 3px #ccc;
+}
+.box h2 {
+	font-size:1em;
+	font-weight:normal;
+	text-transform:uppercase;
+	color:#000;
+	font-weight: bold;
+	background:#FCFCFC;
+	margin:-10px -10px 0 -10px;
+	padding:6px 12px;
+	border-top: 4px solid #86A3BD;
+}
+.box h2 a,
+.box h2 a.visible {
+	color:#000;
+	font-weight: bold;
+	background:#FCFCFC url("../img/minus_g.png") 97% 50% no-repeat;
+	display:block;
+	padding:6px 12px;
+	margin:-6px -12px;
+	border:none;
+}
+.grid_4 .box h2 a {
+	background-position: 97% 50%;
+}
+.grid_5 .box h2 a {
+	background-position: 98% 50%;
+}
+.grid_12 .box h2 a {
+	background-position: 99% 50%;
+}
+
+
+.box h2 a.hidden,
+.box h2 a.hidden:hover {
+	background-image: url("../img/plus_g.png");
+}
+.box h2 a:hover {
+	background-color:#86A3BD;
+	color:#fff;
+}
+.block {
+	padding-top:10px;
+}
+div.menu {
+	padding:0;
+}
+div.menu h2 {
+	margin:0;
+}
+div.menu .block {
+	padding-top:0;
+}
+
+
+
+.boxSpecial {
+	background:#f4f4f4;
+	margin-bottom:20px;
+	margin-top:14px;
+	/*padding:10px 10px 1px 10px;*/
+	/*padding:5px 10px 5px 10px;
+	box-shadow: 0 0 3px #ccc;*/
+}
+.boxSpecial h2 {
+	color:#666;
+	font-weight:normal;
+	font-size:1em;
+	border-bottom:1px solid #ccc;
+	text-weight:normal;
+	margin:0;
+	margin-bottom:10px;
+}
+.boxSpecial h2 a,
+.boxSpecial h2 a.visible {
+	color:black;
+	font-weight:bold;
+	font-size:1em;
+	border-bottom:1px solid #ccc;
+	text-weight:normal;
+	background:#f4f4f4 url("../img/minus_g.png") 97% 50% no-repeat;
+	display:block;
+	padding:6px 5px;
+	border:none;
+}
+.boxSpecial h2 a.hidden,
+.boxSpecial h2 a.hidden:hover {
+	background-image: url("../img/plus_g.png");
+}
+.boxSpecial h2 a:hover {
+	color:#000;
+}
+
+
+
+/* paragraphs, quotes and lists
+----------------------------------------------- */
+p {
+	/*margin:1em;*/
+	margin:0;
+	padding: 5px;
+}
+blockquote {
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size:1.2em;
+	padding-left:1em;
+	border-left:4px solid #ccc;
+}
+blockquote cite {
+	font-size:.9em;
+}
+ul, ol {
+	padding-top:0;
+}
+
+
+/* menus
+----------------------------------------------- */
+ul.menu {
+	list-style:none;
+	border-top:1px solid #bbb;
+	padding:10px;
+	padding-top:0;
+}
+ul.menu li {
+	margin:0;
+}
+ul.menu li a {
+	display:block;
+	padding:4px 10px;
+	border-bottom:1px solid #ccc;
+}
+ul.menu li a:hover {
+	background:#eee;
+}
+ul.menu li a:active {
+	background:#ccc;
+}
+
+
+/* submenus
+----------------------------------------------- */
+ul.menu ul {
+	list-style:none;
+	margin:0;
+}
+ul.menu ul li a {
+	padding-left:30px;
+}
+
+
+/* section menus
+----------------------------------------------- */
+ul.section {
+	border-top:0;
+	margin-bottom:0;
+}
+ul.section li {
+	text-transform:uppercase;
+}
+ul.section li a {
+	background:#F1F1F1;
+}
+ul.section li a:hover {
+	background:#aaa;
+}
+ul.section li a:active {
+	color:#fff;
+	background:#aaa;
+}
+ul.section li li a {
+	background:#ddd;
+	border-bottom:1px solid #eee;
+}
+ul.section li li a:hover {
+	background:#ccc;
+}
+ul.section li li a:active {
+	color:#000;
+	background:#fff;
+}
+ul.section ul li {
+	text-transform:none;
+}
+ul.section ul.current li a {
+	background:#eee;
+	border-bottom:1px solid #fff;
+}
+ul.section ul.current li a:hover {
+	background:#ddd;
+}
+ul.section ul.current li a:active {
+	background:#fff;
+}
+ul.section li a.current {
+	color:#fff;
+	background:#aaa;
+}
+ul.section li a.current:hover {
+	background:#aaa;
+}
+ul.section li a.current:active {
+	background:#444;
+}
+ul.section li a.active {
+	background:#fff;
+	cursor:default;
+}
+ul.section li.current > a.active,
+ul.section li.current > a.active:hover {
+	color:#fff;
+	background:#666;
+	cursor:default;
+}
+
+
+/* table
+----------------------------------------------- */
+table {
+	width:100%;
+	border:1px solid #bbb;
+	margin-bottom:10px;
+}
+col.colC {
+	width:8em;
+}
+th, td {
+	padding:.2em 1em;
+	text-align:left;
+}
+thead th {
+	border-bottom:2px solid #888;
+	background:#bbb;
+	padding:.4em 1em .2em;
+}
+thead th.table-head {
+	font-size:1em;
+	font-weight:normal;
+	text-transform:uppercase;
+	color:#fff;
+	background:#555;
+	border:1px solid #555;
+}
+tbody th,
+tbody td {
+	border-top:1px solid #bbb;
+	border-bottom:1px solid #bbb;
+	background:#eee;
+}
+tbody tr.odd th,
+tbody tr.odd td {
+	background:#fff;
+}
+tfoot th,
+tfoot td {
+	border-top:2px solid #666;
+	background:#eee;
+}
+tfoot tr.total th,
+tfoot tr.total td {
+	border-top:6px double #666;
+}
+tfoot tr.total th {
+	text-transform:uppercase;
+}
+th.currency,
+td.currency {
+	text-align:right;
+}
+
+
+/* forms
+----------------------------------------------- */
+form {
+	overflow:hidden;
+}
+fieldset {
+	border:1px solid #d3d3d3;
+	padding:10px;
+	position:relative;
+	background:#f1f1f1;
+	margin-bottom:10px;
+}
+legend {
+	font-size:1.1em;
+	padding:.3em 1em;
+	background:url("custom-theme/images/ui-bg_highlight-hard_75_ebebeb_1x100.png") repeat-x scroll 50% 50% #fff;
+	border:1px solid #d3d3d3;
+}
+fieldset.login p {
+	margin-bottom:1em;
+	margin-top:0pt;
+}
+fieldset p label {
+	width:98%;
+}
+fieldset p input {
+	width:98%;
+}
+fieldset p select {
+	width:99%;
+}
+fieldset.login p label {
+	float:left;
+	line-height:2em;
+	margin-right:3%;
+	text-align:right;
+	width:32%;
+}
+fieldset.login p input {
+	width:60%;
+}
+fieldset.login input.button {
+	margin-left:35%;
+}
+form p.notice {
+	font-weight:bold;
+}
+input.search.text {
+	width:66%;
+}
+input.search.button {
+	width:28%;
+	margin-left:2%;
+}
+
+
+/* articles
+----------------------------------------------- */
+.articles {
+	padding:0;
+}
+.articles h2 {
+	margin:0;
+}
+#articles {
+	padding-top:0;
+}
+.article {
+	border-top:1px solid #666;
+	padding-top:.5em;
+}
+.box .article {
+	border-top:3px solid #fff;
+	padding:13px 10px 0 10px;
+}
+.article h2 {
+	font-size:2em;
+	font-weight:normal;
+	text-transform:none;
+	color:#333;
+	background:transparent;
+	padding:0;
+	margin:0;
+	border:none;
+}
+.article h3 {
+	margin-bottom:.2em;
+	font-size:1.6em;
+}
+.box .first {
+	border-top:none;
+}
+.article h4 {
+	font-size:1.2em;
+	text-transform:uppercase;
+	margin-bottom:.5em;
+}
+.article a.image {
+	float:left; 
+	margin:3px 10px 3px 0; 
+	padding:4px;
+	border:1px solid #bbb;
+	background:#fff;
+}
+.article a.image:hover {
+	border:1px solid #666;
+}
+.article a.image img {
+	float:left; 
+}
+.article p.meta {
+	color:#666;
+	border-top:1px dotted #999;
+	border-bottom:1px dotted #999;
+	padding:.3em 0;
+	margin-bottom:.8em;
+}
+
+
+/* site information
+----------------------------------------------- */
+#site_info .box {
+	color:black;
+	background:#86A3BD;
+	margin-bottom:10px;
+}
+#site_info a {
+	color:#fff;
+}
+#site_info a:hover {
+	color:#000;
+}
+
+
+/* AJAX sliding shelf
+----------------------------------------------- */
+#loading {float:right; margin-right:14px; margin-top:-2px;}
+.block {padding-bottom:1px;}
+
+
+/* Accordian
+----------------------------------------------- */
+.toggler {
+	color: #222;
+	margin: 0;
+	padding: 2px 5px;
+	background: #eee;
+	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-top: 1px solid #f5f5f5;
+	border-left: 1px solid #f5f5f5;
+	font-size:1.1em;
+	font-weight: normal;
+}
+.element h4 {
+	margin: 0;
+	padding:4px;
+	line-height:1.2em;
+}
+.element p {
+	margin: 0;
+	padding: 4px;
+}
+.float-right {
+	padding:10px 20px;
+	float:right;
+}
+
+#accordian-block {
+	padding-bottom:10px;
+}
+
+
+/* Mootools Kwicks
+----------------------------------------------- */
+#kwick-box { 
+	padding:0;
+	overflow:hidden;
+}
+#kwick-box h2 { 
+	margin:0;
+}
+#kwick {
+	position: relative;
+}
+#kwick .kwicks {
+	display: block;
+	background: #999;
+	height: 120px;
+	list-style:none;
+	margin:0;
+	overflow:hidden;
+}
+#kwick li {
+	float: left;
+	margin:0;
+	padding:0;
+}
+#kwick .kwick {
+	display: block;
+	cursor: pointer;
+	overflow: hidden;
+	height: 100px;
+	width: 215px;
+	padding: 10px;
+	background: #fff;
+}
+#kwick .kwick span {
+	color:#fff;
+}
+#kwick .one {
+	background: #666;
+}
+#kwick .two {
+	background: #777;
+}
+#kwick .three {
+	background: #888;
+}
+#kwick .four {
+	background: #999;
+}
+
+#dialog_link {
+    padding: 0.4em 1em 0.4em 20px;
+    position: relative;
+    text-decoration: none;
+}
+#dialog_link span.ui-icon {
+    left: 0.2em;
+    margin: -8px 5px 0 0;
+    position: absolute;
+    top: 50%;
+}
+ul#icons li {
+    cursor: pointer;
+    float: left;
+    list-style: none outside none;
+    margin: 2px;
+    padding: 4px;
+    position: relative;
+}
+#accordion{
+	
+}
+
+.floatLeft{
+	float:left;
+}
+.floatRight{
+	float:right;
+}
+
+label.floatLeft{
+	float:left;
+	margin-right:10px;
+	margin-left:2px;
+}
+label.floatRight{
+	float:left;
+	margin-left:10px;
+	margin-right:2px;
+}
+.autoW{
+	width:auto;	
+}
+
+
+/*
+ - - - M E S S A G E S
+*/
+
+.msg{
+  -webkit-border-radius: 0 10px 10px 10px;
+     -moz-border-radius: 0 10px 10px 10px;
+          border-radius: 0 10px 10px 10px;
+          margin: 10px;
+          border: 1px solid #ccc;
+}
+
+
+
+.msg.error{
+	background-color:#D45F5F;
+	color:white;
+}
+.msg.warning{
+	background-color:#FDEFA7;
+	color:black;
+}
+.msg.success{
+	background-color:#86D883;
+	color:black;
+}
+
+.msg p{
+	padding:20px!important;
+}
+
+/* ==== Scroll down to find where to put your styles :) ==== */
+
+/*  HTML5 ✰ Boilerplate  */
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after,
+q:before, q:after { content: ''; content: none; }
+ins { background-color: #ff9; color: #000; text-decoration: none; }
+mark { background-color: #ff9; color: #000; font-style: italic; font-weight: bold; }
+del { text-decoration: line-through; }
+abbr[title], dfn[title] { border-bottom: 1px dotted; cursor: help; }
+table { border-collapse: collapse; border-spacing: 0; }
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+input, select { vertical-align: middle; padding:2px;}
+
+body { font:13px/1.231 sans-serif; *font-size:small; } 
+select, input, textarea, button { font:99% sans-serif; }
+pre, code, kbd, samp { font-family: monospace, sans-serif; }
+
+html { overflow-y: scroll; }
+a:hover, a:active { outline: none; }
+/*ul, ol { margin-left: 2em; }*/
+ol { list-style-type: decimal; }
+nav ul, nav li { margin: 0; list-style:none; list-style-image: none; }
+small { font-size: 85%; }
+strong, th { font-weight: bold; }
+td { vertical-align: top; }
+
+sub, sup { font-size: 75%; line-height: 0; position: relative; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; padding: 15px; }
+textarea { overflow: auto; }
+.ie6 legend, .ie7 legend { margin-left: -7px; } 
+input[type="radio"] { vertical-align: text-bottom; }
+input[type="checkbox"] { vertical-align: bottom; }
+.ie7 input[type="checkbox"] { vertical-align: baseline; }
+.ie6 input { vertical-align: text-bottom; }
+label, input[type="button"], input[type="submit"], input[type="image"], button { cursor: pointer; }
+button, input, select, textarea { margin: 0; width:100%;}
+textarea { border:1px solid #d3d3d3; padding:4px 3px 4px 3px; }
+input[type="text"], input[type="password"] { border:1px solid #d3d3d3; padding:4px 0px 4px 3px}
+
+input:valid, textarea:valid   {  }
+input:invalid, textarea:invalid { border-radius: 1px; -moz-box-shadow: 0px 0px 5px red; -webkit-box-shadow: 0px 0px 5px red; box-shadow: 0px 0px 5px red; }
+.no-boxshadow input:invalid, .no-boxshadow textarea:invalid { background-color: #f0dddd; }
+
+::-moz-selection{ background: #FF5E99; color:#fff; text-shadow: none; }
+::selection { background:#FF5E99; color:#fff; text-shadow: none; }
+a:link { -webkit-tap-highlight-color: #FF5E99; }
+
+button {  width: auto; overflow: visible; }
+.ie7 img { -ms-interpolation-mode: bicubic; }
+
+body, select, input, textarea {  color: #444; }
+h1, h2, h3, h4, h5, h6 { font-weight: bold; }
+a, a:active, a:visited { color: #7BA0AF; text-decoration:none;}
+a:hover { color: #FF5E99; text-decoration:none;}
+
+/*
+    // ==================================================================================== \\
+   ||                                           ==========================================   ||
+   ||               Your styles !               ==========================================   ||
+   ||                                           ==========================================   ||
+    \\ ==================================================================================== //
+*/
+
+	
+
+
+
+/*
+    // ==================================================================================== \\
+   ||                                           ==========================================   ||
+   ||           END Your styles !               ==========================================   ||
+   ||                                           ==========================================   ||
+    \\ ==================================================================================== //
+*/
+
+
+
+
+
+.ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
+/*.hidden { display: none; visibility: hidden; }*/
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+.invisible { visibility: hidden; }
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+
+@media all and (orientation:portrait) {
+
+}
+
+@media all and (orientation:landscape) {
+
+}
+
+@media screen and (max-device-width: 480px) {
+
+  /* html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; } */
+}
+
+
+@media print {
+  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important;
+  -ms-filter: none !important; } 
+  a, a:visited { color: #444 !important; text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; }
+  tr, img { page-break-inside: avoid; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3{ page-break-after: avoid; }
+}
+
+/*** ESSENTIAL STYLES ***/
+.sf-menu, .sf-menu * {
+	margin:			0;
+	padding:		0;
+	list-style:		none;
+}
+.sf-menu {
+	line-height:	1.0;
+}
+.sf-menu ul {
+	position:		absolute;
+	top:			-999em;
+	width:			14em; /* left offset of submenus need to match (see below) */
+}
+.sf-menu ul li {
+	width:			100%;
+}
+
+.sf-menu li.selected{
+	background: url("../img/plus_g.png") #f4f4f4 no-repeat 96% 50%;
+}
+
+
+
+.sf-menu li:hover {
+	visibility:		inherit; /* fixes IE7 'sticky bug' */
+}
+.sf-menu li {
+	float:			left;
+	position:		relative;
+}
+.sf-menu a {
+	display:		block;
+	position:		relative;
+}
+.sf-menu li:hover ul,
+.sf-menu li.sfHover ul {
+	left:			0;
+	top:			2.5em; /* match top ul list item height */
+	z-index:		99;
+}
+ul.sf-menu li:hover li ul,
+ul.sf-menu li.sfHover li ul {
+	top:			-999em;
+}
+ul.sf-menu li li:hover ul,
+ul.sf-menu li li.sfHover ul {
+	left:			14em; /* match ul width */
+	top:			0;
+}
+ul.sf-menu li li:hover li ul,
+ul.sf-menu li li.sfHover li ul {
+	top:			-999em;
+}
+ul.sf-menu li li li:hover ul,
+ul.sf-menu li li li.sfHover ul {
+	left:			14em; /* match ul width */
+	top:			0;
+}
+
+
+#navigationTop{
+	-moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; border-top-left-radius: 5px;
+	-moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; border-top-right-radius: 5px;
+	padding-left:1px;
+	width:100%;
+	padding-top:10px;
+	border-top:1px solid ccc;
+	background: #86A3BD;
+
+}
+/*** DEMO SKIN ***/
+.sf-menu {
+	float:			left;
+	margin-bottom:	0;
+}
+.sf-menu a {
+	border-left:	1px solid transparent;
+	border-top:		1px solid transparent;
+	padding: 		.75em 1em;
+	text-decoration:none;
+	font-weight:	bold;
+	letterspacing:	.6em;
+}
+.sf-menu a, .sf-menu a:visited  { /* visited pseudo selector so IE6 applies text colour*/
+	color:			#333;
+}
+.sf-menu li {
+	background:		#86A3BD;
+}
+.sf-menu li li {
+	background:		#f1f1f1;
+}
+.sf-menu li li li {
+	background:		#f1f1f1;
+}
+.sf-menu li:hover, .sf-menu li.sfHover,
+.sf-menu a:focus, .sf-menu a:hover, .sf-menu a:active {
+	background:		#fcfcfc;
+	outline:		0;
+	color:			#000;
+}
+
+/*** arrows **/
+.sf-menu a.sf-with-ul {
+	padding-right: 	2.25em;
+	min-width:		1px; /* trigger IE7 hasLayout so spans position accurately */
+}
+.sf-sub-indicator {
+	position:		absolute;
+	display:		block;
+	right:			.75em;
+	top:			1.05em; /* IE6 only */
+	width:			10px;
+	height:			10px;
+	text-indent: 	-999em;
+	overflow:		hidden;
+	background:		url('../img/right_g.png') no-repeat -10px -100px; /* 8-bit indexed alpha png. IE6 gets solid image only */
+}
+a > .sf-sub-indicator {  /* give all except IE6 the correct values */
+	top:			.8em;
+	background-position: 0 -100px; /* use translucent arrow for modern browsers*/
+}
+/* apply hovers to modern browsers */
+a:focus > .sf-sub-indicator,
+a:hover > .sf-sub-indicator,
+a:active > .sf-sub-indicator,
+li:hover > a > .sf-sub-indicator,
+li.sfHover > a > .sf-sub-indicator {
+	background-position: -10px -100px; /* arrow hovers for modern browsers*/
+}
+
+/* point right for anchors in subs */
+.sf-menu ul .sf-sub-indicator { background-position:  -10px 0; }
+.sf-menu ul a > .sf-sub-indicator { background-position:  0 0; }
+/* apply hovers to modern browsers */
+.sf-menu ul a:focus > .sf-sub-indicator,
+.sf-menu ul a:hover > .sf-sub-indicator,
+.sf-menu ul a:active > .sf-sub-indicator,
+.sf-menu ul li:hover > a > .sf-sub-indicator,
+.sf-menu ul li.sfHover > a > .sf-sub-indicator {
+	background-position: -10px 0; /* arrow hovers for modern browsers*/
+}
+
+/*** shadows for all but IE6 ***/
+.sf-shadow ul {
+	background:	url('../img/shadow.png') no-repeat bottom right;
+	padding: 0 8px 9px 0;
+	-moz-border-radius-bottomleft: 17px;
+	-moz-border-radius-topright: 17px;
+	-webkit-border-top-right-radius: 17px;
+	-webkit-border-bottom-left-radius: 17px;
+}
+.sf-shadow ul.sf-shadow-off {
+	background: transparent;
+}
+
+/*
+	960 Grid System ~ Text CSS.
+	Learn more ~ http://960.gs/
+
+	Licensed under GPL and MIT.
+*/
+
+/* =Basic HTML
+--------------------------------------------------------------------------------*/
+
+body
+{
+	font: 13px/1.5 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+}
+
+a:focus
+{
+	outline: 1px dotted invert;
+}
+
+hr
+{
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px 0 0;
+	clear: both;
+	height: 0;
+}
+
+/* =Headings
+--------------------------------------------------------------------------------*/
+
+h1
+{
+	font-size: 25px;
+}
+
+h2
+{
+	font-size: 23px;
+}
+
+h3
+{
+	font-size: 21px;
+}
+
+h4
+{
+	font-size: 19px;
+}
+
+h5
+{
+	font-size: 17px;
+}
+
+h6
+{
+	font-size: 15px;
+}
+
+/* =Spacing
+--------------------------------------------------------------------------------*/
+
+ol
+{
+	list-style: decimal;
+}
+
+ul
+{
+	list-style: square;
+}
+
+li
+{
+	margin-left: 30px;
+}
+
+p,
+dl,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul,
+pre,
+table,
+address,
+fieldset
+{
+	margin-bottom: 20px;
+}
+
+/*
+ * jQuery UI CSS Framework 1.8.13
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Theming/API
+ */
+
+/* Layout helpers
+----------------------------------*/
+.ui-helper-hidden { display: none; }
+.ui-helper-hidden-accessible { position: absolute !important; clip: rect(1px 1px 1px 1px); clip: rect(1px,1px,1px,1px); }
+.ui-helper-reset { margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none; }
+.ui-helper-clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.ui-helper-clearfix { display: inline-block; }
+/* required comment for clearfix to work in Opera \*/
+* html .ui-helper-clearfix { height:1%; }
+.ui-helper-clearfix { display:block; }
+/* end clearfix */
+.ui-helper-zfix { width: 100%; height: 100%; top: 0; left: 0; position: absolute; opacity: 0; filter:Alpha(Opacity=0); }
+
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-disabled { cursor: default !important; }
+
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon { display: block; text-indent: -99999px; overflow: hidden; background-repeat: no-repeat; }
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Overlays */
+.ui-widget-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+
+/*
+ * jQuery UI CSS Framework 1.8.13
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Theming/API
+ *
+ * To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Verdana,Arial,sans-serif&fwDefault=normal&fsDefault=1.1em&cornerRadius=0px&bgColorHeader=ebebeb&bgTextureHeader=01_flat.png&bgImgOpacityHeader=75&borderColorHeader=c7c7c7&fcHeader=444444&iconColorHeader=888888&bgColorContent=ffffff&bgTextureContent=01_flat.png&bgImgOpacityContent=75&borderColorContent=c7c7c7&fcContent=222222&iconColorContent=222222&bgColorDefault=ebebeb&bgTextureDefault=04_highlight_hard.png&bgImgOpacityDefault=75&borderColorDefault=d3d3d3&fcDefault=666666&iconColorDefault=888888&bgColorHover=f7f7f7&bgTextureHover=04_highlight_hard.png&bgImgOpacityHover=75&borderColorHover=b3b3b3&fcHover=212121&iconColorHover=212121&bgColorActive=f5f5f5&bgTextureActive=01_flat.png&bgImgOpacityActive=65&borderColorActive=c7c7c7&fcActive=212121&iconColorActive=212121&bgColorHighlight=f0fe95&bgTextureHighlight=01_flat.png&bgImgOpacityHighlight=55&borderColorHighlight=c7c7c7&fcHighlight=363636&iconColorHighlight=363636&bgColorError=ffbab8&bgTextureError=05_inset_soft.png&bgImgOpacityError=95&borderColorError=c7c7c7&fcError=a41313&iconColorError=a41313&bgColorOverlay=888888&bgTextureOverlay=01_flat.png&bgImgOpacityOverlay=0&opacityOverlay=40&bgColorShadow=222222&bgTextureShadow=01_flat.png&bgImgOpacityShadow=0&opacityShadow=40&thicknessShadow=8px&offsetTopShadow=-8px&offsetLeftShadow=-8px&cornerRadiusShadow=0px
+ */
+
+
+/* Component containers
+----------------------------------*/
+.ui-widget { font-family: Verdana,Arial,sans-serif; font-size: 1.1em; }
+.ui-widget .ui-widget { font-size: 1em; }
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Verdana,Arial,sans-serif; font-size: 1em; }
+.ui-widget-content { border: 1px solid #c7c7c7; background: #ffffff url(images/ui-bg_flat_75_ffffff_40x100.png) 50% 50% repeat-x; color: #222222;}
+.ui-widget-content a { color: #222222; }
+.ui-widget-header { border: 1px solid #c7c7c7; background: #ebebeb url(images/ui-bg_flat_75_ebebeb_40x100.png) 50% 50% repeat-x; color: #444444; font-weight: bold; }
+.ui-widget-header a { color: #444444; }
+
+/* Interaction states
+----------------------------------*/
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #d3d3d3; background: #ebebeb url(images/ui-bg_highlight-hard_75_ebebeb_1x100.png) 50% 50% repeat-x; font-weight: normal; color: #666666;}
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #666666; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #b3b3b3; background: #f7f7f7 url(images/ui-bg_highlight-hard_75_f7f7f7_1x100.png) 50% 50% repeat-x; font-weight: normal; color: #212121; }
+.ui-state-hover a, .ui-state-hover a:hover { color: #212121; text-decoration: none; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #c7c7c7; background: #f5f5f5 url(images/ui-bg_flat_65_f5f5f5_40x100.png) 50% 50% repeat-x; font-weight: normal; color: #212121; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #212121; text-decoration: none; }
+.ui-widget :active { outline: none; }
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {border: 1px solid #c7c7c7; background: #f0fe95 url(images/ui-bg_flat_55_f0fe95_40x100.png) 50% 50% repeat-x; color: #363636; }
+.ui-state-highlight a, .ui-widget-content .ui-state-highlight a,.ui-widget-header .ui-state-highlight a { color: #363636; }
+.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {border: 1px solid #c7c7c7; background: #ffbab8 url(images/ui-bg_inset-soft_95_ffbab8_1x100.png) 50% bottom repeat-x; color: #a41313; }
+.ui-state-error a, .ui-widget-content .ui-state-error a, .ui-widget-header .ui-state-error a { color: #a41313; }
+.ui-state-error-text, .ui-widget-content .ui-state-error-text, .ui-widget-header .ui-state-error-text { color: #a41313; }
+.ui-priority-primary, .ui-widget-content .ui-priority-primary, .ui-widget-header .ui-priority-primary { font-weight: bold; }
+.ui-priority-secondary, .ui-widget-content .ui-priority-secondary,  .ui-widget-header .ui-priority-secondary { opacity: .7; filter:Alpha(Opacity=70); font-weight: normal; }
+.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled { opacity: .35; filter:Alpha(Opacity=35); background-image: none; }
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon { width: 16px; height: 16px; background-image: url(images/ui-icons_222222_256x240.png); }
+.ui-widget-content .ui-icon {background-image: url(images/ui-icons_222222_256x240.png); }
+.ui-widget-header .ui-icon {background-image: url(images/ui-icons_888888_256x240.png); }
+.ui-state-default .ui-icon { background-image: url(images/ui-icons_888888_256x240.png); }
+.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(images/ui-icons_212121_256x240.png); }
+.ui-state-active .ui-icon {background-image: url(images/ui-icons_212121_256x240.png); }
+.ui-state-highlight .ui-icon {background-image: url(images/ui-icons_363636_256x240.png); }
+.ui-state-error .ui-icon, .ui-state-error-text .ui-icon {background-image: url(images/ui-icons_a41313_256x240.png); }
+
+/* positioning */
+.ui-icon-carat-1-n { background-position: 0 0; }
+.ui-icon-carat-1-ne { background-position: -16px 0; }
+.ui-icon-carat-1-e { background-position: -32px 0; }
+.ui-icon-carat-1-se { background-position: -48px 0; }
+.ui-icon-carat-1-s { background-position: -64px 0; }
+.ui-icon-carat-1-sw { background-position: -80px 0; }
+.ui-icon-carat-1-w { background-position: -96px 0; }
+.ui-icon-carat-1-nw { background-position: -112px 0; }
+.ui-icon-carat-2-n-s { background-position: -128px 0; }
+.ui-icon-carat-2-e-w { background-position: -144px 0; }
+.ui-icon-triangle-1-n { background-position: 0 -16px; }
+.ui-icon-triangle-1-ne { background-position: -16px -16px; }
+.ui-icon-triangle-1-e { background-position: -32px -16px; }
+.ui-icon-triangle-1-se { background-position: -48px -16px; }
+.ui-icon-triangle-1-s { background-position: -64px -16px; }
+.ui-icon-triangle-1-sw { background-position: -80px -16px; }
+.ui-icon-triangle-1-w { background-position: -96px -16px; }
+.ui-icon-triangle-1-nw { background-position: -112px -16px; }
+.ui-icon-triangle-2-n-s { background-position: -128px -16px; }
+.ui-icon-triangle-2-e-w { background-position: -144px -16px; }
+.ui-icon-arrow-1-n { background-position: 0 -32px; }
+.ui-icon-arrow-1-ne { background-position: -16px -32px; }
+.ui-icon-arrow-1-e { background-position: -32px -32px; }
+.ui-icon-arrow-1-se { background-position: -48px -32px; }
+.ui-icon-arrow-1-s { background-position: -64px -32px; }
+.ui-icon-arrow-1-sw { background-position: -80px -32px; }
+.ui-icon-arrow-1-w { background-position: -96px -32px; }
+.ui-icon-arrow-1-nw { background-position: -112px -32px; }
+.ui-icon-arrow-2-n-s { background-position: -128px -32px; }
+.ui-icon-arrow-2-ne-sw { background-position: -144px -32px; }
+.ui-icon-arrow-2-e-w { background-position: -160px -32px; }
+.ui-icon-arrow-2-se-nw { background-position: -176px -32px; }
+.ui-icon-arrowstop-1-n { background-position: -192px -32px; }
+.ui-icon-arrowstop-1-e { background-position: -208px -32px; }
+.ui-icon-arrowstop-1-s { background-position: -224px -32px; }
+.ui-icon-arrowstop-1-w { background-position: -240px -32px; }
+.ui-icon-arrowthick-1-n { background-position: 0 -48px; }
+.ui-icon-arrowthick-1-ne { background-position: -16px -48px; }
+.ui-icon-arrowthick-1-e { background-position: -32px -48px; }
+.ui-icon-arrowthick-1-se { background-position: -48px -48px; }
+.ui-icon-arrowthick-1-s { background-position: -64px -48px; }
+.ui-icon-arrowthick-1-sw { background-position: -80px -48px; }
+.ui-icon-arrowthick-1-w { background-position: -96px -48px; }
+.ui-icon-arrowthick-1-nw { background-position: -112px -48px; }
+.ui-icon-arrowthick-2-n-s { background-position: -128px -48px; }
+.ui-icon-arrowthick-2-ne-sw { background-position: -144px -48px; }
+.ui-icon-arrowthick-2-e-w { background-position: -160px -48px; }
+.ui-icon-arrowthick-2-se-nw { background-position: -176px -48px; }
+.ui-icon-arrowthickstop-1-n { background-position: -192px -48px; }
+.ui-icon-arrowthickstop-1-e { background-position: -208px -48px; }
+.ui-icon-arrowthickstop-1-s { background-position: -224px -48px; }
+.ui-icon-arrowthickstop-1-w { background-position: -240px -48px; }
+.ui-icon-arrowreturnthick-1-w { background-position: 0 -64px; }
+.ui-icon-arrowreturnthick-1-n { background-position: -16px -64px; }
+.ui-icon-arrowreturnthick-1-e { background-position: -32px -64px; }
+.ui-icon-arrowreturnthick-1-s { background-position: -48px -64px; }
+.ui-icon-arrowreturn-1-w { background-position: -64px -64px; }
+.ui-icon-arrowreturn-1-n { background-position: -80px -64px; }
+.ui-icon-arrowreturn-1-e { background-position: -96px -64px; }
+.ui-icon-arrowreturn-1-s { background-position: -112px -64px; }
+.ui-icon-arrowrefresh-1-w { background-position: -128px -64px; }
+.ui-icon-arrowrefresh-1-n { background-position: -144px -64px; }
+.ui-icon-arrowrefresh-1-e { background-position: -160px -64px; }
+.ui-icon-arrowrefresh-1-s { background-position: -176px -64px; }
+.ui-icon-arrow-4 { background-position: 0 -80px; }
+.ui-icon-arrow-4-diag { background-position: -16px -80px; }
+.ui-icon-extlink { background-position: -32px -80px; }
+.ui-icon-newwin { background-position: -48px -80px; }
+.ui-icon-refresh { background-position: -64px -80px; }
+.ui-icon-shuffle { background-position: -80px -80px; }
+.ui-icon-transfer-e-w { background-position: -96px -80px; }
+.ui-icon-transferthick-e-w { background-position: -112px -80px; }
+.ui-icon-folder-collapsed { background-position: 0 -96px; }
+.ui-icon-folder-open { background-position: -16px -96px; }
+.ui-icon-document { background-position: -32px -96px; }
+.ui-icon-document-b { background-position: -48px -96px; }
+.ui-icon-note { background-position: -64px -96px; }
+.ui-icon-mail-closed { background-position: -80px -96px; }
+.ui-icon-mail-open { background-position: -96px -96px; }
+.ui-icon-suitcase { background-position: -112px -96px; }
+.ui-icon-comment { background-position: -128px -96px; }
+.ui-icon-person { background-position: -144px -96px; }
+.ui-icon-print { background-position: -160px -96px; }
+.ui-icon-trash { background-position: -176px -96px; }
+.ui-icon-locked { background-position: -192px -96px; }
+.ui-icon-unlocked { background-position: -208px -96px; }
+.ui-icon-bookmark { background-position: -224px -96px; }
+.ui-icon-tag { background-position: -240px -96px; }
+.ui-icon-home { background-position: 0 -112px; }
+.ui-icon-flag { background-position: -16px -112px; }
+.ui-icon-calendar { background-position: -32px -112px; }
+.ui-icon-cart { background-position: -48px -112px; }
+.ui-icon-pencil { background-position: -64px -112px; }
+.ui-icon-clock { background-position: -80px -112px; }
+.ui-icon-disk { background-position: -96px -112px; }
+.ui-icon-calculator { background-position: -112px -112px; }
+.ui-icon-zoomin { background-position: -128px -112px; }
+.ui-icon-zoomout { background-position: -144px -112px; }
+.ui-icon-search { background-position: -160px -112px; }
+.ui-icon-wrench { background-position: -176px -112px; }
+.ui-icon-gear { background-position: -192px -112px; }
+.ui-icon-heart { background-position: -208px -112px; }
+.ui-icon-star { background-position: -224px -112px; }
+.ui-icon-link { background-position: -240px -112px; }
+.ui-icon-cancel { background-position: 0 -128px; }
+.ui-icon-plus { background-position: -16px -128px; }
+.ui-icon-plusthick { background-position: -32px -128px; }
+.ui-icon-minus { background-position: -48px -128px; }
+.ui-icon-minusthick { background-position: -64px -128px; }
+.ui-icon-close { background-position: -80px -128px; }
+.ui-icon-closethick { background-position: -96px -128px; }
+.ui-icon-key { background-position: -112px -128px; }
+.ui-icon-lightbulb { background-position: -128px -128px; }
+.ui-icon-scissors { background-position: -144px -128px; }
+.ui-icon-clipboard { background-position: -160px -128px; }
+.ui-icon-copy { background-position: -176px -128px; }
+.ui-icon-contact { background-position: -192px -128px; }
+.ui-icon-image { background-position: -208px -128px; }
+.ui-icon-video { background-position: -224px -128px; }
+.ui-icon-script { background-position: -240px -128px; }
+.ui-icon-alert { background-position: 0 -144px; }
+.ui-icon-info { background-position: -16px -144px; }
+.ui-icon-notice { background-position: -32px -144px; }
+.ui-icon-help { background-position: -48px -144px; }
+.ui-icon-check { background-position: -64px -144px; }
+.ui-icon-bullet { background-position: -80px -144px; }
+.ui-icon-radio-off { background-position: -96px -144px; }
+.ui-icon-radio-on { background-position: -112px -144px; }
+.ui-icon-pin-w { background-position: -128px -144px; }
+.ui-icon-pin-s { background-position: -144px -144px; }
+.ui-icon-play { background-position: 0 -160px; }
+.ui-icon-pause { background-position: -16px -160px; }
+.ui-icon-seek-next { background-position: -32px -160px; }
+.ui-icon-seek-prev { background-position: -48px -160px; }
+.ui-icon-seek-end { background-position: -64px -160px; }
+.ui-icon-seek-start { background-position: -80px -160px; }
+/* ui-icon-seek-first is deprecated, use ui-icon-seek-start instead */
+.ui-icon-seek-first { background-position: -80px -160px; }
+.ui-icon-stop { background-position: -96px -160px; }
+.ui-icon-eject { background-position: -112px -160px; }
+.ui-icon-volume-off { background-position: -128px -160px; }
+.ui-icon-volume-on { background-position: -144px -160px; }
+.ui-icon-power { background-position: 0 -176px; }
+.ui-icon-signal-diag { background-position: -16px -176px; }
+.ui-icon-signal { background-position: -32px -176px; }
+.ui-icon-battery-0 { background-position: -48px -176px; }
+.ui-icon-battery-1 { background-position: -64px -176px; }
+.ui-icon-battery-2 { background-position: -80px -176px; }
+.ui-icon-battery-3 { background-position: -96px -176px; }
+.ui-icon-circle-plus { background-position: 0 -192px; }
+.ui-icon-circle-minus { background-position: -16px -192px; }
+.ui-icon-circle-close { background-position: -32px -192px; }
+.ui-icon-circle-triangle-e { background-position: -48px -192px; }
+.ui-icon-circle-triangle-s { background-position: -64px -192px; }
+.ui-icon-circle-triangle-w { background-position: -80px -192px; }
+.ui-icon-circle-triangle-n { background-position: -96px -192px; }
+.ui-icon-circle-arrow-e { background-position: -112px -192px; }
+.ui-icon-circle-arrow-s { background-position: -128px -192px; }
+.ui-icon-circle-arrow-w { background-position: -144px -192px; }
+.ui-icon-circle-arrow-n { background-position: -160px -192px; }
+.ui-icon-circle-zoomin { background-position: -176px -192px; }
+.ui-icon-circle-zoomout { background-position: -192px -192px; }
+.ui-icon-circle-check { background-position: -208px -192px; }
+.ui-icon-circlesmall-plus { background-position: 0 -208px; }
+.ui-icon-circlesmall-minus { background-position: -16px -208px; }
+.ui-icon-circlesmall-close { background-position: -32px -208px; }
+.ui-icon-squaresmall-plus { background-position: -48px -208px; }
+.ui-icon-squaresmall-minus { background-position: -64px -208px; }
+.ui-icon-squaresmall-close { background-position: -80px -208px; }
+.ui-icon-grip-dotted-vertical { background-position: 0 -224px; }
+.ui-icon-grip-dotted-horizontal { background-position: -16px -224px; }
+.ui-icon-grip-solid-vertical { background-position: -32px -224px; }
+.ui-icon-grip-solid-horizontal { background-position: -48px -224px; }
+.ui-icon-gripsmall-diagonal-se { background-position: -64px -224px; }
+.ui-icon-grip-diagonal-se { background-position: -80px -224px; }
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Corner radius */
+.ui-corner-tl { -moz-border-radius-topleft: 0px; -webkit-border-top-left-radius: 0px; border-top-left-radius: 0px; }
+.ui-corner-tr { -moz-border-radius-topright: 0px; -webkit-border-top-right-radius: 0px; border-top-right-radius: 0px; }
+.ui-corner-bl { -moz-border-radius-bottomleft: 0px; -webkit-border-bottom-left-radius: 0px; border-bottom-left-radius: 0px; }
+.ui-corner-br { -moz-border-radius-bottomright: 0px; -webkit-border-bottom-right-radius: 0px; border-bottom-right-radius: 0px; }
+.ui-corner-top { -moz-border-radius-topleft: 0px; -webkit-border-top-left-radius: 0px; border-top-left-radius: 0px; -moz-border-radius-topright: 0px; -webkit-border-top-right-radius: 0px; border-top-right-radius: 0px; }
+.ui-corner-bottom { -moz-border-radius-bottomleft: 0px; -webkit-border-bottom-left-radius: 0px; border-bottom-left-radius: 0px; -moz-border-radius-bottomright: 0px; -webkit-border-bottom-right-radius: 0px; border-bottom-right-radius: 0px; }
+.ui-corner-right {  -moz-border-radius-topright: 0px; -webkit-border-top-right-radius: 0px; border-top-right-radius: 0px; -moz-border-radius-bottomright: 0px; -webkit-border-bottom-right-radius: 0px; border-bottom-right-radius: 0px; }
+.ui-corner-left { -moz-border-radius-topleft: 0px; -webkit-border-top-left-radius: 0px; border-top-left-radius: 0px; -moz-border-radius-bottomleft: 0px; -webkit-border-bottom-left-radius: 0px; border-bottom-left-radius: 0px; }
+.ui-corner-all { -moz-border-radius: 0px; -webkit-border-radius: 0px; border-radius: 0px; }
+.ui-corner-some { -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+
+/* Overlays */
+.ui-widget-overlay { background: #888888 url(images/ui-bg_flat_0_888888_40x100.png) 50% 50% repeat-x; opacity: .40;filter:Alpha(Opacity=40); }
+.ui-widget-shadow { margin: -8px 0 0 -8px; padding: 8px; background: #222222 url(images/ui-bg_flat_0_222222_40x100.png) 50% 50% repeat-x; opacity: .40;filter:Alpha(Opacity=40); -moz-border-radius: 0px; -webkit-border-radius: 0px; border-radius: 0px; }/*
+ * jQuery UI Resizable 1.8.13
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Resizable#theming
+ */
+.ui-resizable { position: relative;}
+.ui-resizable-handle { position: absolute;font-size: 0.1px;z-index: 99999; display: block;
+	/* http://bugs.jqueryui.com/ticket/7233
+	 - Resizable: resizable handles fail to work in IE if transparent and content overlaps
+	*/
+	background-image:url(data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=);
+}
+.ui-resizable-disabled .ui-resizable-handle, .ui-resizable-autohide .ui-resizable-handle { display: none; }
+.ui-resizable-n { cursor: n-resize; height: 7px; width: 100%; top: -5px; left: 0; }
+.ui-resizable-s { cursor: s-resize; height: 7px; width: 100%; bottom: -5px; left: 0; }
+.ui-resizable-e { cursor: e-resize; width: 7px; right: -5px; top: 0; height: 100%; }
+.ui-resizable-w { cursor: w-resize; width: 7px; left: -5px; top: 0; height: 100%; }
+.ui-resizable-se { cursor: se-resize; width: 12px; height: 12px; right: 1px; bottom: 1px; }
+.ui-resizable-sw { cursor: sw-resize; width: 9px; height: 9px; left: -5px; bottom: -5px; }
+.ui-resizable-nw { cursor: nw-resize; width: 9px; height: 9px; left: -5px; top: -5px; }
+.ui-resizable-ne { cursor: ne-resize; width: 9px; height: 9px; right: -5px; top: -5px;}/*
+ * jQuery UI Selectable 1.8.13
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Selectable#theming
+ */
+.ui-selectable-helper { position: absolute; z-index: 100; border:1px dotted black; }
+/*
+ * jQuery UI Accordion 1.8.13
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Accordion#theming
+ */
+/* IE/Win - Fix animation bug - #4615 */
+.ui-accordion { width: 100%; margin-bottom:10px; margin-top:10px;}
+.ui-accordion .ui-accordion-header { cursor: pointer; position: relative; margin-top: 1px; zoom: 1; padding:5px; text-indent:25px;}
+.ui-accordion .ui-accordion-li-fix { display: inline; }
+.ui-accordion .ui-accordion-header-active { border-bottom: 0 !important; }
+.ui-accordion .ui-accordion-header a { display: block; font-size: 1em; padding: .5em .5em .5em .7em; }
+.ui-accordion-icons .ui-accordion-header a { padding-left: 2.2em; }
+.ui-accordion .ui-accordion-header .ui-icon { position: absolute; left: .5em; top: 50%; margin-top: -8px; }
+.ui-accordion .ui-accordion-content { /*padding: 1em 2.2em;*/ border-top: 0; margin-top: -2px; position: relative; top: 1px; margin-bottom: 2px; overflow: auto; display: none; zoom: 1; }
+.ui-accordion .ui-accordion-content-active { display: block; }
+/*
+ * jQuery UI Autocomplete 1.8.13
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Autocomplete#theming
+ */
+.ui-autocomplete { position: absolute; cursor: default; }	
+
+/* workarounds */
+* html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+
+/*
+ * jQuery UI Menu 1.8.13
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Menu#theming
+ */
+.ui-menu {
+	list-style:none;
+	padding: 2px;
+	margin: 0;
+	display:block;
+	float: left;
+}
+.ui-menu .ui-menu {
+	margin-top: -3px;
+}
+.ui-menu .ui-menu-item {
+	margin:0;
+	padding: 0;
+	zoom: 1;
+	float: left;
+	clear: left;
+	width: 100%;
+}
+.ui-menu .ui-menu-item a {
+	text-decoration:none;
+	display:block;
+	padding:.2em .4em;
+	line-height:1.5;
+	zoom:1;
+}
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active {
+	font-weight: normal;
+	margin: -1px;
+}
+/*
+ * jQuery UI Button 1.8.13
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Button#theming
+ */
+.ui-button { display: inline-block; position: relative; padding: 0; margin-right: .1em; text-decoration: none !important; cursor: pointer; text-align: center; zoom: 1; overflow: visible;  -moz-border-radius: 5px; border-radius: 5px; } /* the overflow property removes extra width in IE */
+.ui-button-icon-only { width: 2.2em; } /* to make room for the icon, a width needs to be set here */
+button.ui-button-icon-only { width: 2.4em; } /* button elements seem to need a little more width */
+.ui-button-icons-only { width: 3.4em; } 
+button.ui-button-icons-only { width: 3.7em; } 
+
+/*button text element */
+.ui-button .ui-button-text { display: block; line-height: 1.4;  }
+.ui-button-text-only .ui-button-text { padding: .4em 1em; }
+.ui-button-icon-only .ui-button-text, .ui-button-icons-only .ui-button-text { padding: .4em; text-indent: -9999999px; }
+.ui-button-text-icon-primary .ui-button-text, .ui-button-text-icons .ui-button-text { padding: .4em 1em .4em 2.1em; }
+.ui-button-text-icon-secondary .ui-button-text, .ui-button-text-icons .ui-button-text { padding: .4em 2.1em .4em 1em; }
+.ui-button-text-icons .ui-button-text { padding-left: 2.1em; padding-right: 2.1em; }
+/* no icon support for input elements, provide padding by default */
+input.ui-button { padding: .4em 1em; }
+
+/*button icon element(s) */
+.ui-button-icon-only .ui-icon, .ui-button-text-icon-primary .ui-icon, .ui-button-text-icon-secondary .ui-icon, .ui-button-text-icons .ui-icon, .ui-button-icons-only .ui-icon { position: absolute; top: 50%; margin-top: -8px; }
+.ui-button-icon-only .ui-icon { left: 50%; margin-left: -8px; }
+.ui-button-text-icon-primary .ui-button-icon-primary, .ui-button-text-icons .ui-button-icon-primary, .ui-button-icons-only .ui-button-icon-primary { left: .5em; }
+.ui-button-text-icon-secondary .ui-button-icon-secondary, .ui-button-text-icons .ui-button-icon-secondary, .ui-button-icons-only .ui-button-icon-secondary { right: .5em; }
+.ui-button-text-icons .ui-button-icon-secondary, .ui-button-icons-only .ui-button-icon-secondary { right: .5em; }
+
+/*button sets*/
+.ui-buttonset { margin-right: 7px; }
+.ui-buttonset .ui-button { margin-left: 0; margin-right: -.3em; }
+
+/* workarounds */
+button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra padding in Firefox */
+/*
+ * jQuery UI Dialog 1.8.13
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Dialog#theming
+ */
+.ui-dialog { position: absolute; padding: .2em; width: 300px; overflow: hidden; }
+.ui-dialog .ui-dialog-titlebar { padding: .4em 1em; position: relative;  }
+.ui-dialog .ui-dialog-title { float: left; margin: .1em 16px .1em 0; } 
+.ui-dialog .ui-dialog-titlebar-close { position: absolute; right: .3em; top: 50%; width: 19px; margin: -10px 0 0 0; padding: 1px; height: 18px; }
+.ui-dialog .ui-dialog-titlebar-close span { display: block; margin: 1px; }
+.ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus { padding: 0; }
+.ui-dialog .ui-dialog-content { position: relative; border: 0; padding: .5em 1em; background: none; overflow: auto; zoom: 1; }
+.ui-dialog .ui-dialog-buttonpane { text-align: left; border-width: 1px 0 0 0; background-image: none; margin: .5em 0 0 0; padding: .3em 1em .5em .4em; }
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset { float: right; }
+.ui-dialog .ui-dialog-buttonpane button { margin: .5em .4em .5em 0; cursor: pointer; }
+.ui-dialog .ui-resizable-se { width: 14px; height: 14px; right: 3px; bottom: 3px; }
+.ui-draggable .ui-dialog-titlebar { cursor: move; }
+/*
+ * jQuery UI Slider 1.8.13
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Slider#theming
+ */
+.ui-slider { position: relative; text-align: left; }
+.ui-slider .ui-slider-handle { position: absolute; z-index: 2; width: 1.2em; height: 1.2em; cursor: default; }
+.ui-slider .ui-slider-range { position: absolute; z-index: 1; font-size: .7em; display: block; border: 0; background-position: 0 0; }
+
+.ui-slider-horizontal { height: .8em; }
+.ui-slider-horizontal .ui-slider-handle { top: -.3em; margin-left: -.6em; }
+.ui-slider-horizontal .ui-slider-range { top: 0; height: 100%; }
+.ui-slider-horizontal .ui-slider-range-min { left: 0; }
+.ui-slider-horizontal .ui-slider-range-max { right: 0; }
+
+.ui-slider-vertical { width: .8em; height: 100px; }
+.ui-slider-vertical .ui-slider-handle { left: -.3em; margin-left: 0; margin-bottom: -.6em; }
+.ui-slider-vertical .ui-slider-range { left: 0; width: 100%; }
+.ui-slider-vertical .ui-slider-range-min { bottom: 0; }
+.ui-slider-vertical .ui-slider-range-max { top: 0; }/*
+ * jQuery UI Tabs 1.8.13
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Tabs#theming
+ */
+.ui-tabs { position: relative; padding: .2em; zoom: 1; } /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+.ui-tabs .ui-tabs-nav { margin: 0; padding: .2em .2em 0; }
+.ui-tabs .ui-tabs-nav li { list-style: none; float: left; position: relative; top: 1px; margin: 0 .2em 1px 0; border-bottom: 0 !important; padding: 0; white-space: nowrap; }
+.ui-tabs .ui-tabs-nav li a { float: left; padding: .5em 1em; text-decoration: none; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; padding-bottom: 1px; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
+.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+.ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 1em 1.4em; background: none; }
+.ui-tabs .ui-tabs-hide { display: none !important; }
+/*
+ * jQuery UI Datepicker 1.8.13
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Datepicker#theming
+ */
+.ui-datepicker { width: 17em; padding: .2em .2em 0; display: none; }
+.ui-datepicker .ui-datepicker-header { position:relative; padding:.2em 0; }
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next { position:absolute; top: 2px; width: 1.8em; height: 1.8em; }
+.ui-datepicker .ui-datepicker-prev-hover, .ui-datepicker .ui-datepicker-next-hover { top: 1px; }
+.ui-datepicker .ui-datepicker-prev { left:2px; }
+.ui-datepicker .ui-datepicker-next { right:2px; }
+.ui-datepicker .ui-datepicker-prev-hover { left:1px; }
+.ui-datepicker .ui-datepicker-next-hover { right:1px; }
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span { display: block; position: absolute; left: 50%; margin-left: -8px; top: 50%; margin-top: -8px;  }
+.ui-datepicker .ui-datepicker-title { margin: 0 2.3em; line-height: 1.8em; text-align: center; }
+.ui-datepicker .ui-datepicker-title select { font-size:1em; margin:1px 0; }
+.ui-datepicker select.ui-datepicker-month-year {width: 100%;}
+.ui-datepicker select.ui-datepicker-month, 
+.ui-datepicker select.ui-datepicker-year { width: 49%;}
+.ui-datepicker table {width: 100%; font-size: .9em; border-collapse: collapse; margin:0 0 .4em; }
+.ui-datepicker th { padding: .7em .3em; text-align: center; font-weight: bold; border: 0;  }
+.ui-datepicker td { border: 0; padding: 1px; }
+.ui-datepicker td span, .ui-datepicker td a { display: block; padding: .2em; text-align: right; text-decoration: none; }
+.ui-datepicker .ui-datepicker-buttonpane { background-image: none; margin: .7em 0 0 0; padding:0 .2em; border-left: 0; border-right: 0; border-bottom: 0; }
+.ui-datepicker .ui-datepicker-buttonpane button { float: right; margin: .5em .2em .4em; cursor: pointer; padding: .2em .6em .3em .6em; width:auto; overflow:visible; }
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current { float:left; }
+
+/* with multiple calendars */
+.ui-datepicker.ui-datepicker-multi { width:auto; }
+.ui-datepicker-multi .ui-datepicker-group { float:left; }
+.ui-datepicker-multi .ui-datepicker-group table { width:95%; margin:0 auto .4em; }
+.ui-datepicker-multi-2 .ui-datepicker-group { width:50%; }
+.ui-datepicker-multi-3 .ui-datepicker-group { width:33.3%; }
+.ui-datepicker-multi-4 .ui-datepicker-group { width:25%; }
+.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header { border-left-width:0; }
+.ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header { border-left-width:0; }
+.ui-datepicker-multi .ui-datepicker-buttonpane { clear:left; }
+.ui-datepicker-row-break { clear:both; width:100%; }
+
+/* RTL support */
+.ui-datepicker-rtl { direction: rtl; }
+.ui-datepicker-rtl .ui-datepicker-prev { right: 2px; left: auto; }
+.ui-datepicker-rtl .ui-datepicker-next { left: 2px; right: auto; }
+.ui-datepicker-rtl .ui-datepicker-prev:hover { right: 1px; left: auto; }
+.ui-datepicker-rtl .ui-datepicker-next:hover { left: 1px; right: auto; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane { clear:right; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane button { float: left; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current { float:right; }
+.ui-datepicker-rtl .ui-datepicker-group { float:right; }
+.ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
+.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
+
+/* IE6 IFRAME FIX (taken from datepicker 1.5.3 */
+.ui-datepicker-cover {
+    display: none; /*sorry for IE5*/
+    display/**/: block; /*sorry for IE5*/
+    position: absolute; /*must have*/
+    z-index: -1; /*must have*/
+    filter: mask(); /*must have*/
+    top: -4px; /*must have*/
+    left: -4px; /*must have*/
+    width: 200px; /*must have*/
+    height: 200px; /*must have*/
+}/*
+ * jQuery UI Progressbar 1.8.13
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Progressbar#theming
+ */
+.ui-progressbar { height:2em; text-align: left; }
+.ui-progressbar .ui-progressbar-value {margin: -1px; height:100%; }

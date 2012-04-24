@@ -1,0 +1,30 @@
+ <header>
+   <div class="grid_16">
+     <h1 id="branding">
+       <a href="{{ path('PMSViewerBundle_viewer') }}">PMS管理画面</a>
+     </h1>
+   </div>
+   <div class="clear"></div>
+   <div class="grid_16">
+     <ul class="sf-menu sf-js-enabled sf-shadow" id="navigationTop">
+       <li {% if 'PMSViewerBundle_viewer' == _route %}class="selected"{% endif %}>
+         <a href="{{ path('PMSViewerBundle_viewer') }}" class="sf-with-ul">ホーム</a>
+       </li>
+       <li {% if 'PMSViewerBundle_viewer_sns' == _route %}class="selected"{% endif %}>
+         <a href="{{ path('PMSViewerBundle_viewer_sns') }}" class="sf-with-ul">SNS</a>
+       </li>
+       <li {% if 'PMSViewerBundle_viewer_server' == _route %}class="selected"{% endif %}>
+         <a href="{{ path('PMSViewerBundle_viewer_server') }}" class="sf-with-ul">サーバ</a>
+       </li>
+       <li>
+         <a href="#" class="sf-with-ul">管理者</a>
+       </li>
+       <li {% if 'PMSViewerBundle_viewer_help' == _route %}class="selected"{% endif %}>
+         <a href="{{ path('PMSViewerBundle_viewer_help') }}" class="sf-with-ul">ヘルプ</a>
+       </li>
+       <li {% if 'PMSViewerBundle_viewer_logout' == _route %}class="selected"{% endif %}>
+         <a href="{{ path('PMSViewerBundle_viewer_logout') }}" class="sf-with-ul">ログアウト</a>
+       </li>
+     </ul>
+   </div>
+ </header>

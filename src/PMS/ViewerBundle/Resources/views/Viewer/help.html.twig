@@ -1,0 +1,214 @@
+{% extends "PMSViewerBundle:Viewer:layout.html.twig" %}
+
+{% block main %}
+<div class="grid_16">
+  <h2 id="page-heading">WebAPI</h2>
+</div>
+<div class="clear"></div>
+
+<div class="grid_8">
+  <div class="box">
+    <h5 id="page-sub-heading-left">API エントリポイント</h5>
+    <div class="block">
+      <ul>
+        <li>
+          <a href="/api">/api</a>
+          <p>
+            <fieldset>Method: GET or POST</fieldset>
+            <fieldset>使用できる type のリストを取得</fieldset>
+            <table cellpadding="0" cellspacing="0" border="0" class="display">
+              <thead><tr><th>パラメータ</th><th>required</th></tr></thead>
+              <tbody>
+                <tr><td>type</td><td>false</td></tr>
+                <tr><td>action</td><td>false</td></tr>
+                <tr><td>params</td><td>false</td></tr>
+              </tbody>
+            </table>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="clear"></div>
+
+<div class="grid_8">
+  <div class="box">
+    <h5 id="page-sub-heading-left">ドメイン API</h5>
+    <div class="block">
+      <ul>
+        <li>
+          <a href="/api/domain">/api/domain</a>
+          <p>
+            <fieldset>domain タイプで使用できる action のリストを取得</fieldset>
+            <fieldset>Method: GET</fieldset>
+          </p>
+        </li>
+        <li>
+          <a href="/api/domain/list">/api/domain/list</a>
+          <p>
+            <fieldset>Method: GET</fieldset>
+            <fieldset>登録されているドメインのリストを取得</fieldset>
+          </p>
+        </li>
+        <li>
+          <a href="/api/domain/add">/api/domain/add</a>
+          <p>domain=sns.example.com&domainType=sns</p>
+          <p>
+            <fieldset>Method: POST</fieldset>
+            <fieldset>ドメインを登録</fieldset>
+            <table cellpadding="0" cellspacing="0" border="0" class="display">
+              <thead><tr><th>パラメータ</th><th>required</th></tr></thead>
+              <tbody>
+                <tr><td>domain</td><td>true</td></tr>
+                <tr><td>domainType</td><td>false</td></tr>
+              </tbody>
+            </table>
+          </p>
+        </li>
+        <li>
+          <a href="/api/domain/available?domain=sns.example.com">/api/domain/available?domain=sns.example.com</a>
+          <p>
+            <fieldset>Method: GET</fieldset>
+            <fieldset>ドメインが使用できるかどうかを取得．その親ドメインが使えるかどうかは考慮していない．（例：pne.jpで運用中でもata.pne.ccはtrueになる）</fieldset>
+            <table cellpadding="0" cellspacing="0" border="0" class="display">
+              <thead><tr><th>パラメータ</th><th>required</th></tr></thead>
+              <tbody>
+                <tr><td>domain</td><td>true</td></tr>
+              </tbody>
+            </table>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="grid_8">
+  <div class="box">
+    <h5 id="page-sub-heading-left">サーバ API</h5>
+    <div class="block">
+      <ul>
+        <li>
+          <a href="/api/server">/api/server</a>
+          <p>
+            <fieldset>Method: GET</fieldset>
+            <fieldset>server タイプで使用できる action のリストを取得</fieldset>
+          </p>
+        </li>
+        <li>
+          <a href="/api/server/ping?host=example.com">/api/server/ping?host=example.com</a>
+          <p>
+            <fieldset>Method: GET</fieldset>
+            <fieldset>パラメータのホストが登録されているかどうかを確認．ホストは基本的に hostname コマンドで取得できるものを使っているものとする．</fieldset>
+            <table cellpadding="0" cellspacing="0" border="0" class="display">
+              <thead><tr><th>パラメータ</th><th>required</th></tr></thead>
+              <tbody>
+                <tr><td>host</td><td>true</td></tr>
+              </tbody>
+            </table>
+          </p>
+        </li>
+        <li>
+          <a href="/api/server/list">/api/server/list</a>
+          <p>
+            <fieldset>Method: GET</fieldset>
+            <fieldset>現在SNSが設置できると設定されているサーバのリストを取得</fieldset>
+          </p>
+        </li>
+        <li>
+          <a href="/api/server/update">/api/server/update</a>
+          <p>host=deploy.exaample.com&domain=["watanebe.pne.jp","tetete.pne.jp"]</p>
+          <p>
+            <fieldset>Method: POST</fieldset>
+            <fieldset>あるホストに設置されているSNSのリストを送信する</fieldset>
+            <table cellpadding="0" cellspacing="0" border="0" class="display">
+              <thead><tr><th>パラメータ</th><th>required</th></tr></thead>
+              <tbody>
+                <tr><td>host</td><td>true</td></tr>
+                <tr><td>domain</td><td>true</td></tr>
+              </tbody>
+            </table>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="grid_8">
+  <div class="box">
+    <h5 id="page-sub-heading-left">SNS API</h5>
+    <div class="block">
+      <ul>
+        <li>
+          <a href="/api/sns">/api/sns</a>
+          <p>
+            <fieldset>Method: GET</fieldset>
+            <fieldset>sns タイプで使用できる action のリストを取得</fieldset>
+          </p>
+        </li>
+        <li>
+          <a href="/api/sns/list">/api/sns/list</a>
+          <p>
+            <fieldset>Method: GET</fieldset>
+            <fieldset>SNS として登録されているもののリストを取得</fieldset>
+          </p>
+        </li>
+        <li>
+          <a href="/api/sns/apply">/api/sns/apply</a>
+          <p>domain=sns.example.com&email=watanabe@tejimaya.com</p>
+          <p>
+            <fieldset>Method: POST</fieldset>
+            <fieldset>指定したドメインとメールアドレスで設置受付を行う</fieldset>
+            <table cellpadding="0" cellspacing="0" border="0" class="display">
+              <thead><tr><th>パラメータ</th><th>required</th></tr></thead>
+              <tbody>
+                <tr><td>domain</td><td>true</td></tr>
+                <tr><td>email</td><td>true</td></tr>
+              </tbody>
+            </table>
+          </p>
+        </li>
+        <li>
+          <a href="/api/sns/setpass">/api/sns/setpass</a>
+          <p>domain=sns.example.com&mpass=password&apass=password</p>
+          <p>
+            <fieldset>Method: POST</fieldset>
+            <fieldset>SNS のデフォルトのパスワードを設定する（設置完了メール送信時に使用する）</fieldset>
+            <table cellpadding="0" cellspacing="0" border="0" class="display">
+              <thead><tr><th>パラメータ</th><th>required</th></tr></thead>
+              <tbody>
+                <tr><td>host</td><td>true</td></tr>
+                <tr><td>mpass</td><td>true</td></tr>
+                <tr><td>apass</td><td>true</td></tr>
+              </tbody>
+            </table>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="grid_16">
+  <h2 id="page-heading">その他環境</h2>
+</div>
+<div class="clear"></div>
+<div class="grid_4">
+  <div class="box">
+    <h2>利用環境</h2>
+    <div class="block">
+      Symfony2: <a href="http://symfony.com/">http://symfony.com/</a><br />
+      html5admin: <a href="http://www.html5admin.com/">http://www.html5admin.com/</a>
+    </div>
+    <div class="block">
+      PMSソースコード取得先: git@dazai2.pne.jp:watanabe.git pmsブランチ <br />
+    </div>
+    <div class="block">
+      CI 環境（jenkins） <a href="http://133.242.18.208:8080/">http://133.242.18.208:8080/</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,117 @@
+{% extends "PMSViewerBundle:Viewer:layout.html.twig" %}
+
+{% block main %}
+<div class="grid_16">
+  <h2 id="page-heading">SNS</h2>
+</div>
+<div class="grid_12">
+  <div class="box">
+    <h2><a href="#" id="toggle-list">SNS ドメインリスト</a></h2>
+    <div class="block" id="list">
+      <table cellpadding="0" cellspacing="0" border="0" class="display" id="domains">
+        <thead><tr><th>SNS ドメイン</th><th>ステータス</th><th>削除ボタン</th></tr></thead>
+        <tfoot><tr><th>SNS ドメイン</th><th>ステータス</th><th>削除ボタン</th></tr></tfoot>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function(){
+    app = function(domain, status){
+      return '<tr class="odd">' + 
+      '<td>' + domain + '</td>' + 
+      '<td>' + status + '</td>' +
+      '<td><input type="button" class="ui-state-default ui-corner-somne floatRight" value="削除"/></td>' +
+      '</tr>';
+    };
+    // add data
+    reset = function(){
+      $.getJSON("/api/sns/list", function(json){
+        $('#domains>tbody>*').remove();
+        for(var i=0; i < json.length; ++i){
+          $('#domains>tbody').append(
+            app(json[i].domain, json[i].status)
+          );
+        }
+      });
+    };
+    reset();
+
+    $("#install_domain").bind("keyup", function(e) {
+      var re = new RegExp(/^[a-z0-9]{3,16}$/);
+      var is_valid = re.test($("#install_domain").val());
+      if (is_valid) {
+        $.ajax({
+          type: "GET",
+          url: "/api/domain/available",
+          data: "domain=" + $("#install_domain").val() + ".pne.cc",
+          dataType: "json",
+          success: function(msg) {
+            if (msg.result == true) {
+              $("#available").html("使用可能です");
+              $("#available").css("color", "green");
+            } else {
+              $("#available").html("すでに使用されています");
+              $("#available").css("color", "red");
+            }
+          }
+        });
+      } else {
+        $("#available").html("3～16字までの半角英数字（小文字）で入力してください。");
+        $("#available").css("color", "red");
+      }
+    });
+    send = function() {
+      $.ajax({
+        type: "POST",
+        url: "/api/sns/apply",
+        data: "domain=" + $("#install_domain").val() + ".pne.cc&mail="+$("#admin_mail").val(),
+        dataType: "json",
+        success: function(msg) {
+          if (msg.result == true) {
+            alert("success");
+            reset();
+          } else {
+            alert("fail");
+          }
+        }
+      });
+    }
+  });
+</script>
+<div class="grid_8">
+  <div class="box">
+    <h2>新規インストール</h2>
+    <div class="block">
+      <form onsubmit="send()">
+      <fieldset class="install">
+        <legend>インストール</legend>
+        <div class="sixteen_column section">
+          <div class = "sixteen column">
+            <div class="column_content">
+              <label>ドメイン: </label><div id="available"></div>
+              http://<input type="text" id="install_domain" value=""/>.pne.jp
+            </div>
+          </div>
+          <div class = "sixteen column">
+            <div class="column_content">
+              <label>管理者メールアドレス: </label>
+              <input type="text" id="admin_mail" value=""/>
+            </div>
+          </div>
+        </div>
+        <div class="sixteen_column section">
+          <div class="ten column"><div class="column_content"></div></div>
+          <div class="six column">
+            <div class="column_content">
+              <input type="button" class="ui-state-default ui-corner-somne floatRight" onclick="send()" value="送信"><span class="ui-icon ui-icon-desk"></span></input>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

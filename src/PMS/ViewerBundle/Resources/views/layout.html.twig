@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>PMS管理画面</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+{% stylesheets '@PMSViewerBundle/Resources/public/css/*'
+               '@PMSViewerBundle/Resources/public/css/custom-theme/*'
+%}
+    <link rel="stylesheet" type="text/css" href="{{ asset_url }}" media="screen" />
+{% endstylesheets %}
+
+{% javascripts '@PMSViewerBundle/Resources/public/js/jquery-1.5.1.min.js'
+               '@PMSViewerBundle/Resources/public/js/*'
+               '@PMSViewerBundle/Resources/public/js/libs/*'
+%}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+  </head>
+  <body>
+{% block content %}{% endblock %}
+  </body>
+</html>
