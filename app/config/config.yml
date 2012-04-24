@@ -51,11 +51,7 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     transport: smtp
-    encryption: ssl
-    auth_mode:   login
-    host:      smtp.gmail.com
-    username:  tejimadev@gmail.com
-    password:  CdwH5Z9T58PB
+    host: localhost
 
 jms_security_extra:
     secure_controllers:  true
