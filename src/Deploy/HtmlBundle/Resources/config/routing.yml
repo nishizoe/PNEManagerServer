@@ -1,0 +1,5 @@
+DeployHtmlBundle_homepage:
+    pattern:  /
+    defaults: { _controller: DeployHtmlBundle:Default:index }
+    requirements:
+        _scheme: https

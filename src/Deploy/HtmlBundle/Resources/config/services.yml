@@ -1,0 +1,7 @@
+parameters:
+#    deploy_html.example.class: Deploy\HtmlBundle\Example
+
+services:
+#    deploy_html.example:
+#        class: %deploy_html.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
