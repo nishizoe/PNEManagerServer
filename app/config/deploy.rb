@@ -1,6 +1,6 @@
 set :application, "pms"
 set :domain,      "pne.cc"
-set :deploy_to,   "/var/www/sns/#{domain}.deploy"
+set :deploy_to,   "/opt/sabakan/#{domain}"
 set :app_path,    "app"
 
 set :scm,         :git
