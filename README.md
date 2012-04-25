@@ -32,7 +32,7 @@ Server Installation を実行した後ソースを取得する．
     $ cd PNEManagerServer
     $ mkdir app/cache; mkdir app/logs
     $ chmod 2775 app/cache app/logs
-    $ sudo chgrp www-data cache logs
+    $ sudo chgrp www-data app/cache app/logs
     $ php app/check.php
     $ vi app/config/parameters.ini
 
