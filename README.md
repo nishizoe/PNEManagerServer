@@ -6,16 +6,6 @@ PNEホスティングの管理用アプリケーション
 Installation
 ------------
 
-### Local Installation
-
-デプロイツールをインストールする．
-
-    $ gem install capifony
-
-ソースを取得する．
-
-    $ git clone git@github.com:tejimaya/PNEManagerServer.git
-
 ### Server Installation
 
 Debian
@@ -34,10 +24,53 @@ Webサーバをリスタートする．
 
     # /etc/init.d/apache restart
 
+### Local Installation
+
+Server Installation を実行した後ソースを取得する．
+
+    $ git clone git@github.com:tejimaya/PNEManagerServer.git
+    $ cd PNEManagerServer
+    $ mkdir app/cache; mkdir app/logs
+    $ chmod 2775 app/cache app/logs
+    $ sudo chgrp www-data cache logs
+    $ php app/check.php
+    $ vi app/config/parameters.ini
+
+下記のように編集する．
+
+    [parameters]
+        database_driver   = pdo_mysql
+        database_host     = localhost
+        database_port     =
+        database_name     = pms
+        database_user     = pms
+        database_password = （パスワード）
+    
+        mailer_transport  = smtp
+        mailer_host       = localhost
+        mailer_user       =
+        mailer_password   =
+    
+        locale            = ja
+    
+        secret            = 39136675ae741e8550f6c42836b46e4e9721e544
+
+
+環境を整える．
+
+    $ php bin/vendors install
+    $ php app/console doctrine:database:create
+    $ php app/console doctrine:schema:create
+
+
 Deployment
 ----------
 
 ### First Deployment
+
+デプロイツールをインストールする．
+
+    $ gem install capifony
 
 デプロイサーバ側にログインできる状態になっているかどうかを確認する．
 
