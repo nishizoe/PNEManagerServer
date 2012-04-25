@@ -3,10 +3,10 @@ PNE Manager Server
 
 PNEホスティングの管理用アプリケーション
 
-Instralation
+Installation
 ------------
 
-### Local Instralation
+### Local Installation
 
 デプロイツールをインストールする．
 
@@ -16,7 +16,7 @@ Instralation
 
     $ git clone git@github.com:tejimaya/PNEManagerServer.git
 
-### Server Instralation
+### Server Installation
 
 Debian
 
