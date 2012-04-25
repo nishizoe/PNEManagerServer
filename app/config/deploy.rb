@@ -12,8 +12,6 @@ set :model_manager, "doctrine"
 set :shared_files,      [
 	"app/config/parameters.ini",
 
-	"src/PMS/ApiBundle/Controller/DomainController.php",
-	"src/PMS/ApiBundle/Controller/SnsController.php",
 	"src/PMS/ViewerBundle/Resources/views/Viewer/sns.html.twig",
 	"web/form.html",
 

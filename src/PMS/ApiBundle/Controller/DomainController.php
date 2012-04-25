@@ -71,7 +71,7 @@ class DomainController extends BaseApiActionController
     }
 
     $response = $this->renderJson(array('result' => $result));
-    $response->headers->set('Access-Control-Allow-Origin', 'http://form.pne.cc');
+    $response->headers->set('Access-Control-Allow-Origin', $this->container->getParameter('deploy_domain'));
     return $response;
   }
 

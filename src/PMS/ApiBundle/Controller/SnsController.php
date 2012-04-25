@@ -116,7 +116,7 @@ class SnsController extends BaseApiActionController
         $em->flush();
 
         $response = $this->renderJson(array('result' => true));
-        $response->headers->set('Access-Control-Allow-Origin', '*');
+        $response->headers->set('Access-Control-Allow-Origin', $this->container->getParameter('deploy_domain'));
         return $response;
     }
 
