@@ -30,6 +30,8 @@ Debian
     ; http://php.net/date.timezone;date.timezone =
     date.timezone = Asia/Tokyo
 
+Webサーバをリスタートする．
+
     # /etc/init.d/apache restart
 
 Deployment
