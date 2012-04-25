@@ -9,7 +9,7 @@ set :deploy_via,  :copy
 
 set :model_manager, "doctrine"
 # Or: `propel`
-set :shared_files,      ["app/config/parameters.ini", "web/.htaccess", "src/Deploy/HtmlBundle/Resources/config/routing.yml"]
+set :shared_files,      ["app/config/parameters.ini", "web/.htaccess", "src/Deploy/HtmlBundle/Resources/config/routing.yml", "src/PMS/ApiBundle/Controller/Listener/RequestListener.php"]
 set :shared_children,     [app_path + "/cache", app_path + "/logs", web_path + "/uploads", "vendor"]
 set :update_vendors, true
 set :cache_warmup, false
