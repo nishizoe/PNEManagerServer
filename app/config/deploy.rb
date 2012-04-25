@@ -8,7 +8,18 @@ set :repository,  "git@github.com:tejimaya/#{application}.git"
 set :deploy_via,  :copy
 
 set :model_manager, "doctrine"
-set :shared_files,      ["app/config/parameters.ini", "web/.htaccess", "src/Deploy/HtmlBundle/Resources/config/routing.yml", "src/PMS/ApiBundle/Controller/Listener/RequestListener.php"]
+set :shared_files,      [
+	"app/config/parameters.ini",
+
+	"src/PMS/ApiBundle/Controller/DomainController.php",
+	"src/PMS/ApiBundle/Controller/SnsController.php",
+	"src/PMS/ViewerBundle/Resources/views/Viewer/sns.html.twig",
+	"web/form.html",
+
+	"src/Deploy/HtmlBundle/Resources/config/routing.yml",
+	"src/PMS/ApiBundle/Controller/Listener/RequestListener.php",
+	"web/.htaccess",
+]
 set :shared_children,     [app_path + "/cache", app_path + "/logs", web_path + "/uploads", "vendor"]
 set :update_vendors, true
 set :cache_warmup, false
