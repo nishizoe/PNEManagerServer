@@ -72,6 +72,11 @@ class SnsController extends BaseApiActionController
             return $this->renderErrorJson(400, 'the domain already exist.');
         }
 
+        if (!is_null($this->getDoctrine()->getRepository('PMSApiBundle:Sns')->findOneBy(array('email' => $email))))
+        {
+            return $this->renderErrorJson(400, 'the email already exist.');
+        }
+
         $em = $this->getDoctrine()->getEntityManager();
 
         $account = $this->getDoctrine()->getRepository('PMSApiBundle:Account')->findOneBy(array('email' => $email));
