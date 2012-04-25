@@ -2,7 +2,6 @@ parameters:
     pms_api.domain.class: PMS\ApiBundle\Controller\DomainController
     pms_api.server.class: PMS\ApiBundle\Controller\ServerController
     pms_api.sns.class: PMS\ApiBundle\Controller\SnsController
-#    pms_api.example.class: PMS\ApiBundle\Example
     pms_api.mailer.class: PMS\ApiBundle\Lib\Mailer
     pms_api.listener.request.class: PMS\ApiBundle\Controller\Listener\RequestListener
     mailer_parameter:
@@ -23,9 +22,6 @@ services:
         class: %pms_api.sns.class%
         calls:
             - [setContainer, [@service_container] ]
-#    pms_api.example:
-#        class: %pms_api.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
     pms_api.mailer:
         class: %pms_api.mailer.class%
         arguments: [@mailer, @templating, %mailer_parameter%]
