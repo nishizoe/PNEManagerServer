@@ -8,7 +8,7 @@ parameters:
     mailer_parameter:
         confirmation.template: 'PMSApiBundle:Mail:email.txt.twig'
         from_email:
-            confirmation:      'watanabe@tejimaya.com'
+            confirmation:      'noreply@pne.jp'
 
 services:
     pms_api.domain:
