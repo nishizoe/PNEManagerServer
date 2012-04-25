@@ -12,6 +12,7 @@ set :model_manager, "doctrine"
 set :shared_files,      ["app/config/parameters.ini", "web/.htaccess", "src/Deploy/HtmlBundle/Resources/config/routing.yml"]
 set :shared_children,     [app_path + "/cache", app_path + "/logs", web_path + "/uploads", "vendor"]
 set :update_vendors, true
+set :cache_warmup, false
 
 role :web,        domain                         # Your HTTP server, Apache/etc
 role :app,        domain                         # This may be the same as your `Web` server
