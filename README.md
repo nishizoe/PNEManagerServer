@@ -37,19 +37,25 @@ Webサーバをリスタートする．
 Deployment
 ----------
 
+### First Deployment
+
 デプロイサーバ側にログインできる状態になっているかどうかを確認する．
 
 最初の一回だけ下記コマンドを実行する．
 
-    cap deploy:setup
+    $ cap deploy:setup
 
 ここでデプロイ先で app/config/deploy.rb にある shared_files のファイルを編集する．
 
-    cap deploy:cold
+    $ cap deploy:cold
 
-通常は以下のコマンド．
+Webサーバで閲覧できる位置にシンボリックリンクを貼る．
 
-    cap deploy
+    $ ln -s /opt/sabakan/PNEManagerServer/current /var/www/sns/pne.cc
+
+### Normal Deployment
+
+    $ cap deploy
 
 ### Notice
 
