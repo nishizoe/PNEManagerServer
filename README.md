@@ -81,6 +81,16 @@ Deployment
     $ cap deploy:setup
 
 ここでデプロイ先で app/config/deploy.rb にある shared_files のファイルを編集する．
+現状では下記ファイルが shared ディレクトリに必要．
+
+    "app/config/parameters.ini",
+    "src/PMS/ViewerBundle/Resources/views/Viewer/sns.html.twig",
+    "web/js/pne.js",
+    "src/Deploy/HtmlBundle/Resources/config/routing.yml",
+    "src/PMS/ApiBundle/Controller/Listener/RequestListener.php",
+    "web/.htaccess",
+
+デプロイを行う．
 
     $ cap deploy
 
@@ -90,7 +100,14 @@ Webサーバで閲覧できる位置にシンボリックリンクを貼る．
 
 ### Normal Deployment
 
+サーバ側で/opt/sabakan/PNEManagerServer/shared/app/cache を削除．
+
+ローカルでデプロイコマンドを実行．
+
     $ cap deploy
+ 
+サーバ側で/opt/sabakan/PNEManagerServer/shared/app/cache を削除．
+
 
 ### Notice
 
