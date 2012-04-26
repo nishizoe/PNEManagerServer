@@ -34,6 +34,7 @@ Server Installation を実行した後ソースを取得する．
     $ chmod 2775 app/cache app/logs
     $ sudo chgrp www-data app/cache app/logs
     $ php app/check.php
+    $ cp app/config/parameters.ini.sample app/config/parameters.ini
     $ vi app/config/parameters.ini
 
 下記のように編集する．
@@ -53,8 +54,9 @@ Server Installation を実行した後ソースを取得する．
     
         locale            = ja
     
-        secret            = 39136675ae741e8550f6c42836b46e4e9721e544
+        secret            = （あああ）
 
+        deploy_domain     = pne.jp
 
 環境を整える．
 
@@ -80,11 +82,11 @@ Deployment
 
 ここでデプロイ先で app/config/deploy.rb にある shared_files のファイルを編集する．
 
-    $ cap deploy:cold
+    $ cap deploy
 
 Webサーバで閲覧できる位置にシンボリックリンクを貼る．
 
-    $ ln -s /opt/sabakan/PNEManagerServer/current /var/www/sns/pne.cc
+    $ ln -s /opt/sabakan/PNEManagerServer/current /var/www/sns/pne.jp
 
 ### Normal Deployment
 
