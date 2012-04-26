@@ -13,7 +13,7 @@ set :shared_files,      [
 	"app/config/parameters.ini",
 
 	"src/PMS/ViewerBundle/Resources/views/Viewer/sns.html.twig",
-	"web/form.html",
+	"web/js/pne.js",
 
 	"src/Deploy/HtmlBundle/Resources/config/routing.yml",
 	"src/PMS/ApiBundle/Controller/Listener/RequestListener.php",
