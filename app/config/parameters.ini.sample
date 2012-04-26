@@ -4,7 +4,7 @@
     database_port     =
     database_name     = pms
     database_user     = pms
-    database_password = 7uc6m3U3ADVAAsx4
+    database_password = 
 
     mailer_transport  = smtp
     mailer_host       = localhost
@@ -15,4 +15,4 @@
 
     secret            = 39136675ae741e8550f6c42836b46e4e9721e544
 
-    deploy_domain     = pne.cc
+    deploy_domain     = 
