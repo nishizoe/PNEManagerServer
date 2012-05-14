@@ -169,7 +169,7 @@ class ServerControllerTest extends WebTestCase
         $response = $client->getResponse();
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertEquals('[]'."\n", $response->getContent());
+        $this->assertEquals('{"domain":[]}'."\n", $response->getContent());
     }
 
     /**

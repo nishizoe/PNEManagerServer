@@ -90,15 +90,13 @@ class ServerController extends BaseApiActionController
         $detail = array();
         $server = $this->getDoctrine()->getRepository('PMSApiBundle:Server')->findOneBy(array('host'=> $host));
 
-        if (is_null($server))
-        {
-          return $this->renderJson(array());
-        }
-
         $result = array('domain' => array());
-        foreach ($server->getSnss() as $sns)
+        if (!is_null($server))
         {
-          $result['domain'][] = $sns->getDomain();
+            foreach ($server->getSnss() as $sns)
+            {
+              $result['domain'][] = $sns->getDomain();
+            }
         }
 
         return $this->renderJson($result);
