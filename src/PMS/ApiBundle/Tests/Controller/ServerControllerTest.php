@@ -16,10 +16,20 @@ class ServerControllerTest extends WebTestCase
 
         // remove all Servers
         $em = $client->getContainer()->get('doctrine')->getEntityManager();
+        $snss = $em->getRepository('PMSApiBundle:Sns')->findAll();
+        foreach ($snss as $sns)
+        {
+          $em->remove($sns);
+        }
         $servers = $em->getRepository('PMSApiBundle:Server')->findAll();
         foreach ($servers as $server)
         {
           $em->remove($server);
+        }
+        $accounts = $em->getRepository('PMSApiBundle:Account')->findAll();
+        foreach ($accounts as $account)
+        {
+          $em->remove($account);
         }
         $em->flush();
     }
@@ -83,6 +93,8 @@ class ServerControllerTest extends WebTestCase
         $em->persist($server);
         $em->flush();
 
+        $client = static::createClient();
+
         $crawler = $client->request('GET', '/api/server/ping', array('host' => 'pingtest.com'));
         $response = $client->getResponse();
 
@@ -132,6 +144,9 @@ class ServerControllerTest extends WebTestCase
         $em->persist($server);
         $em->flush();
 
+        $client = static::createClient();
+        $em = $client->getContainer()->get('doctrine')->getEntityManager();
+
         $crawler = $client->request('POST', '/api/server/add', array('host' => 'serveraddtest.com', 'hostType' => 'web'));
         $response = $client->getResponse();
 
@@ -140,7 +155,7 @@ class ServerControllerTest extends WebTestCase
 
         $registeredServers = $em->getRepository('PMSApiBundle:Server')->findBy(array('host' => 'serveraddtest.com'));
         $this->assertEquals(1, count($registeredServers));
-        $this->assertSame($server, $registeredServers[0]);
+        $this->assertSame('serveraddtest.com', $registeredServers[0]->getHost());
     }
 
     /**
@@ -171,6 +186,9 @@ class ServerControllerTest extends WebTestCase
         $em->persist($server);
         $em->flush();
 
+        $client = static::createClient();
+        $em = $client->getContainer()->get('doctrine')->getEntityManager();
+
         $crawler = $client->request('GET', '/api/server/detail', array('host' => 'server.detail.test.com'));
         $response = $client->getResponse();
 
@@ -184,23 +202,24 @@ class ServerControllerTest extends WebTestCase
     function detailHavingDomain()
     {
         $client = static::createClient();
+        $em = $client->getContainer()->get('doctrine')->getEntityManager();
 
         // add test server
-        $em = $client->getContainer()->get('doctrine')->getEntityManager();
-        $sns = new Sns();
-        $sns->setDomain('server.detail.domain.test.com');
-        $sns->setEmail('watanabe@tejimaya.com');
-        $sns->setStatus('running');
-        $em->persist($sns);
-        $em->flush();
-
         $server = new Server();
         $server->setHost('server.detail.test.com');
-        $server->getSnss()->add($sns);
         $em->persist($server);
         $em->flush();
 
+        $sns = new Sns();
+        $sns->setDomain('server.detail.domain.test.com');
+        $sns->setEmail('watanabeserverdetail@tejimaya.com');
+        $sns->setStatus('running');
         $sns->setServer($server);
+        $em->persist($sns);
+        $em->flush();
+
+        $client = static::createClient();
+        $em = $client->getContainer()->get('doctrine')->getEntityManager();
 
         $crawler = $client->request('GET', '/api/server/detail', array('host' => 'server.detail.test.com'));
         $response = $client->getResponse();

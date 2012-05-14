@@ -17,6 +17,25 @@ class SnsTest extends WebTestCase
     {
         parent::setUp();
         $this->sns_ = new Sns();
+
+        $client = static::createClient();
+        $em = $client->getContainer()->get('doctrine')->getEntityManager();
+        $snss = $em->getRepository('PMSApiBundle:Sns')->findAll();
+        foreach ($snss as $sns)
+        {
+          $em->remove($sns);
+        }
+        $servers = $em->getRepository('PMSApiBundle:Server')->findAll();
+        foreach ($servers as $server)
+        {
+          $em->remove($server);
+        }
+        $accounts = $em->getRepository('PMSApiBundle:Account')->findAll();
+        foreach ($accounts as $account)
+        {
+          $em->remove($account);
+        }
+        $em->flush();
     }
 
     /**
@@ -82,7 +101,7 @@ class SnsTest extends WebTestCase
         $em = $client->getContainer()->get('doctrine')->getEntityManager();
 
         $account = new Account();
-        $account->setEmail('watanabe@tejimaya.com');
+        $account->setEmail('watanabesnspersist@tejimaya.com');
         $em->persist($account);
         $em->flush();
 
@@ -91,22 +110,25 @@ class SnsTest extends WebTestCase
         $em->persist($server);
         $em->flush();
 
-        $status = 'running';
-
         $this->sns_->setDomain('sns.entity.test.com');
-        $this->sns_->setEmail('watanabe@tejimaya.com');
+        $this->sns_->setEmail('watanabesnspersist@tejimaya.com');
+        $this->sns_->setStatus('running');
         $this->sns_->setAccount($account);
         $this->sns_->setServer($server);
-        $this->sns_->setStatus($status);
 
         $em->persist($this->sns_);
         $em->flush();
 
+        $client = static::createClient();
+        $em = $client->getContainer()->get('doctrine')->getEntityManager();
+
         $sns = $em->getRepository('PMSApiBundle:Sns')->find($this->sns_->getId());
 
-        $this->assertSame($this->sns_, $sns);
-        $this->assertSame($this->sns_->getAccount(), $account);
-        $this->assertSame($this->sns_->getServer(), $server);
+        $this->assertAttributeSame('sns.entity.test.com', 'domain', $sns);
+        $this->assertAttributeSame('watanabesnspersist@tejimaya.com', 'email', $sns);
+        $this->assertAttributeSame('running', 'status', $sns);
+        $this->assertSame($account->getId(), $sns->getAccount()->getId());
+        $this->assertSame($server->getId(), $sns->getServer()->getId());
     }
 
     /**
@@ -127,24 +149,27 @@ class SnsTest extends WebTestCase
         $em->persist($account);
         $em->flush();
 
-        $status = 'running';
-
         $this->sns_->setDomain('sns.entity.test.com');
         $this->sns_->setEmail('watanabe+test@tejimaya.com');
-        $this->sns_->setStatus($status);
+        $this->sns_->setStatus('running');
         $this->sns_->setServer($server);
         $this->sns_->setAccount($account);
 
         $em->persist($this->sns_);
         $em->flush();
 
+        $client = static::createClient();
+        $em = $client->getContainer()->get('doctrine')->getEntityManager();
 
         $sns = $em->getRepository('PMSApiBundle:Sns')->find($this->sns_->getId());
 
-        $this->assertSame($this->sns_, $sns);
-        $this->assertSame('sns.entity.test.com', $sns->getDomain());
-        $this->assertSame($server, $sns->getServer());
-        $this->assertSame($account, $sns->getAccount());
+        $this->assertAttributeSame('sns.entity.test.com', 'domain', $sns);
+        $this->assertAttributeSame('watanabe+test@tejimaya.com', 'email', $sns);
+        $this->assertAttributeSame('running', 'status', $sns);
+        $this->assertNotNull($sns->getAccount()->getId());
+        $this->assertSame($account->getId(), $sns->getAccount()->getId());
+        $this->assertNotNull($sns->getServer()->getId());
+        $this->assertSame($server->getId(), $sns->getServer()->getId());
     }
 
 }

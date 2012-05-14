@@ -31,40 +31,34 @@ class ServerTest extends WebTestCase
     /**
      * @test
      */
-    function setSnss()
-    {
-        $sns = new Sns();
-
-        $this->server_->getSnss()->add($sns);
-
-        $this->assertSame($sns, $this->server_->getSnss()->get(0));
-    }
-
-    /**
-     * @test
-     */
     function persist()
     {
         $client = static::createClient();
         $em = $client->getContainer()->get('doctrine')->getEntityManager();
 
-        $sns = new Sns();
-        $sns->setDomain('watanabe.pne.jp');
-        $sns->setEmail('watanabe@tejimaya.com');
-        $sns->setStatus('accepted');
-        $em->persist($sns);
-        $em->flush();
-
         $this->server_->setHost('servertest.set.snss.com');
-        $this->server_->getSnss()->add($sns);
 
         $em->persist($this->server_);
         $em->flush();
 
+        $sns = new Sns();
+        $sns->setDomain('watanabe.pne.jp');
+        $sns->setEmail('watanabe@tejimaya.com');
+        $sns->setStatus('accepted');
+        $sns->setServer($this->server_);
+        $em->persist($sns);
+        $em->flush();
+
+        $client = static::createClient();
+        $em = $client->getContainer()->get('doctrine')->getEntityManager();
+
         $server = $em->getRepository('PMSApiBundle:Server')->find($this->server_->getId());
 
-        $this->assertSame($this->server_, $server);
-        $this->assertSame($this->server_->getSnss()->get(0), $sns);
+        $this->assertSame('servertest.set.snss.com', $server->getHost());
+        $snss = $server->getSnss();
+        $this->assertNotNull($snss[0]);
+        $this->assertNotNull($snss[0]->getId());
+        $this->assertSame($sns->getId(), $snss[0]->getId());
     }
 
 }

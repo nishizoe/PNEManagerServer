@@ -55,7 +55,7 @@ class SnsPasswordsTest extends WebTestCase
         
         $sns = new Sns();
         $sns->setDomain('watanabe.pne.jp');
-        $sns->setEmail('watanabe@tejimaya.com');
+        $sns->setEmail('watanabepasswordpersist@tejimaya.com');
         $sns->setStatus('accepted');
         $em->persist($sns);
         $em->flush();
@@ -82,7 +82,7 @@ class SnsPasswordsTest extends WebTestCase
         
         $sns = new Sns();
         $sns->setDomain('watanabe.pne.jp');
-        $sns->setEmail('watanabe@tejimaya.com');
+        $sns->setEmail('watanabepasswordpersistandrefereced@tejimaya.com');
         $sns->setStatus('accepted');
         $em->persist($sns);
         $em->flush();
@@ -93,9 +93,13 @@ class SnsPasswordsTest extends WebTestCase
         $em->persist($this->snsPasswords_);
         $em->flush();
 
+        $client = static::createClient();
+        $em = $client->getContainer()->get('doctrine')->getEntityManager();
+
         $snsPasswords = $em->getRepository('PMSApiBundle:SnsPasswords')->findOneBy(array('snsId' => $sns->getId()));
         
-        $this->assertSame($this->snsPasswords_, $snsPasswords);
+        $this->assertSame('mpassword', $snsPasswords->getMemberPassword());
+        $this->assertSame('apassword', $snsPasswords->getAdminPassword());
         $this->assertSame($sns->getId(), $snsPasswords->getSnsId());
     }
 }

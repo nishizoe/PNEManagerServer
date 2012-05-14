@@ -54,6 +54,8 @@ class DomainControllerTest extends WebTestCase
         }
         $em->flush();
 
+        $client = static::createClient();
+
         $crawler = $client->request('GET', '/api/domain/list');
         $response = $client->getResponse();
 
@@ -119,6 +121,8 @@ class DomainControllerTest extends WebTestCase
         $domain->setType('sns');
         $em->persist($domain);
         $em->flush();
+
+        $client = static::createClient();
 
         $crawler = $client->request('GET', '/api/domain/available', array('domain' => 'watanabe.pne.jp'));
         $response = $client->getResponse();

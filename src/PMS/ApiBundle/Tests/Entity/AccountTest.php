@@ -39,9 +39,12 @@ class AccountTest extends WebTestCase
         $em->persist($this->account_);
         $em->flush();
 
+        $client = static::createClient();
+        $em = $client->getContainer()->get('doctrine')->getEntityManager();
+
         $account = $em->getRepository('PMSApiBundle:Account')->find($this->account_->getId());
 
-        $this->assertSame($this->account_, $account);
+        $this->assertSame('watanabe@tejimaya.com', $account->getEmail());
     }
 
 }

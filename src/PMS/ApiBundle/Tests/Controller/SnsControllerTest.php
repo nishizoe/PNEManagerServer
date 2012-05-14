@@ -28,6 +28,11 @@ class SnsControllerTest extends WebTestCase
         {
           $em->remove($server);
         }
+        $accounts = $em->getRepository('PMSApiBundle:Account')->findAll();
+        foreach ($accounts as $account)
+        {
+          $em->remove($account);
+        }
         $em->flush();
     }
 
@@ -87,6 +92,8 @@ class SnsControllerTest extends WebTestCase
         $em->persist($sns);
         $em->flush();
 
+        $client = static::createClient();
+
         $crawler = $client->request('GET', '/api/sns/list');
         $response = $client->getResponse();
 
@@ -114,6 +121,8 @@ class SnsControllerTest extends WebTestCase
         $em->persist($sns);
         $em->flush();
 
+        $client = static::createClient();
+
         $crawler = $client->request('GET', '/api/sns/list');
         $response = $client->getresponse();
 
@@ -140,7 +149,11 @@ class SnsControllerTest extends WebTestCase
         $em->persist($server);
         $em->flush();
 
+        $client = static::createClient();
+
         $crawler = $client->request('POST', '/api/sns/apply', array('domain' => 'apply.watanabe.pne.jp', 'email' => 'watanabe@tejimaya.com'));
+        $doctrine = $client->getContainer()->get('doctrine');
+
         $response = $client->getresponse();
 
         $this->assertEquals(200, $response->getStatusCode());
@@ -176,6 +189,8 @@ class SnsControllerTest extends WebTestCase
         $em->persist($server);
         $em->flush();
 
+        $client = static::createClient();
+
         $crawler = $client->request('POST', '/api/sns/apply', array('domain' => 'apply.watanabe.pne.jp', 'email' => 'watanabe@tejimaya.com'));
         $response = $client->getresponse();
 
@@ -208,6 +223,8 @@ class SnsControllerTest extends WebTestCase
         $server->setHost('server.apply.com');
         $em->persist($server);
         $em->flush();
+
+        $client = static::createClient();
 
         $crawler = $client->request('POST', '/api/sns/apply', array('domain' => 'apply.watanabe.pne.jp', 'email' => 'watanabe@tejimaya.com'));
         $response = $client->getresponse();
@@ -242,21 +259,23 @@ class SnsControllerTest extends WebTestCase
         $em->persist($server);
         $em->flush();
         $account = new Account();
-        $account->setEmail('watanabe@tejimaya.com');
+        $account->setEmail('watanabesnsapply@tejimaya.com');
         $em->persist($account);
         $em->flush();
         $sns = new Sns();
         $sns->setDomain('watanabedetail.pne.jp');
-        $sns->setEmail('watanabe@tejimaya.com');
+        $sns->setEmail('watanabesnsapply@tejimaya.com');
         $sns->setStatus('accepted');
         $em->persist($sns);
         $em->flush();
+
+        $client = static::createClient();
 
         $crawler = $client->request('GET', '/api/sns/detail', array('domain' => 'watanabedetail.pne.jp'));
         $response = $client->getresponse();
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertEquals('{"domain":"watanabedetail.pne.jp","adminEmail":"watanabe@tejimaya.com","status":"accepted"}'."\n", $response->getContent());
+        $this->assertEquals('{"domain":"watanabedetail.pne.jp","adminEmail":"watanabesnsapply@tejimaya.com","status":"accepted"}'."\n", $response->getContent());
     }
 
 }

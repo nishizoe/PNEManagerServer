@@ -48,9 +48,13 @@ class DomainTest extends WebTestCase
         $em->persist($this->domain_);
         $em->flush();
 
+        $client = static::createClient();
+        $em = $client->getContainer()->get('doctrine')->getEntityManager();
+
         $domain = $em->getRepository('PMSApiBundle:Domain')->find($this->domain_->getId());
 
-        $this->assertSame($this->domain_, $domain);
+        $this->assertSame('sns.example.com', $domain->getDomain());
+        $this->assertSame('sns', $domain->getType());
     }
 
 }
