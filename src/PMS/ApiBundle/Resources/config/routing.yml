@@ -69,3 +69,12 @@ PMSApiBundle_sns_detail:
 PMSApiBundle_sns_setpass:
     pattern:  /sns/setpass
     defaults: { _controller: PMSApiBundle:Sns:setpass }
+
+# sns
+PMSApiBundle_account_index:
+    pattern:  /account
+    defaults: { _controller: PMSApiBundle:Account:index }
+
+PMSApiBundle_account_list:
+    pattern:  /account/list
+    defaults: { _controller: PMSApiBundle:Account:list }

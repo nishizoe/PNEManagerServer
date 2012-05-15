@@ -8,8 +8,24 @@ class AccountController extends BaseApiActionController
     {
         return array(
             'action' => array(
+                'list',
             )
         );
+    }
+
+    public function listAction()
+    {
+        $list = array();
+        $rep = $this->getDoctrine()->getRepository('PMSApiBundle:Account');
+        $accounts = $rep->findAll();
+        foreach ($accounts as $account)
+        {
+            $list[] = array(
+                'email' => $account->getEmail(),
+            );
+        }
+        
+        return $this->renderJson($list);
     }
 
 }
