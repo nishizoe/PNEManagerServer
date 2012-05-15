@@ -16,8 +16,8 @@
        <li {% if 'PMSViewerBundle_viewer_server' == _route %}class="selected"{% endif %}>
          <a href="{{ path('PMSViewerBundle_viewer_server') }}" class="sf-with-ul">サーバ</a>
        </li>
-       <li>
-         <a href="#" class="sf-with-ul">管理者</a>
+       <li {% if 'PMSViewerBundle_viewer_account' == _route %}class="selected"{% endif %}>
+         <a href="{{ path('PMSViewerBundle_viewer_account') }}" class="sf-with-ul">管理者</a>
        </li>
        <li {% if 'PMSViewerBundle_viewer_help' == _route %}class="selected"{% endif %}>
          <a href="{{ path('PMSViewerBundle_viewer_help') }}" class="sf-with-ul">ヘルプ</a>

@@ -1,0 +1,41 @@
+{% extends "PMSViewerBundle:Viewer:layout.html.twig" %}
+
+{% block main %}
+<div class="grid_16">
+  <h2 id="page-heading">管理者</h2>
+</div>
+<div class="clear"></div>
+<div class="grid_12">
+  <div class="box">
+    <h2><a href="#" id="toggle-list">管理者リスト</a></h2>
+    <div class="block" id="list">
+      <table cellpadding="0" cellspacing="0" border="0" class="display" id="domains">
+        <thead><tr><th>管理者メールアドレス</th></tr></thead>
+        <tfoot><tr><th>管理者メールアドレス</th></tr></tfoot>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function(){
+    app = function(email){
+      return '<tr class="odd">' + 
+      '<td>' + email + '</td>' + 
+      '</tr>';
+    };
+    // add data
+    reset = function(){
+      $.getJSON("/api/account/list", function(json){
+        $('#domains>tbody>*').remove();
+        for(var i=0; i < json.length; ++i){
+          $('#domains>tbody').append(
+            app(json[i].email)
+          );
+        }
+      });
+    };
+    reset();
+  });
+</script>
+{% endblock %}

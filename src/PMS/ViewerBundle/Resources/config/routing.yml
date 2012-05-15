@@ -10,6 +10,10 @@ PMSViewerBundle_viewer_server:
     pattern:  /server
     defaults: { _controller: PMSViewerBundle:Viewer:server }
 
+PMSViewerBundle_viewer_account:
+    pattern:  /accout
+    defaults: { _controller: PMSViewerBundle:Viewer:account }
+
 PMSViewerBundle_viewer_help:
     pattern:  /help
     defaults: { _controller: PMSViewerBundle:Viewer:help }

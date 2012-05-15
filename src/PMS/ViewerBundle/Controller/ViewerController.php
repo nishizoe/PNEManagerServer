@@ -26,6 +26,11 @@ class ViewerController extends Controller
         return $this->render('PMSViewerBundle:Viewer:server.html.twig', array('_route' => $_route));
     }
 
+    public function accountAction($_route)
+    {
+        return $this->render('PMSViewerBundle:Viewer:account.html.twig', array('_route' => $_route));
+    }
+
     public function helpAction($_route)
     {
         return $this->render('PMSViewerBundle:Viewer:help.html.twig', array('_route' => $_route));
