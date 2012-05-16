@@ -215,6 +215,7 @@ class ServerControllerTest extends WebTestCase
         $sns->setEmail('watanabeserverdetail@tejimaya.com');
         $sns->setStatus('running');
         $sns->setServer($server);
+        $sns->setVersion('hosting-3.8.0-c-test');
         $em->persist($sns);
         $em->flush();
 

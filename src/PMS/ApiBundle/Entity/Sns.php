@@ -57,6 +57,13 @@ class Sns
     private $account;
 
     /**
+     * @var string $version
+     *
+     * @ORM\Column(name="version", type="string", length=255)
+     */
+    private $version;
+
+    /**
      * get id
      *
      * @return intetger
@@ -164,6 +171,26 @@ class Sns
     public function getAccount()
     {
         return $this->account;
+    }
+
+    /**
+     * Set version
+     *
+     * @param string $version
+     */
+    public function setVersion($version)
+    {
+        $this->version = $version;
+    }
+
+    /**
+     * get version
+     *
+     * @return string
+     */
+    public function getVersion()
+    {
+        return $this->version;
     }
 
 }

@@ -57,6 +57,7 @@ class SnsPasswordsTest extends WebTestCase
         $sns->setDomain('watanabe.pne.jp');
         $sns->setEmail('watanabepasswordpersist@tejimaya.com');
         $sns->setStatus('accepted');
+        $sns->setVersion('hosting-3.8.0-c-test');
         $em->persist($sns);
         $em->flush();
 
@@ -84,6 +85,7 @@ class SnsPasswordsTest extends WebTestCase
         $sns->setDomain('watanabe.pne.jp');
         $sns->setEmail('watanabepasswordpersistandrefereced@tejimaya.com');
         $sns->setStatus('accepted');
+        $sns->setVersion('hosting-3.8.0-c-test');
         $em->persist($sns);
         $em->flush();
 

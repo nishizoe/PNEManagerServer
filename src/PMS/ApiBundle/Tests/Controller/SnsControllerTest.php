@@ -88,6 +88,7 @@ class SnsControllerTest extends WebTestCase
         $sns->setDomain('addsns.com');
         $sns->setEmail('watanabe@tejimaya.com');
         $sns->setStatus('running');
+        $sns->setVersion('hosting-3.8.0-c-test');
         $sds = new DefaultServerDetermineStrategy();
         $em->persist($sns);
         $em->flush();
@@ -98,7 +99,7 @@ class SnsControllerTest extends WebTestCase
         $response = $client->getResponse();
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertEquals('[{"domain":"addsns.com","status":"running"}]'."\n", $response->getContent());
+        $this->assertEquals('[{"domain":"addsns.com","status":"running","version":"hosting-3.8.0-c-test"}]'."\n", $response->getContent());
     }
 
     /**
@@ -117,6 +118,7 @@ class SnsControllerTest extends WebTestCase
         $sns->setDomain('addsns.com');
         $sns->setEmail('watanabe@tejimaya.com');
         $sns->setStatus('running');
+        $sns->setVersion('hosting-3.8.0-c-test');
         $sds = new DefaultServerDetermineStrategy();
         $em->persist($sns);
         $em->flush();
@@ -127,7 +129,7 @@ class SnsControllerTest extends WebTestCase
         $response = $client->getresponse();
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertEquals('[{"domain":"addsns.com","status":"running"}]'."\n", $response->getContent());
+        $this->assertEquals('[{"domain":"addsns.com","status":"running","version":"hosting-3.8.0-c-test"}]'."\n", $response->getContent());
     }
 
     /**
@@ -201,7 +203,7 @@ class SnsControllerTest extends WebTestCase
         $response = $client->getresponse();
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertEquals('[{"domain":"apply.watanabe.pne.jp","status":"accepted"}]'."\n", $response->getContent());
+        $this->assertEquals('[{"domain":"apply.watanabe.pne.jp","status":"accepted","version":"not installed"}]'."\n", $response->getContent());
     }
 
     /**
@@ -266,6 +268,7 @@ class SnsControllerTest extends WebTestCase
         $sns->setDomain('watanabedetail.pne.jp');
         $sns->setEmail('watanabesnsapply@tejimaya.com');
         $sns->setStatus('accepted');
+        $sns->setVersion('hosting-3.8.0-c-test');
         $em->persist($sns);
         $em->flush();
 

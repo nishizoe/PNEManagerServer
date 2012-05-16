@@ -33,7 +33,8 @@ class SnsController extends BaseApiActionController
         {
             $list[] = array(
                 'domain' => $sns->getDomain(),
-                'status' => $sns->getStatus()
+                'status' => $sns->getStatus(),
+                'version' => $sns->getVersion(),
             );
         }
 
@@ -112,6 +113,7 @@ class SnsController extends BaseApiActionController
         $sns->setStatus('accepted');
         $sns->setAccount($account);
         $sns->setServer($this->getDoctrine()->getRepository('PMSApiBundle:Server')->find($sds->determine($this->getDoctrine())));
+        $sns->setVersion('not installed');
         $em->persist($sns);
         $em->flush();
 

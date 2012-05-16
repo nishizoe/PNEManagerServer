@@ -95,6 +95,16 @@ class SnsTest extends WebTestCase
     /**
      * @test
      */
+    function setVersion()
+    {
+      $this->sns_->setVersion('hosting-3.8.0-d');
+
+      $this->assertSame('hosting-3.8.0-d', $this->sns_->getVersion());
+    }
+
+    /**
+     * @test
+     */
     function persist()
     {
         $client = static::createClient();
@@ -115,6 +125,7 @@ class SnsTest extends WebTestCase
         $this->sns_->setStatus('running');
         $this->sns_->setAccount($account);
         $this->sns_->setServer($server);
+        $this->sns_->setVersion('hosting-3.8.0-b');
 
         $em->persist($this->sns_);
         $em->flush();
@@ -129,6 +140,7 @@ class SnsTest extends WebTestCase
         $this->assertAttributeSame('running', 'status', $sns);
         $this->assertSame($account->getId(), $sns->getAccount()->getId());
         $this->assertSame($server->getId(), $sns->getServer()->getId());
+        $this->assertAttributeSame('hosting-3.8.0-b', 'version', $sns);
     }
 
     /**
@@ -154,6 +166,7 @@ class SnsTest extends WebTestCase
         $this->sns_->setStatus('running');
         $this->sns_->setServer($server);
         $this->sns_->setAccount($account);
+        $this->sns_->setVersion('hosting-3.8.0-c');
 
         $em->persist($this->sns_);
         $em->flush();
@@ -170,6 +183,7 @@ class SnsTest extends WebTestCase
         $this->assertSame($account->getId(), $sns->getAccount()->getId());
         $this->assertNotNull($sns->getServer()->getId());
         $this->assertSame($server->getId(), $sns->getServer()->getId());
+        $this->assertAttributeSame('hosting-3.8.0-c', 'version', $sns);
     }
 
 }

@@ -46,6 +46,7 @@ class ServerTest extends WebTestCase
         $sns->setEmail('watanabe@tejimaya.com');
         $sns->setStatus('accepted');
         $sns->setServer($this->server_);
+        $sns->setVersion('hosting-3.8.0-c-test');
         $em->persist($sns);
         $em->flush();
 
