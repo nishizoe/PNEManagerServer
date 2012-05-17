@@ -83,7 +83,7 @@ Net::HTTP.start(pmshost) { |http|
   
       deleteTargetDomains = installDomains - expectedDomains
       deleteTargetDomains.each { |domain|
-        req = Net::HTTP:Get.new('/api/sns/detail?domain='+domain)
+        req = Net::HTTP::Get.new('/api/sns/detail?domain='+domain)
         snsResponse = http.request(req)
         snsDetail = JSON.parse(snsResponse.body)
         if snsDetail['status'] == 'deleted' then
