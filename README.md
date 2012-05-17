@@ -26,7 +26,7 @@ Webサーバをリスタートする．
 
 ### Local Installation
 
-Server Installation を実行した後ソースを取得する．
+Server Installation を実行した後ソースを取得する．ブランチは pne.jp が本番環境用, pne.cc がステージング環境用，master と dev が開発用となっている．いまのところ開発用ブランチはしっかりとした運用が行われていない．
 
     $ git clone git@github.com:tejimaya/PNEManagerServer.git
     $ cd PNEManagerServer
@@ -92,6 +92,10 @@ Deployment
 
     $ gem install capifony
 
+デプロイスクリプトが正しいホストや正しいリポジトリを示しているかを確認する．
+
+    $ cat app/config/deploy.rb
+ 
 デプロイサーバ側にログインできる状態になっているかどうかを確認する．
 
 最初の一回だけ下記コマンドを実行する．
