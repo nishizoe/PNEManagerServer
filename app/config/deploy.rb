@@ -1,5 +1,5 @@
 set :application, "PNEManagerServer"
-set :domain,      "pne.cc"
+set :domain,      "pne.jp"
 set :deploy_to,   "/opt/sabakan/#{application}"
 set :app_path,    "app"
 
