@@ -1,4 +1,4 @@
-HOST="pne.jp"
+HOST="localhost"
 
 curl "http://$HOST/api?type=server&action=ping&host=localhost"
 curl "http://$HOST/api/server/add" -d "host=localhost"
