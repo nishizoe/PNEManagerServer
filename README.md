@@ -1,4 +1,4 @@
-PNE Manager Server 
+PNE Manager Server
 ==================
 
 PNEホスティングの管理用アプリケーション
@@ -46,14 +46,14 @@ Server Installation を実行した後ソースを取得する．
         database_name     = pms
         database_user     = pms
         database_password = （パスワード）
-    
+
         mailer_transport  = smtp
         mailer_host       = localhost
         mailer_user       =
         mailer_password   =
-    
+
         locale            = ja
-    
+
         secret            = （あああ）
 
         deploy_domain     = http://hosting.pne.jp
@@ -69,6 +69,15 @@ Server Installation を実行した後ソースを取得する．
 実行環境やDBの設定が終わった後にテストを実行する．
 
     $ ./bin/execute_pmsapi_tests.sh
+    PHPUnit 3.6.10 by Sebastian Bergmann.
+
+    Configuration read from /home/nise_nabe/workspace/tejimaya/PNEManagerServer/app/phpunit.xml.dist
+
+    ...............................................
+
+    Time: 3 seconds, Memory: 82.00Mb
+
+    OK (47 tests, 103 assertions)
 
 テスト実行後はDBにゴミが残っているので初期化を行う．
 
@@ -114,7 +123,7 @@ Webサーバで閲覧できる位置にシンボリックリンクを貼る．
 ローカルでデプロイコマンドを実行．
 
     $ cap deploy
- 
+
 サーバ側で/opt/sabakan/PNEManagerServer/shared/app/cache を削除．
 
 
@@ -133,5 +142,5 @@ Using
 -----
 
 * **Symfony2** (http://www.symfony-project.org/)
-* **Capifony** (http://capifony.org/) 
+* **Capifony** (http://capifony.org/)
 * **HTML5 ADMIN** (http://www.html5admin.com/)
