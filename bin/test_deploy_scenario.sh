@@ -1,4 +1,4 @@
-HOST="pmstest.tejimaya.net:10080"
+HOST="pne.jp"
 
 curl "http://$HOST/api?type=server&action=ping&host=localhost"
 curl "http://$HOST/api/server/add" -d "host=localhost"
