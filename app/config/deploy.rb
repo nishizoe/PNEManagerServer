@@ -4,8 +4,8 @@ set :deploy_to,   "/opt/sabakan/#{application}"
 set :app_path,    "app"
 
 set :scm,         :git
-set :repository,  "git@github.com:tejimaya/#{application}.git"
-#set :repository,  "file:///path/to/localrepo"
+#set :repository,  "git@github.com:tejimaya/#{application}.git"
+set :repository,  "file:///home/watnabe/pms"
 set :branch, "pne.jp"
 set :deploy_via,  :copy
 
