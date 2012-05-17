@@ -37,7 +37,7 @@ Server Installation を実行した後ソースを取得する．
     $ cp app/config/parameters.ini.sample app/config/parameters.ini
     $ vi app/config/parameters.ini
 
-下記のように編集する．
+下記のように編集する．注意としてはdeploy\_domain は現状デプロイ先ではなく，Access-Control-Allow-Originヘッダの値として用いる．
 
     [parameters]
         database_driver   = pdo_mysql
@@ -56,7 +56,7 @@ Server Installation を実行した後ソースを取得する．
     
         secret            = （あああ）
 
-        deploy_domain     = pne.jp
+        deploy_domain     = http://hosting.pne.jp
 
 環境を整える．
 
@@ -64,6 +64,15 @@ Server Installation を実行した後ソースを取得する．
     $ php app/console doctrine:database:create
     $ php app/console doctrine:schema:create
 
+### Testing
+
+実行環境やDBの設定が終わった後にテストを実行する．
+
+    $ ./bin/execute_pmsapi_tests.sh
+
+テスト実行後はDBにゴミが残っているので初期化を行う．
+
+    $ ./bin/init_schema.sh
 
 Deployment
 ----------
@@ -80,7 +89,7 @@ Deployment
 
     $ cap deploy:setup
 
-ここでデプロイ先で app/config/deploy.rb にある shared_files のファイルを編集する．
+ここでデプロイ先で app/config/deploy.rb にある shared\_files のファイルを編集する．
 現状では下記ファイルが shared ディレクトリに必要．
 
     "app/config/parameters.ini",
