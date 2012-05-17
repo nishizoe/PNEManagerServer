@@ -17,7 +17,7 @@ pmahost = 'pne.cc'
 http = Net::HTTP.new(pmshost, 80)
 
 # ping 
-response = http.request_get('/api/server/ping&host='+pmahost)
+response = http.request_get('/api/server/ping?host='+pmahost)
 log.info("server ping")
 if response.code == '200' then
   result =  JSON.parse(response.body)
