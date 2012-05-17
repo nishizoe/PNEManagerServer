@@ -33,9 +33,9 @@ pmahost = `hostname`.chop
 installDomains = Dir::entries('/var/www/sns/') - ['.', '..', 'munin.example.com', 'stopped', 'stoppedSNS']
 # install or delete snss
 Net::HTTP.start(pmshost) { |http|
+  req = Net::HTTP::Get.new('/api/server/detail?host='+pmahost)
+  response = http.request(req)
   if response.code == '200' then
-    req = Net::HTTP::Get.new('/api/server/detail?host='+pmahost)
-    response = http.request(req)
     details =  JSON.parse(response.body)
     log.info("server detail")
   
