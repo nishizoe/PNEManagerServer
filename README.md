@@ -83,6 +83,8 @@ Server Installation を実行した後ソースを取得する．ブランチは
 
     $ ./bin/init_schema.sh
 
+実際のAPIのりようなどは bin/test\_deploy\_scenario.sh のファイルが参考になる．
+
 Deployment
 ----------
 
