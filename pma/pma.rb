@@ -3,6 +3,7 @@ require 'rubygems'
 
 require 'net/http'
 require 'json'
+require 'logger'
 require 'syslog'
 require 'fileutils'
 
@@ -11,14 +12,16 @@ def shellesc(str)
   str
 end
 
+log = Logger.new(STDOUT)
+
 Syslog.open()
 Syslog.info('start pma')
-p "start pma"
+ log.info("start pma")
 if File.exist?("/tmp/.pmalock") then
   Syslog.info('still run ')
-  p "still run"
+  log.warn("still run")
   Syslog.info('exit pma')
-  p "exit pma"
+  log.info("exit pma")
   exit
 end
 
@@ -34,24 +37,25 @@ Net::HTTP.start(pmshost) { |http|
     req = Net::HTTP::Get.new('/api/server/detail?host='+pmahost)
     response = http.request(req)
     details =  JSON.parse(response.body)
-    p "server detail"
+    log.info("server detail")
   
     if details != [] then
       expectedDomains = details['domain']
   
       installTargetDomains = expectedDomains - installDomains
-      p installTargetDomains
+      log.info(installTargetDomains)
       installTargetDomains.each { |domain|
         domain = shellesc(domain)
-        p "install " + domain
+        log.info("install " + domain)
         req = Net::HTTP::Get.new('/api/sns/detail?domain='+domain)
         snsResponse = http.request(req)
-        p "sns detail"
+        log.info("sns detail")
         p snsResponse.body
         if snsResponse.code == '200' then
           snsDetail = JSON.parse(snsResponse.body)
           adminEmail = shellesc(snsDetail['adminEmail'])
-          p adminEmail
+          log.debug("domain :"  + domain)
+          log.debug("email :" + adminEmail)
           userResult = ""
           adminResult = ""
           IO.popen('/opt/sabakan/autoinst/install.sh '+domain+' '+adminEmail) do |io|
@@ -60,7 +64,7 @@ Net::HTTP.start(pmshost) { |http|
               adminResult = line.split(" ")[1]
             end
             if userResult == nil || adminResult == nil then
-              p "fail to install " + domain
+              log.error("fail to install " + domain)
               IO.popen('/opt/sabakan/autoinst/sns_delete.sh '+domain) do |io|
                 while line = io.gets
                 end
@@ -73,7 +77,7 @@ Net::HTTP.start(pmshost) { |http|
             end
           end
         else
-          p "fail to install " + domain
+          log.error("fail to install " + domain)
         end
       }
   
@@ -85,9 +89,9 @@ Net::HTTP.start(pmshost) { |http|
         if snsDetail['status'] == 'deleted' then
           IO.popen('/opt/sabakan/autoinst/sns_delete.sh ' + domain) do |io|
           end
-          p "sns delete"
+          log.info("sns delete")
         else
-          p "fail to delete " + domain
+          log.error("fail to delete " + domain)
 
           http.request_post('/api/server/event', 'eventType=error&message=deletefailed')
         end
@@ -95,10 +99,10 @@ Net::HTTP.start(pmshost) { |http|
     end
   else
     Syslog.err(response.body)
-    p response.body
+    log.error(response.body)
   end
 }
 
 Syslog.info('end pma');
-p "end pma"
+log.info("end pma")
 FileUtils.rm('/tmp/.pmalock')
