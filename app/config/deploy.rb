@@ -6,6 +6,7 @@ set :app_path,    "app"
 set :scm,         :git
 set :repository,  "git@github.com:tejimaya/#{application}.git"
 #set :repository,  "file:///path/to/localrepo"
+set :branch, "pne.cc"
 set :deploy_via,  :copy
 
 set :model_manager, "doctrine"
