@@ -12,7 +12,7 @@ Syslog.info('start pma_register');
 log.info("start pma_register")
 
 pmshost = 'api.pne.cc'
-pmahost = 'pne.cc'
+pmahost = `hostname`.chop
 
 http = Net::HTTP.new(pmshost, 80)
 
