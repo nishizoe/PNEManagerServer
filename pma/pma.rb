@@ -1,95 +1,108 @@
 
 require 'rubygems'
 
-require 'net/https'
+require 'net/http'
 require 'json'
+require 'logger'
 require 'syslog'
 require 'fileutils'
 
+def shellesc(str)
+  str.gsub!(/[\!\"\$\&\'\(\)\*\,\:\;\<\=\>\?\[\\\]\^\`\{\|\}\t ]/, '\\\\\\&')
+  str
+end
+
+log = Logger.new(STDOUT)
+
 Syslog.open()
 Syslog.info('start pma')
-p "start pma"
+ log.info("start pma")
 if File.exist?("/tmp/.pmalock") then
   Syslog.info('still run ')
-  p "still run"
+  log.warn("still run")
   Syslog.info('exit pma')
-  p "exit pma"
+  log.info("exit pma")
   exit
 end
 
 FileUtils.touch('/tmp/.pmalock')
 
-pmshost = 'pne.jp'
+pmshost = 'api.pne.cc'
 pmahost = `hostname`.chop
-
-https = Net::HTTP.new(pmshost, 443)
-https.use_ssl = true
-https.ca_file = '/opt/sabakan/hosting/script/pma/ca-bundle.crt'
-https.verify_mode = OpenSSL::SSL::VERIFY_PEER
-https.verify_depth = 5
 
 installDomains = Dir::entries('/var/www/sns/') - ['.', '..', 'munin.example.com', 'stopped', 'stoppedSNS']
 # install or delete snss
-response = https.get('/api/server/detail?host='+pmahost)
-p response.body
-if response.code == '200' then
-  details =  JSON.parse(response.body)
-  p "server detail"
-
-  if details != [] then
-    expectedDomains = details['domain']
-
-    installTargetDomains = expectedDomains - installDomains
-    p installTargetDomains
-    installTargetDomains.each { |domain|
-      p "install " + domain
-      snsResponse = https.request_get('/api/sns/detail?domain='+domain)
-      p "sns detail"
-      p snsResponse.body
-      if snsResponse.code == '200' then
-        snsDetail = JSON.parse(snsResponse.body)
-        p snsDetail
-        userResult = ""
-        adminResult = ""
-        IO.popen('/opt/sabakan/hosting/script/autoinst/install.sh '+domain+' '+snsDetail['adminEmail']) do |io|
-          while line = io.gets
-            userResult = line.split(" ")[0]
-            adminResult = line.split(" ")[1]
-          end
-          if userResult == nil || adminResult == nil then
-            p "fail to install " + domain
-            IO.popen('/opt/sabakan/autoinst/sns_delete.sh '+domain) do |io|
-              while line = io.gets
-              end
+Net::HTTP.start(pmshost) { |http|
+  req = Net::HTTP::Get.new('/api/server/detail?host='+pmahost)
+  response = http.request(req)
+  if response.code == '200' then
+    details =  JSON.parse(response.body)
+    log.info("server detail")
+  
+    if details != [] then
+      expectedDomains = details['domain']
+  
+      installTargetDomains = expectedDomains - installDomains
+      log.info(installTargetDomains)
+      installTargetDomains.each { |domain|
+        domain = shellesc(domain)
+        log.info("install " + domain)
+        req = Net::HTTP::Get.new('/api/sns/detail?domain='+domain)
+        snsResponse = http.request(req)
+        log.info("sns detail")
+        p snsResponse.body
+        if snsResponse.code == '200' then
+          snsDetail = JSON.parse(snsResponse.body)
+          adminEmail = shellesc(snsDetail['adminEmail'])
+          log.debug("domain :"  + domain)
+          log.debug("email :" + adminEmail)
+          userResult = ""
+          adminResult = ""
+          IO.popen('/opt/sabakan/autoinst/install.sh '+domain+' '+adminEmail) do |io|
+            while line = io.gets
+              userResult = line.split(" ")[0]
+              adminResult = line.split(" ")[1]
             end
-          else
-            passResponse = https.request_post('/api/sns/setpass', 'domain='+domain+'&mpass='+userResult+'&apass='+adminResult)
-            break # take once time to install
+            if userResult == nil || adminResult == nil then
+              log.error("fail to install " + domain)
+              IO.popen('/opt/sabakan/autoinst/sns_delete.sh '+domain) do |io|
+                while line = io.gets
+                end
+              end
+            else
+              req = Net::HTTP::Post.new('/api/sns/setpass')
+              req.set_form_data({:domain=>domain,:mpass=>userResult,:apass=>adminResult})
+              http.request(req)
+              break # take once time to install
+            end
           end
+        else
+          log.error("fail to install " + domain)
         end
-      else
-        p "fail to install " + domain
-      end
-    }
+      }
+  
+      deleteTargetDomains = installDomains - expectedDomains
+      deleteTargetDomains.each { |domain|
+        req = Net::HTTP::Get.new('/api/sns/detail?domain='+domain)
+        snsResponse = http.request(req)
+        snsDetail = JSON.parse(snsResponse.body)
+        if snsDetail['status'] == 'deleted' then
+          IO.popen('/opt/sabakan/autoinst/sns_delete.sh ' + domain) do |io|
+          end
+          log.info("sns delete")
+        else
+          log.error("fail to delete " + domain)
 
-    #deleteTargetDomains = installDomains - expectedDomains
-    #deleteTargetDomains.each { |domain|
-    #  snsResponse = https.request_get('/api/sns/detail?domain='+domain)
-    #  snsDetail = JSON.parse(snsResponse.body)
-    #  if snsDetail['status'] == 'deleted' then
-    #    installResult = open('| sns_delete.sh '+domain)
-    #    p "sns delete"
-    #  else
-    #    p "fail to delete " + domain
-    #    http.request_post('/api/server/event', 'eventType=error&message=deletefailed')
-    #  end
-    #}
+          http.request_post('/api/server/event', 'eventType=error&message=deletefailed')
+        end
+      }
+    end
+  else
+    Syslog.err(response.body)
+    log.error(response.body)
   end
-else
-  Syslog.err(response.body)
-  p response.body
-end
+}
 
 Syslog.info('end pma');
-p "end pma"
+log.info("end pma")
 FileUtils.rm('/tmp/.pmalock')
