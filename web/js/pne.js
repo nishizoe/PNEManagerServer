@@ -1,5 +1,7 @@
 var domain = "pne.jp";
+
 var $ = jQuery.noConflict();
+var domainUrl = 'http://' + location.hostname + '/';
 var domainValid = false;
 var mailValid = false;
 var enabled = function() {
@@ -18,7 +20,7 @@ $(function(){
     if (isValid) {
       $.ajax({
         type: "GET",
-        url: "http://133.242.49.164/api/domain/available",
+        url: domainUrl + "api/domain/available",
         data: "domain=" + $("#domain-form").val() + "." + domain,
         dataType: "json",
         success: function(msg) {
@@ -58,7 +60,7 @@ $(function(){
 var send = function(){
     $.ajax({
         type: "POST",
-        url: "http://133.242.49.164/api/sns/apply",
+        url: domainUrl + "api/sns/apply",
         data: "domain=" + $("#domain-form").val() + '.' + domain + "&email=" + $("#mail-form").val(),
         dataType: "json",
         success: function(json){
