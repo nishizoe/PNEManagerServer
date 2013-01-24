@@ -122,8 +122,9 @@ Webサーバで閲覧できる位置にシンボリックリンクを貼る．
 
     $ ln -s /opt/sabakan/PNEManagerServer/current /var/www/sns/pne.jp
 
-Symfonyのvendorライブラリーをインストーするする
+Symfonyのvendorライブラリーをインストールする
 
+    $ cd /opt/sabakan/PNEManagerServer/current
     $ php bin/vendors install
 
 ### Normal Deployment
