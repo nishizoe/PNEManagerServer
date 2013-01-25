@@ -127,6 +127,15 @@ Symfonyのvendorライブラリーをインストールする
     $ cd /opt/sabakan/PNEManagerServer/current
     $ php bin/vendors install
 
+デプロイした時にサーバーを登録しないとエラーになるのでAPIをcurlで実行して、
+
+サーバーデータを登録する
+
+実行例 pne.cqc.jpのサーバーを登録する
+
+    curl "http://pne.cqc.jp/api/server/add" -d "host=pne.cqc.jp"
+
+
 ### Normal Deployment
 
 サーバ側で/opt/sabakan/PNEManagerServer/shared/app/cache を削除．
