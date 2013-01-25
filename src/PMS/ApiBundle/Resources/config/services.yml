@@ -25,7 +25,7 @@ services:
     pms_api.mailer:
         class: %pms_api.mailer.class%
         arguments: [@mailer, @templating, %mailer_parameter%]
-    pma_api.listener.request:
-        class : %pms_api.listener.request.class%
-        tags:
-            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+#    pma_api.listener.request: //これがあると管理画面にログインできないのでコメントアウトしている
+#        class : %pms_api.listener.request.class%
+#        tags:
+#            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
