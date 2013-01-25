@@ -11,7 +11,7 @@
     RewriteEngine On
     RewriteBase /
     RewriteCond %{HTTPS} !=off
-    RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R,L] 
+    RewriteRule .* http://%{SERVER_NAME}%{REQUEST_URI} [R,L] 
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.*)$ app.php [QSA,L]
 </IfModule>
