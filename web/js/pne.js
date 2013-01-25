@@ -1,7 +1,8 @@
 var domain = "pne.jp";
 
 var $ = jQuery.noConflict();
-var domainUrl = 'http://' + location.hostname + '/';
+var domainUrl = location.protocol + '//' + location.hostname + '/';
+
 var domainValid = false;
 var mailValid = false;
 var enabled = function() {
@@ -65,7 +66,7 @@ var send = function(){
         dataType: "json",
         success: function(json){
           if (json.result == true){
-            document.location = 'https://pne.jp/success.html'
+            document.location = domainUrl + 'success.html'
           }else{
             alert("エラーです");
           }
