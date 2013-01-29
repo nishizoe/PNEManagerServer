@@ -45,6 +45,13 @@ class Sns
     private $status;
 
     /**
+     * @var string $options
+     *
+     * @ORM\Column(name="options", type="string", length=255)
+     */
+    private $options;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Server", inversedBy="snss")
      * @ORM\JoinColumn(name="server_id", referencedColumnName="id")
      */
@@ -124,6 +131,26 @@ class Sns
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set options
+     *
+     * @param string $options
+     */
+    public function setOptions($options)
+    {
+        $this->options = $options;
+    }
+
+    /**
+     * get options
+     *
+     * @return string
+     */
+    public function getOptions()
+    {
+        return $this->options;
     }
 
     /**

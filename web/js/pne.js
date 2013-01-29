@@ -1,4 +1,5 @@
-var domain = "pne.jp";
+//var domain = "pne.jp";
+var domain = "cqc.jp";
 
 var $ = jQuery.noConflict();
 var domainUrl = location.protocol + '//' + location.hostname + '/';

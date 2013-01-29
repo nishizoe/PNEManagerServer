@@ -27,8 +27,9 @@ end
 
 FileUtils.touch('/tmp/.pmalock')
 
-pmshost = 'api.pne.cc'
-pmahost = `hostname`.chop
+pmshost = 'pne.cqc.jp'
+#pmahost = `hostname`.chop
+pmahost = 'pne.cqc.jp'
 
 installDomains = Dir::entries('/var/www/sns/') - ['.', '..', 'munin.example.com', 'stopped', 'stoppedSNS']
 # install or delete snss
@@ -50,15 +51,17 @@ Net::HTTP.start(pmshost) { |http|
         req = Net::HTTP::Get.new('/api/sns/detail?domain='+domain)
         snsResponse = http.request(req)
         log.info("sns detail")
-        p snsResponse.body
         if snsResponse.code == '200' then
           snsDetail = JSON.parse(snsResponse.body)
           adminEmail = shellesc(snsDetail['adminEmail'])
+          options = shellesc(snsDetail['options'])
+	  installMode = options.split(":")[1]
+
           log.debug("domain :"  + domain)
           log.debug("email :" + adminEmail)
           userResult = ""
           adminResult = ""
-          IO.popen('/opt/sabakan/autoinst/install.sh '+domain+' '+adminEmail) do |io|
+          IO.popen('/opt/sabakan/autoinst/install.sh '+domain+' '+adminEmail+' '+installMode) do |io|
             while line = io.gets
               userResult = line.split(" ")[0]
               adminResult = line.split(" ")[1]

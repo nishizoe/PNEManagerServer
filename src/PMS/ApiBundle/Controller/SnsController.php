@@ -45,6 +45,7 @@ class SnsController extends BaseApiActionController
         $params = $this->getRequest()->request;
         $domain = $params->get('domain', null);
         $email = $params->get('email', null);
+        $options = $params->get('options', 'mode:plane');
         if (is_null($domain) || is_null($email))
         {
             $param = array();
@@ -112,6 +113,7 @@ class SnsController extends BaseApiActionController
         $sns->setStatus('accepted');
         $sns->setAccount($account);
         $sns->setServer($this->getDoctrine()->getRepository('PMSApiBundle:Server')->find($sds->determine($this->getDoctrine())));
+	$sns->setOptions($options);
         $em->persist($sns);
         $em->flush();
 
@@ -147,6 +149,7 @@ class SnsController extends BaseApiActionController
             'domain' => $domain,
             'adminEmail' => $sns->getEmail(),
             'status' => $sns->getStatus(),
+            'options' => $sns->getOptions(),
         ));
     }
 
