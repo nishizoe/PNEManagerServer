@@ -15,6 +15,11 @@ var enabled = function() {
     $("#sendbutton2").attr("disabled", "true");
   }
 };
+
+$('#sendbutton2').click( function() {
+  send();
+});
+
 $(function(){
   $("#domain-form").bind("keyup", function(e) {
     var re = new RegExp(/^[a-z0-9]{3,16}$/);
@@ -59,7 +64,8 @@ $(function(){
     }
   });
 });
-var send = function(){
+///var send = function(){
+function send() {
     $.ajax({
         type: "POST",
         url: domainUrl + "api/sns/apply",
@@ -69,8 +75,11 @@ var send = function(){
           if (json.result == true){
             document.location = domainUrl + 'success.html'
           }else{
-            alert("エラーです");
+            alert("エラーが発生しました。\n入力内容を確認して下さい。");
           }
         },
+	error: function(e){
+            alert("エラーが発生しました。\n入力内容を確認して下さい。");
+	}
     });
 };

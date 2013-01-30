@@ -71,7 +71,9 @@ class DomainController extends BaseApiActionController
     }
 
     $response = $this->renderJson(array('result' => $result));
-    $response->headers->set('Access-Control-Allow-Origin', $this->container->getParameter('deploy_domain'));
+    //$response->headers->set('Access-Control-Allow-Origin', $this->container->getParameter('deploy_domain'));
+    $response->headers->set('Access-Control-Allow-Origin', 'http://cqc.jp');
+    $response->headers->set('Content-type','application/json; charset=UTF-8');
     return $response;
   }
 

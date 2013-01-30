@@ -119,18 +119,18 @@ div#main label.cf-group-after span {
 input, textarea, select {
 	padding:3px;
 	border:1px solid #ccc;
-	background:#ffffff url(../images/field-bg-top.gif) repeat-x top left;
+	/*background:#ffffff url(../images/field-bg-top.gif) repeat-x top left;*/
 	vertical-align:top;
 }
 
 input:hover, textarea:hover, select:hover {
 	border: 1px solid #FFCC00;
-	background:#ffffff url(../images/field-bg-bottom.gif) repeat-x bottom left;
+	/*background:#ffffff url(../images/field-bg-bottom.gif) repeat-x bottom left;*/
 }
 
 input:focus, textarea:focus, select:focus {
 	color:#666;
-	background:#ffffff url(../images/field-bg-bottom.gif) repeat-x bottom left;
+	/*background:#ffffff url(../images/field-bg-bottom.gif) repeat-x bottom left;*/
 }
 
 textarea, input {
@@ -216,7 +216,7 @@ div#main input.backbutton, div#main input.resetbutton, div#main input.sendbutton
 	padding:0.5em 2em;
 	margin: 0;
 	font-size:1.5em;
-	background: #e3e3e3 url(../images/button-bg.gif) repeat-x;
+	/*background: #e3e3e3 url(../images/button-bg.gif) repeat-x;*/
 	border:1px solid #adadad;
 	border-left-color:#ececec;
 	border-top-color:#ececec;
@@ -291,7 +291,7 @@ img.captcha {
 
 img.captcha-reset {
 	vertical-align:text-bottom;
-	background:	url(captcha_reset_white.gif) no-repeat;
+	/*background:	url(captcha_reset_white.gif) no-repeat;*/
 	margin:0 0 2px 3px;
 	width:21px;
 	height:21px;
@@ -463,4 +463,8 @@ input.cf_upload {
 
 *+html img.captcha {
 	margin-bottom:1px!important;
+}
+
+#sendbutton2 {
+  cursor: pointer;
 }
