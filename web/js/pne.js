@@ -8,16 +8,34 @@ var domainValid = false;
 var mailValid = false;
 var enabled = function() {
   if (domainValid && mailValid) {
-    $("#sendbutton2").attr("onclick", "send()");
+    //$("#sendbutton2").attr("onclick", "send()");
     $("#sendbutton2").removeAttr("disabled");
   } else {
-    $("#sendbutton2").removeAttr("onclick");
+    //$("#sendbutton2").removeAttr("onclick");
     $("#sendbutton2").attr("disabled", "true");
   }
 };
 
 $('#sendbutton2').click( function() {
   send();
+});
+
+$('*[name=mode]').click( function() {
+  var mode = $(this).attr('value');
+  $('.mode-hide').hide();
+  switch (mode) {
+    case 'plane':
+      $('.plane-mode').show();
+      break;
+    case 'business':
+      $('.business-mode').show();
+      break;
+    case 'game':
+      $('.game-mode').show();
+      break;
+    default:
+      $('.plane-mode').show();
+  }
 });
 
 $(function(){
@@ -69,7 +87,7 @@ function send() {
     $.ajax({
         type: "POST",
         url: domainUrl + "api/sns/apply",
-        data: "domain=" + $("#domain-form").val() + '.' + domain + "&email=" + $("#mail-form").val(),
+        data: "domain=" + $("#domain-form").val() + '.' + domain + "&email=" + $("#mail-form").val() + "&options=mode:" + $("input[name=mode]:checked").val(),
         dataType: "json",
         success: function(json){
           if (json.result == true){

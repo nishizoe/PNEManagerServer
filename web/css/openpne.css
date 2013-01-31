@@ -133,7 +133,7 @@ input:focus, textarea:focus, select:focus {
 	/*background:#ffffff url(../images/field-bg-bottom.gif) repeat-x bottom left;*/
 }
 
-textarea, input {
+input[type=text] {
 	width:400px;
 }
 
@@ -467,4 +467,25 @@ input.cf_upload {
 
 #sendbutton2 {
   cursor: pointer;
+}
+
+.mode-option {
+  float: left;
+  padding-left: 100px;
+}
+
+.clear-float {
+  float: both;
+  margin-bottom: 20px;
+}
+
+.mode-description {
+  width: 380px;
+  margin-left: 250px;
+  margin-top: -5px;
+  font-size: small;
+}
+
+.business-mode, .game-mode {
+  display: none;
 }

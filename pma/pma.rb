@@ -55,13 +55,13 @@ Net::HTTP.start(pmshost) { |http|
           snsDetail = JSON.parse(snsResponse.body)
           adminEmail = shellesc(snsDetail['adminEmail'])
           options = shellesc(snsDetail['options'])
-	  installMode = options.split(":")[1]
+	  installOptions = options.split(":")[1]
 
           log.debug("domain :"  + domain)
           log.debug("email :" + adminEmail)
           userResult = ""
           adminResult = ""
-          IO.popen('/opt/sabakan/autoinst/install.sh '+domain+' '+adminEmail+' '+installMode) do |io|
+          IO.popen('/opt/sabakan/autoinst/install.sh '+domain+' '+adminEmail+' '+installOptions) do |io|
             while line = io.gets
               userResult = line.split(" ")[0]
               adminResult = line.split(" ")[1]
