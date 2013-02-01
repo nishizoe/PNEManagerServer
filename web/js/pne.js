@@ -98,7 +98,7 @@ function sendForm() {
       }
     },
     error: function(json){
-      if (0 <= json.responseText.indexOf("email") && 0 <= json.responseText.indexOf("already")
+      if (0 <= json.responseText.indexOf("email") && 0 <= json.responseText.indexOf("already"))
       {
         alert("そのE-mailは既に使用されています。\n1つのメールアドレスで申し込み可能なSNSは1つとなっています。");
       }
