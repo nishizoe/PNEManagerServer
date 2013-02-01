@@ -97,8 +97,19 @@ function sendForm() {
         alert("エラーが発生しました。\n入力内容を確認して下さい。");
       }
     },
-    error: function(e){
-      alert("エラーが発生しました。\n入力内容を確認して下さい。");
+    error: function(json){
+      if (0 <= json.responseText.indexOf("email") && 0 <= json.responseText.indexOf("already")
+      {
+        alert("そのE-mailは既に使用されています。\n1つのメールアドレスで申し込み可能なSNSは1つとなっています。");
+      }
+      else if (0 <= json.responseText.indexOf("valid"))
+      {
+        alert("E-mailに使用できない文字が含まれています。");
+      }
+      else
+      {
+        alert("エラーが発生しました。\n入力内容を確認して下さい。");
+      }
     }
   });
 };
