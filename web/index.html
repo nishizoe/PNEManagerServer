@@ -1,62 +1,120 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<title>Open PNE|無料からはじめる会員制コミュニティ運営ツール</title>
-<style type="text/css">
-body {
-	color:#666666;
-}
-#wrapper {
-	text-align: center;
-	padding: 15px;
-	width:800px;
-	margin:0 auto;
-}
-.btn {
-	display:block;
-	text-indent: 100%;
-	white-space: nowrap;
-	overflow: hidden;
-	width:400px;
-	margin-top: 50px;
-	margin-right: auto;
-	margin-bottom: 30px;
-	margin-left: auto;
-}
-.btn a {
-	display:block;
-	background-image: url(img/btn.jpg);
-	height: 64px;
-	width: 400px;
-	background-position: 0px 0px;
-	-moz-transition: all 0.08s ease-in-out 0;
-	-webkit-transition: all 0.08s ease-in-out 0;
-}
-.btn a:hover {
-	background-position: 0px -64px;
-}
+  <head>
+    <meta charset="utf-8">
+    <title>OpenPNE SNS 申し込みフォーム</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Responsive HTML template for Your company">
+    <meta name="author" content="Oskar Żabik (oskar.zabik@gmail.com)">
 
-.info {
-	font-size: 12px;
-	margin:30px 0;
-}
-.text01 {
-	font-size: 14px;
-	font-weight: bold;
-}
-</style>
-</head>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
 
-<body>
-<div id="wrapper"> <img src="img/logo.jpg" alt="Open PNE" /> <img src="img/main_copy.jpg" alt="無料からはじめる会員制コミュニティ運営ツール|大切な仲間や友人と安心・安全のネットスペースをつくりませんか？" /> <img src="img/point.jpg" alt="会員限定のコミュニティ、無料で始められる、メルマガも発信可能" />
-		<div class="btn"><a href="form.html">無料登録</a></div>
-		<div class="info">
-				<p class="text01">ベータ版ユーザー登録受付中</p>
-        			<p class="text01">クローズドベータのお問い合わせは手嶋（<a href="https://twitter.com/tejima">@tejima</a>）まで</p>
-				<p>2012年5月正式バージョンリリース予定</p>
-		</div>
-</div>
-</body>
+    <link rel="stylesheet" href="css/typica-login.css">
+    <link rel="shortcut icon" href="favicon.ico">
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="index.html"><img src="img/logo.jpg" alt="OpenPNE" width="70px"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+        	<div class="span6">
+        		<div class="register-info-wraper">
+        			<div id="register-info">
+				        <!--<h1>無料</h1><h2>から</h2><h1>はじめる<br />会員制コミュニティ</h1><h2>運営ツール</h2>-->
+				        <h1>無料からはじめる<br />会員制コミュニティ運営ツール</h1>
+					<br /><br /><br />
+        				<ul>
+					  <li>会員限定のコミュニティ</li>
+					  <li>無料で始められる</li>
+					  <li>メルマガも発信可能</li>
+        				</ul>
+        			</div>
+        		</div>
+
+        	</div>
+
+        	<div class="span6">
+			<div id="register-wraper">
+			    <div id="register-form" class="form">
+				<legend>Register to <span class="blue">cqc.jp</span></legend>
+			    
+				<div class="body">
+					<div class="left">
+					  <span>Domain</span>
+					</div>
+					<input id="domain-form" class="input-huge" type="text"><br />
+					<div id="available">&nbsp;</div>
+					<!-- email -->
+					<label class="left">E-mail</label>
+					<input id="mail-form" class="input-huge" type="text">
+					<!-- mode -->
+          <div class="options">
+            <label class="left" id="mode-select">Mode Select</label>
+            <select id="select-mode" name="mode">
+              <option value="plane" selected>プレーン</option><br />
+              <option value="business"> ビジネス</option><br />
+              <option value="game">  ゲーム</option><br />
+            </select>
+            <div id="mode-description">
+              <span id="plane-mode">
+              基本的なモードです。<br />
+              ・opSkinThemePlugin<br />
+              ・opTimelinePlugin<br />
+              ・opLikePlugin
+              </span>
+              <span id="business-mode">
+              ビジネス向けのモードです。<br />
+              プレーンに以下を追加します。<br />
+              ・opDiaryPlugin<br />
+              ・opAutoFriendPlugin<br />
+              ・opUploadFilePlugin<br />
+              ・opMessagePlugin
+              </span>
+              <span id="game-mode">
+              ゲームコミュニティ向けのモードです。<br />
+              プレーンに以下を追加します。<br />
+              ・opDiaryPlugin<br />
+              ・opAutoFriendPlugin<br />
+              ・opMessagePlugin
+              </span>
+            </div>
+            <br /><br />
+            <div>
+              <a id="mode-image-link" href="img/plane.png"><img id="mode-image" src="img/plane.png"></a>
+            </div>
+          </div>
+
+				</div>
+			    
+				<div class="footer">
+				    <button class="btn btn-success" id="sendbutton2" disabled="disabled">Register</button>
+				</div>
+			    </div>
+			</div>
+        	</div>
+        </div>
+    </div>
+
+    <script type="text/javascript" charset="UTF-8" src="js/jquery.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="js/bootstrap.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="js/backstretch.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="js/typica-login.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="js/pne.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="js/ribbon.js"></script>
+  </body>
 </html>
