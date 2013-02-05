@@ -70,6 +70,11 @@ PMSApiBundle_sns_setpass:
     pattern:  /sns/setpass
     defaults: { _controller: PMSApiBundle:Sns:setpass }
 
+PMSApiBundle_sns_delete:
+    pattern:  /sns/delete
+    defaults: { _controller: PMSApiBundle:Sns:delete }
+
+
 # sns
 PMSApiBundle_account_index:
     pattern:  /account

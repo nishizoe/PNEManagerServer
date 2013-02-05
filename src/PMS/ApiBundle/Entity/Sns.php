@@ -10,7 +10,7 @@ use PMS\ApiBundle\Entity\Account;
  * PMS\ApiBundle\Entity\Sns
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PMS\ApiBundle\Entity\SnsRepository")
  */
 class Sns
 {

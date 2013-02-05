@@ -175,4 +175,28 @@ class SnsController extends BaseApiActionController
         return $response;
     }
 
+    public function deleteAction()
+    {
+      $response = $this->renderJson(array('result' => true));
+
+      $params = $this->getRequest()->request;
+
+      $domain = $params->get('domain');
+
+      $em = $this->getDoctrine()->getEntityManager();
+      $snsRepository = $em->getRepository('PMSApiBundle:Sns');
+
+      if (!$snsRepository->existsByDomain($domain))
+      {
+        return $this->renderJson(array('result' => false));
+      }
+
+      if (!$snsRepository->deleteByDomain($domain))
+      {
+        return $this->renderJson(array('result' => false));
+      }
+
+      return $this->renderJson(array('result' => true));
+    }
+
 }
