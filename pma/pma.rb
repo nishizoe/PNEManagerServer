@@ -27,11 +27,11 @@ end
 
 FileUtils.touch('/tmp/.pmalock')
 
-pmshost = 'pne.cqc.jp'
+pmshost = 'cqc.jp'
 #pmahost = `hostname`.chop
 pmahost = 'pne.cqc.jp'
 
-installDomains = Dir::entries('/var/www/sns/') - ['.', '..', 'munin.example.com', 'stopped', 'stoppedSNS']
+installDomains = Dir::entries('/var/www/sites/') - ['.', '..', 'munin.example.com', 'stopped', 'stoppedSNS', 'kick.smt.cqc.jp', 'PNEManagerServer', 'smt.cqc.jp', 'timeline.cqc.jp', 'pne.cqc.jp', 'symfony2.cqc.jp', 'cqc.jp', '_back_pne.cqc.jp', 'download?v=Symfony_Standard_Vendors_2.1.7.tgz']
 # install or delete snss
 Net::HTTP.start(pmshost) { |http|
   req = Net::HTTP::Get.new('/api/server/detail?host='+pmahost)
@@ -55,13 +55,13 @@ Net::HTTP.start(pmshost) { |http|
           snsDetail = JSON.parse(snsResponse.body)
           adminEmail = shellesc(snsDetail['adminEmail'])
           options = shellesc(snsDetail['options'])
-	  installOptions = options.split(":")[1]
+	  installMode = options.split(":")[1]
 
           log.debug("domain :"  + domain)
           log.debug("email :" + adminEmail)
           userResult = ""
           adminResult = ""
-          IO.popen('/opt/sabakan/autoinst/install.sh '+domain+' '+adminEmail+' '+installOptions) do |io|
+          IO.popen('/opt/sabakan/autoinst/install.sh '+domain+' '+adminEmail+' '+installMode) do |io|
             while line = io.gets
               userResult = line.split(" ")[0]
               adminResult = line.split(" ")[1]
