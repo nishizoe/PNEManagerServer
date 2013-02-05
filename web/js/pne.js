@@ -51,7 +51,7 @@ $(function(){
         dataType: "json",
         success: function(msg) {
           if (msg.result == true) {
-            $("#available").html("使用可能です  http://" + $("#domain-form").val() + ".cqc.jp");
+            $("#available").html("使用可能です  http://" + $("#domain-form").val() + "." + domain);
             $("#available").css("color", "green");
             domainValid = true;
             enabled();
