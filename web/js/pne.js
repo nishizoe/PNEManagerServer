@@ -1,4 +1,4 @@
-var domain = "cqc.jp";
+var domain = location.hostname;
 
 var $ = jQuery.noConflict();
 var domainUrl = location.protocol + '//' + location.hostname + '/';
