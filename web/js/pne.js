@@ -1,15 +1,4 @@
-function createPMSDomain()
-{
-  strs = location.hostname.split(".");
-  strIndexSize = strs.length - 1;
-
-  tld = strs[strIndexSize];
-  sld = strs[strIndexSize - 1];
-
-  return sld + "." + tld;
-}
-
-domain = createPMSDomain();
+var domain = location.hostname;
 
 var $ = jQuery.noConflict();
 var domainUrl = location.protocol + '//' + location.hostname + '/';
