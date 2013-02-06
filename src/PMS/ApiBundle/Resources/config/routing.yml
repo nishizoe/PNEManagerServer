@@ -24,6 +24,11 @@ PMSApiBundle_domain_available:
     pattern:  /domain/available
     defaults: { _controller: PMSApiBundle:Domain:available }
 
+PMSApiBundle_domain_delete:
+    pattern:  /domain/delete
+    defaults: { _controller: PMSApiBundle:Domain:delete }
+
+
 # server
 PMSApiBundle_server_index:
     pattern:  /server

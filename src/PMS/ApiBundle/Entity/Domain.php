@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * PMS\ApiBundle\Entity\Domain
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PMS\ApiBundle\Entity\DomainRepository")
  */
 class Domain
 {

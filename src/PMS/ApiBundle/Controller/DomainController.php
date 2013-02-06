@@ -3,7 +3,6 @@
 namespace PMS\ApiBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use PMS\ApiBundle\Entity\Domain;
 use PMS\ApiBundle\Entity\Sns;
 
@@ -13,11 +12,12 @@ class DomainController extends BaseApiActionController
   public function actionList()
   {
     return array(
-      'action' => array(
-        'list',
-        'add',
-        'available',
-      )
+        'action' => array(
+            'list',
+            'add',
+            'available',
+            'delete',
+        )
     );
   }
 
@@ -29,8 +29,8 @@ class DomainController extends BaseApiActionController
     foreach ($domains as $domain)
     {
       $list[] = array(
-        'domain' => $domain->getDomain(),
-        'type' => $domain->getType()
+          'domain' => $domain->getDomain(),
+          'type' => $domain->getType()
       );
     }
 
@@ -43,9 +43,9 @@ class DomainController extends BaseApiActionController
     if (is_null($params->get('domain')))
     {
       return $this->renderErrorJson(400, array(
-        'param' => array(
-          'domain'
-        )
+          'param' => array(
+              'domain'
+          )
       ));
     }
 
@@ -73,8 +73,30 @@ class DomainController extends BaseApiActionController
     $response = $this->renderJson(array('result' => $result));
     //$response->headers->set('Access-Control-Allow-Origin', $this->container->getParameter('deploy_domain'));
     $response->headers->set('Access-Control-Allow-Origin', 'http://cqc.jp');
-    $response->headers->set('Content-type','application/json; charset=UTF-8');
+    $response->headers->set('Content-type', 'application/json; charset=UTF-8');
     return $response;
+  }
+
+  public function deleteAction()
+  {
+    $params = $this->getRequest()->request;
+
+    $domain = $params->get('domain', 'test123.pne.jp');
+
+    $em = $this->getDoctrine()->getEntityManager();
+    $domainRepository = $em->getRepository('PMSApiBundle:Domain');
+
+    if (!$domainRepository->existsByDomain($domain))
+    {
+      return $this->renderJson(array('result' => false, 'message' => "指定した{$domian}は存在しません"));
+    }
+
+    if (!$domainRepository->deleteByDomain($domain))
+    {
+      return $this->renderJson(array('result' => false, 'message' => "指定した{$domain}のデータを削除できませんでした"));
+    }
+
+    return $this->renderJson(array('result' => true));
   }
 
 }
