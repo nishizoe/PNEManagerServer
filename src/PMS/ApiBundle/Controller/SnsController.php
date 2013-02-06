@@ -186,12 +186,12 @@ class SnsController extends BaseApiActionController
 
       if (!$snsRepository->existsByDomain($domain))
       {
-        return $this->renderJson(array('result' => false));
+        return $this->renderJson(array('result' => false, 'message' => "指定した{$domian}は存在しません"));
       }
 
       if (!$snsRepository->deleteByDomain($domain))
       {
-        return $this->renderJson(array('result' => false));
+        return $this->renderJson(array('result' => false, 'message' => "指定した{$domain}のデータを削除できませんでした"));
       }
 
       return $this->renderJson(array('result' => true));
