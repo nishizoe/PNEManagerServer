@@ -177,8 +177,6 @@ class SnsController extends BaseApiActionController
 
     public function deleteAction()
     {
-      $response = $this->renderJson(array('result' => true));
-
       $params = $this->getRequest()->request;
 
       $domain = $params->get('domain');
