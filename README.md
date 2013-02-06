@@ -85,6 +85,33 @@ Server Installation を実行した後ソースを取得する．ブランチは
 
 実際のAPIのりようなどは bin/test\_deploy\_scenario.sh のファイルが参考になる．
 
+
+デプロイ時に間違ってデータを登録してしまったら
+-------------------------------------
+間違ってデータを登録してしまったら、Domain削除APIを使用して削除する
+
+登録したDomainの確認
+
+     curl "http://cqc.jp/api/domain/list"
+
+Domainを削除する
+
+     curl "http://a3.cqc.jp/api/domain/delete" -d "domain=[削除するDomain]"
+
+
+SNSも同様に削除することができる
+
+登録したSNSの確認
+
+     curl "http://cqc.jp/api/sns/list"
+
+SNSを削除する
+
+     curl "http://a3.cqc.jp/api/sns/delete" -d "domain=[削除するDomain]"
+
+※2/6時点では、DBのデータだけを削除する
+
+
 Deployment
 ----------
 
