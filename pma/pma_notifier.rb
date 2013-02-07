@@ -7,8 +7,11 @@ require 'syslog'
 
 log = Logger.new(STDOUT)
 
-pmshost = 'cqc.jp'
-pmahost = 'cqc.jp'
+#pmshost = 'cqc.jp'
+#pmahost = 'cqc.jp'
+
+pmshost = '[domain]'
+pmahost = '[domain]'
 
 Syslog.open();
 Syslog.info('start pma_notifier');

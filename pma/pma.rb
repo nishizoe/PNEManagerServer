@@ -27,9 +27,11 @@ end
 
 FileUtils.touch('/tmp/.pmalock')
 
-pmshost = 'cqc.jp'
-#pmahost = `hostname`.chop
-pmahost = 'pne.cqc.jp'
+#pmshost = 'cqc.jp'
+#pmahost = 'cqc.jp'
+
+pmshost = '[domain]'
+pmahost = '[domain]'
 
 #installDomains = Dir::entries('/var/www/sites/') - ['.', '..', 'kick.smt.cqc.jp', 'PNEManagerServer', 'smt.cqc.jp', 'timeline.cqc.jp', 'pne.cqc.jp', 'symfony2.cqc.jp', 'cqc.jp', '_back_pne.cqc.jp', 'download?v=Symfony_Standard_Vendors_2.1.7.tgz']
 
