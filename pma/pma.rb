@@ -31,7 +31,13 @@ pmshost = 'cqc.jp'
 #pmahost = `hostname`.chop
 pmahost = 'pne.cqc.jp'
 
-installDomains = Dir::entries('/var/www/sites/') - ['.', '..', 'munin.example.com', 'stopped', 'stoppedSNS', 'kick.smt.cqc.jp', 'PNEManagerServer', 'smt.cqc.jp', 'timeline.cqc.jp', 'pne.cqc.jp', 'symfony2.cqc.jp', 'cqc.jp', '_back_pne.cqc.jp', 'download?v=Symfony_Standard_Vendors_2.1.7.tgz']
+#installDomains = Dir::entries('/var/www/sites/') - ['.', '..', 'kick.smt.cqc.jp', 'PNEManagerServer', 'smt.cqc.jp', 'timeline.cqc.jp', 'pne.cqc.jp', 'symfony2.cqc.jp', 'cqc.jp', '_back_pne.cqc.jp', 'download?v=Symfony_Standard_Vendors_2.1.7.tgz']
+
+installDomains = Dir::entries('/var/www/sites/') - ['.', '..', pmshost]
+
+installScript = Dir::pwd + "/autoinst/install.sh"
+deleteScript = Dir::pwd + "/autoinst/sns_delete.sh"
+
 # install or delete snss
 Net::HTTP.start(pmshost) { |http|
   req = Net::HTTP::Get.new('/api/server/detail?host='+pmahost)
@@ -90,7 +96,7 @@ Net::HTTP.start(pmshost) { |http|
         snsResponse = http.request(req)
         snsDetail = JSON.parse(snsResponse.body)
         if snsDetail['status'] == 'deleted' then
-          IO.popen('/opt/sabakan/autoinst/sns_delete.sh ' + domain) do |io|
+          IO.popen(' ' + domain) do |io|
           end
           log.info("sns delete")
         else

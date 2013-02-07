@@ -1,0 +1,6 @@
+DBUSER=openpne
+DBPASS=password
+DBHOST=
+DBPORT=
+DBSOCK=
+

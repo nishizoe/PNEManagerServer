@@ -13,3 +13,4 @@ app/config/parameters.ini
 
 *.swp
 nbproject
+pma/autoinst/db.conf
