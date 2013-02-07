@@ -9,8 +9,8 @@ G_INSTALL_OPTIONS=$3
 #G_TARGET=NULL
 G_TARGET="master"
 G_SNSDIR=/var/www/sites
-G_DBCONF_FILE=/opt/sabakan/autoinst/db.conf
-G_USED_DOMAIN_LIST_FILE=/opt/sabakan/autoinst/used_domain_list.txt
+G_DBCONF_FILE=/var/www/sites/DOMAIN/autoinst/db.conf
+G_USED_DOMAIN_LIST_FILE= /var/www/sites/DOMAIN/autoinst/used_domain_list.txt
 G_EXEC_USER="admin"
 
 function pne_log(){
@@ -375,8 +375,8 @@ set_install_options
 
 php symfony project:clear-controllers
 
-echo "$G_HOSTNAME" >> /opt/sabakan/autoinst/used_domain_list.txt
-echo "$G_HOSTNAME" >> /opt/sabakan/autoinst/installed_domain_list.txt
+echo "$G_HOSTNAME" >> /var/www/sites/DOMAIN/autoinst/used_domain_list.txt
+echo "$G_HOSTNAME" >> /var/www/sites/DOMAIN/autoinst/installed_domain_list.txt
 
 pne_log "OpenPNE installation and settings is completed" "info"
 echo "${member_pass} ${admin_pass}"
