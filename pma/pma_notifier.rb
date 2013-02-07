@@ -10,8 +10,8 @@ log = Logger.new(STDOUT)
 #pmshost = 'cqc.jp'
 #pmahost = 'cqc.jp'
 
-pmshost = '[domain]'
-pmahost = '[domain]'
+pmshost = 'pms_domain'
+pmahost = 'pms_domain'
 
 Syslog.open();
 Syslog.info('start pma_notifier');
