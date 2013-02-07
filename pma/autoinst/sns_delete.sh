@@ -4,7 +4,7 @@ G_HOSTNAME=$1
 G_DATABASE=`echo "${G_HOSTNAME}" | sed -e 's/[\.-]/_/g'`
 G_ESCAPED_HOSTNAME=`echo "${G_HOSTNAME}" | sed -e 's/\./\\\./g'`
 
-G_DBCONF_FILE=/var/www/sites/SITE_DOMAIN/autoinst/db.conf
+G_DBCONF_FILE=/var/www/sites/SITE_DOMAIN/pma/autoinst/db.conf
 
 function pne_log(){
   local msg=$1
@@ -97,6 +97,6 @@ sed -i "/\# ${G_ESCAPED_HOSTNAME}/N;//d" /etc/aliases.openpne
 G_DBARGS=`get_db_args`
 mysqladmin $G_DBARGS -f drop $G_DATABASE
 
-sed -i "/$G_HOSTNAME/d" /var/www/sites/SITE_DOMAIN/autoinst/installed_domain_list.txt
+sed -i "/$G_HOSTNAME/d" /var/www/sites/SITE_DOMAIN/pma/autoinst/installed_domain_list.txt
 
 rm -rf /var/www/sns/$G_HOSTNAME
