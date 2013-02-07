@@ -67,14 +67,14 @@ Net::HTTP.start(pmshost) { |http|
           log.debug("email :" + adminEmail)
           userResult = ""
           adminResult = ""
-          IO.popen('/opt/sabakan/autoinst/install.sh '+domain+' '+adminEmail+' '+installMode) do |io|
+          IO.popen(installScript + ' '+domain+' '+adminEmail+' '+installMode) do |io|
             while line = io.gets
               userResult = line.split(" ")[0]
               adminResult = line.split(" ")[1]
             end
             if userResult == nil || adminResult == nil then
               log.error("fail to install " + domain)
-              IO.popen('/opt/sabakan/autoinst/sns_delete.sh '+domain) do |io|
+              IO.popen(deleteScript ' '+domain) do |io|
                 while line = io.gets
                 end
               end
