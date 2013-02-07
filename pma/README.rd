@@ -16,3 +16,7 @@ gem の json パッケージ
 pma.rb : PMS から SNS サーバ情報を取得して来て同期を行う
 pma_notifier.rb : SNS サーバ情報を PMS 側に通知する
 pma_register.rb : SNS 設置サーバとして PMS 側に通知を行う
+
+= インストールスクリプトについて
+
+インストールスクリプトはautoinstディレクトリに入っているものを使用します
