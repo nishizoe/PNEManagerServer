@@ -9,8 +9,8 @@ G_INSTALL_OPTIONS=$3
 #G_TARGET=NULL
 G_TARGET="master"
 G_SNSDIR=/var/www/sites
-G_DBCONF_FILE=/var/www/sites/SITE_DOMAIN/pma/autoinst/db.conf
-G_USED_DOMAIN_LIST_FILE= /var/www/sites/SITE_DOMAIN/pma/autoinst/used_domain_list.txt
+G_DBCONF_FILE=/var/www/sites/DOMAIN/autoinst/db.conf
+G_USED_DOMAIN_LIST_FILE= /var/www/sites/DOMAIN/autoinst/used_domain_list.txt
 G_EXEC_USER="admin"
 
 function pne_log(){
@@ -300,7 +300,6 @@ function set_install_options(){
   mysql $ARGS <<EOF
 INSERT INTO plugin (name, is_enabled, created_at, updated_at) values ("opTimelinePlugin", "1", NOW(), NOW()), ("opLikePlugin", "1", NOW(), NOW()), ("opSkinThemePlugin", "1", NOW(), NOW()), ("opSkinBasicPlugin", "0", NOW(), NOW()), ("opDiaryPlugin", "0", NOW(), NOW()), ("opAutoFriendPlugin", "0", NOW(), NOW()), ("opUploadFilePlugin", "0", NOW(), NOW()), ("opMessagePlugin", "0", NOW(), NOW()), ("opChatTaskPlugin", "0", NOW(), NOW());
 INSERT INTO sns_config (name, value) values ("Theme_used", "united"), ("sns_name", "MySNS");
-UPDATE community SET name = "管理コミュニティ" WHERE id = 1;
 EOF
 
   case $G_INSTALL_OPTIONS in
@@ -376,8 +375,8 @@ set_install_options
 
 php symfony project:clear-controllers
 
-echo "$G_HOSTNAME" >> /var/www/sites/SITE_DOMAIN/pma/autoinst/used_domain_list.txt
-echo "$G_HOSTNAME" >> /var/www/sites/SITE_DOMAIN/pma/autoinst/installed_domain_list.txt
+echo "$G_HOSTNAME" >> /var/www/sites/DOMAIN/autoinst/used_domain_list.txt
+echo "$G_HOSTNAME" >> /var/www/sites/DOMAIN/autoinst/installed_domain_list.txt
 
 pne_log "OpenPNE installation and settings is completed" "info"
 echo "${member_pass} ${admin_pass}"

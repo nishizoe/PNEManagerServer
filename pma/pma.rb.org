@@ -28,16 +28,10 @@ end
 FileUtils.touch('/tmp/.pmalock')
 
 pmshost = 'cqc.jp'
-pmahost = 'cqc.jp'
+#pmahost = `hostname`.chop
+pmahost = 'pne.cqc.jp'
 
-
-#installDomains = Dir::entries('/var/www/sites/') - ['.', '..', 'kick.smt.cqc.jp', 'PNEManagerServer', 'smt.cqc.jp', 'timeline.cqc.jp', 'pne.cqc.jp', 'symfony2.cqc.jp', 'cqc.jp', '_back_pne.cqc.jp', 'download?v=Symfony_Standard_Vendors_2.1.7.tgz']
-
-installDomains = Dir::entries('/var/www/sites/') - ['.', '..', pmshost]
-
-installScript = Dir::pwd + "/autoinst/install.sh"
-deleteScript = Dir::pwd + "/autoinst/sns_delete.sh"
-
+installDomains = Dir::entries('/var/www/sites/') - ['.', '..', 'munin.example.com', 'stopped', 'stoppedSNS', 'kick.smt.cqc.jp', 'PNEManagerServer', 'smt.cqc.jp', 'timeline.cqc.jp', 'pne.cqc.jp', 'symfony2.cqc.jp', 'cqc.jp', '_back_pne.cqc.jp', 'download?v=Symfony_Standard_Vendors_2.1.7.tgz']
 # install or delete snss
 Net::HTTP.start(pmshost) { |http|
   req = Net::HTTP::Get.new('/api/server/detail?host='+pmahost)
@@ -67,14 +61,14 @@ Net::HTTP.start(pmshost) { |http|
           log.debug("email :" + adminEmail)
           userResult = ""
           adminResult = ""
-          IO.popen(installScript + ' '+domain+' '+adminEmail+' '+installMode) do |io|
+          IO.popen('/opt/sabakan/autoinst/install.sh '+domain+' '+adminEmail+' '+installMode) do |io|
             while line = io.gets
               userResult = line.split(" ")[0]
               adminResult = line.split(" ")[1]
             end
             if userResult == nil || adminResult == nil then
               log.error("fail to install " + domain)
-              IO.popen(deleteScript ' '+domain) do |io|
+              IO.popen('/opt/sabakan/autoinst/sns_delete.sh '+domain) do |io|
                 while line = io.gets
                 end
               end
@@ -90,14 +84,13 @@ Net::HTTP.start(pmshost) { |http|
         end
       }
   
-=begin
       deleteTargetDomains = installDomains - expectedDomains
       deleteTargetDomains.each { |domain|
         req = Net::HTTP::Get.new('/api/sns/detail?domain='+domain)
         snsResponse = http.request(req)
         snsDetail = JSON.parse(snsResponse.body)
         if snsDetail['status'] == 'deleted' then
-          IO.popen(' ' + domain) do |io|
+          IO.popen('/opt/sabakan/autoinst/sns_delete.sh ' + domain) do |io|
           end
           log.info("sns delete")
         else
@@ -106,7 +99,6 @@ Net::HTTP.start(pmshost) { |http|
           http.request_post('/api/server/event', 'eventType=error&message=deletefailed')
         end
       }
-=end
     end
   else
     Syslog.err(response.body)
