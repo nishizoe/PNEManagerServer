@@ -9,8 +9,8 @@ G_INSTALL_OPTIONS=$3
 #G_TARGET=NULL
 G_TARGET="master"
 G_SNSDIR=/var/www/sites
-G_DBCONF_FILE=/var/www/sites/ec2-46-51-229-175.ap-northeast-1.compute.amazonaws.com/pma/autoinst/db.conf
-G_USED_DOMAIN_LIST_FILE= /var/www/sites/ec2-46-51-229-175.ap-northeast-1.compute.amazonaws.com/pma/autoinst/used_domain_list.txt
+G_DBCONF_FILE=/var/www/sites/a3.cqc.jp/pma/autoinst/db.conf
+G_USED_DOMAIN_LIST_FILE=/var/www/sites/a3.cqc.jp/pma/autoinst/used_domain_list.txt
 G_EXEC_USER="admin"
 
 function pne_log(){
@@ -111,8 +111,6 @@ function get_pne_from_git(){
   pne_log "src get from ${PNESRCREPOS} using git"
 
   cd $G_SNSDIR
-echo "git clone suruyo"
-pne_log "git clone suruyo"
   git clone $PNESRCREPOS $G_HOSTNAME
   if [ ! -e $G_HOSTNAME ]; then
     pne_log "Fail to get OpenPNE code" "error"
@@ -160,7 +158,7 @@ function exec_pne_install(){
 function install_pne(){
   pne_log "start install OpenPNE to ${G_SNSDIR}/${G_HOSTNAME}"
 
-  local PNESRC=/opt/tejimaya/openpne/openpne3_gyoen.pne.jp
+  local PNESRC=/var/www/sites/a3.cqc.jp/pma/openpne3_gyoen.pne.jp
   LOGFILE=$G_DATABASE.log
 
   if [ -e "${G_SNSDIR}/${G_HOSTNAME}" ]; then
@@ -373,8 +371,8 @@ set_install_options
 
 php symfony project:clear-controllers
 
-echo "$G_HOSTNAME" >> /var/www/sites/ec2-46-51-229-175.ap-northeast-1.compute.amazonaws.com/pma/autoinst/used_domain_list.txt
-echo "$G_HOSTNAME" >> /var/www/sites/ec2-46-51-229-175.ap-northeast-1.compute.amazonaws.com/pma/autoinst/installed_domain_list.txt
+echo "$G_HOSTNAME" >> /var/www/sites/a3.cqc.jp/pma/autoinst/used_domain_list.txt
+echo "$G_HOSTNAME" >> /var/www/sites/a3.cqc.jp/pma/autoinst/installed_domain_list.txt
 
 pne_log "OpenPNE installation and settings is completed" "info"
 echo "${member_pass} ${admin_pass}"

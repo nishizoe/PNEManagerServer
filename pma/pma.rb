@@ -27,9 +27,9 @@ end
 
 FileUtils.touch('/tmp/.pmalock')
 
-pmshost = 'ec2-46-51-229-175.ap-northeast-1.compute.amazonaws.com'
-pmahost = 'ec2-46-51-229-175.ap-northeast-1.compute.amazonaws.com'
-installScriptPlace = '/var/www/sites/ec2-46-51-229-175.ap-northeast-1.compute.amazonaws.com/pma'
+pmshost = 'a3.cqc.jp'
+pmahost = 'a3.cqc.jp'
+installScriptPlace = '/var/www/sites/a3.cqc.jp/pma'
 
 
 #installDomains = Dir::entries('/var/www/sites/') - ['.', '..', 'kick.smt.cqc.jp', 'PNEManagerServer', 'smt.cqc.jp', 'timeline.cqc.jp', 'pne.cqc.jp', 'symfony2.cqc.jp', 'cqc.jp', '_back_pne.cqc.jp', 'download?v=Symfony_Standard_Vendors_2.1.7.tgz']
