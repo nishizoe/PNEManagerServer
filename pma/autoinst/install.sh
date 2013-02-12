@@ -158,7 +158,7 @@ function exec_pne_install(){
 function install_pne(){
   pne_log "start install OpenPNE to ${G_SNSDIR}/${G_HOSTNAME}"
 
-  local PNESRC=/var/www/sites/a3.cqc.jp/pma/openpne3_gyoen.pne.jp
+  local PNESRC=/opt/tejimaya/openpne/openpne3_gyoen.pne.jp
   LOGFILE=$G_DATABASE.log
 
   if [ -e "${G_SNSDIR}/${G_HOSTNAME}" ]; then
