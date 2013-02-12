@@ -1,0 +1,28 @@
+Nice:
+  options:
+    charset: utf8
+    collate: utf8_bin
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    member_id:
+      type: integer(4)
+      notnull: true
+    foreign_table:
+      type: char(1)
+      notnull: true
+    foreign_id:
+      type: integer(4)
+      notnull: true
+  relations:
+    Member:
+      local: member_id
+      foreign: id
+      onDelete: cascade
+  indexes:
+    member_id_foreign_table_foreign_id_UNIQUE:
+      fields: [member_id, foreign_table, foreign_id]
+      type: unique
+  actAs: [Timestampable]

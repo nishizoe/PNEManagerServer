@@ -1,0 +1,5 @@
+limit_user:
+  url: /limit/user.json
+  param: { module: limit, action: user, sf_format: json }
+  requirements: { sf_method: [get] }
+

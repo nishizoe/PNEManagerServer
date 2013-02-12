@@ -1,0 +1,25 @@
+Member:
+  member_3:
+    name: "丑"
+    is_active: 1
+
+MemberConfig:
+  member_3_pc_address:
+    name: "pc_address"
+    value: "ushi@pne.jp"
+    Member: member_3
+
+  member_3_password:
+    name: "password"
+    value: <?php echo md5('password') . "\n"; ?>
+    Member: member_3
+
+  member_3_secret_question:
+    name: "secret_question"
+    value: "5"
+    Member: member_3
+
+  member_3_secret_answer:
+    name: "secret_answer"
+    value: "<?php echo md5('東京都'); ?>"
+    Member: member_3

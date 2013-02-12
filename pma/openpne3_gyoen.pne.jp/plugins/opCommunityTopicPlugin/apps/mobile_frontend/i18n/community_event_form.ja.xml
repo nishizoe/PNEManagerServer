@@ -1,0 +1,87 @@
+<?xml version="1.0" ?>
+<xliff version="1.0">
+  <file original="global" source-language="en" datatype="plaintext">
+    <body>
+      <trans-unit id="1">
+        <source>Name</source>
+        <target>ﾀｲﾄﾙ</target>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>Body</source>
+        <target>詳細</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>Open date</source>
+        <target>開催日時</target>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>Open date comment</source>
+        <target>開催日時補足</target>
+      </trans-unit>
+      <trans-unit id="5">
+        <source>Area</source>
+        <target>開催場所</target>
+      </trans-unit>
+      <trans-unit id="6">
+        <source>Application deadline</source>
+        <target>募集期日</target>
+      </trans-unit>
+      <trans-unit id="7">
+        <source>Capacity</source>
+        <target>募集人数</target>
+      </trans-unit>
+      <trans-unit id="8">
+        <source>Count of Member</source>
+        <target>参加者</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Writer</source>
+        <target>企画者</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Invalid.</source>
+        <target>正しくありません。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Required.</source>
+        <target>必須項目です。</target>
+      </trans-unit>
+   <trans-unit id="">
+        <source>CSRF attack detected.</source>
+        <target>前の画面を読み直して、操作をやり直してください。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Unexpected extra form field named "%field%".</source>
+        <target>正しくありません。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>The form submission cannot be processed. It probably means that you have uploaded a file that is too big.</source>
+        <target>送信に失敗しました。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>The date must be after now.</source>
+        <target>募集期日は今日以降にしてください。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>The open date must be after now.</source>
+        <target>開催日時は今日以降にしてください。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>The application deadline must be before the open date.</source>
+        <target>募集期日は開催日時より後に指定できません。</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Photo 1</source>
+        <target>写真1</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Photo 2</source>
+        <target>写真2</target>
+      </trans-unit>
+      <trans-unit id="">
+        <source>Photo 3</source>
+        <target>写真3</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,7 @@
+homeSuccess:
+  customize:
+    noticeUnreadDiaryComment:
+      template: [diary, cautionUnreadDiaryComment]
+      is_component: true
+      parts:    [information]
+      target:   [bottom]

@@ -1,0 +1,24 @@
+# default rules
+like_search:
+  url: /like/search.json
+  param: { module: like, action: search, sf_format: json }
+  requirements: { sf_method: [get] }
+
+like_post:
+  url: /like/post.json
+  param: { module: like, action: post, sf_format: json }
+  requirements: { sf_method: [post] }
+
+like_delete:
+  url: /like/delete.json
+  param: { module: like, action: delete, sf_format: json }
+  requirements: { sf_method: [post] }
+
+like_list:
+  url: /like/list.json
+  param: { module: like, action: list, sf_format: json }
+  requirements: { sf_method: [get] }
+
+no_like_api:
+  url: /like/*
+  param: { module: default, action: error }

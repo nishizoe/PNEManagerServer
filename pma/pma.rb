@@ -27,16 +27,17 @@ end
 
 FileUtils.touch('/tmp/.pmalock')
 
-pmshost = 'cqc.jp'
-pmahost = 'cqc.jp'
+pmshost = 'ec2-46-51-229-175.ap-northeast-1.compute.amazonaws.com'
+pmahost = 'ec2-46-51-229-175.ap-northeast-1.compute.amazonaws.com'
+installScriptPlace = '/var/www/sites/ec2-46-51-229-175.ap-northeast-1.compute.amazonaws.com/pma'
 
 
 #installDomains = Dir::entries('/var/www/sites/') - ['.', '..', 'kick.smt.cqc.jp', 'PNEManagerServer', 'smt.cqc.jp', 'timeline.cqc.jp', 'pne.cqc.jp', 'symfony2.cqc.jp', 'cqc.jp', '_back_pne.cqc.jp', 'download?v=Symfony_Standard_Vendors_2.1.7.tgz']
 
 installDomains = Dir::entries('/var/www/sites/') - ['.', '..', pmshost]
 
-installScript = Dir::pwd + "/autoinst/install.sh"
-deleteScript = Dir::pwd + "/autoinst/sns_delete.sh"
+installScript = installScriptPlace + "/autoinst/install.sh"
+deleteScript = installScriptPlace + "/autoinst/sns_delete.sh"
 
 # install or delete snss
 Net::HTTP.start(pmshost) { |http|

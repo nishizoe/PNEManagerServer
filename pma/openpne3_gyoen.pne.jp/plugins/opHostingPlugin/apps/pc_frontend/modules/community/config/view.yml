@@ -1,0 +1,7 @@
+homeSuccess:
+  customize:
+    manageCommunity:
+      template: [manage, manageCommunity]
+      parts: [communityHome]
+      target: [before]
+      is_component: true

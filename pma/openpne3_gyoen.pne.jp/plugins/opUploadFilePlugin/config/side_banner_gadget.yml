@@ -1,0 +1,7 @@
+fMenu:
+  caption:
+    ja_JP: "FileUploadメニュー"
+  description:
+    ja_JP: "ナビゲーションにFileUploadメニューを追加します"
+  component: [f, fMenu]
+

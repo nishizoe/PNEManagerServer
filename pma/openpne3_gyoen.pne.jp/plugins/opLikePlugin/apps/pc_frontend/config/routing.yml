@@ -1,0 +1,11 @@
+liked_member_list:
+  url: /like/list/:table/:id
+  param: { module: like, action: memberList }
+  requirements:
+    table: \w+
+    id: \d+
+    sf_method: [get]
+
+no_like_frontend:
+  url: /like/*
+  param: { module: default, action: error }

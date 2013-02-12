@@ -7,11 +7,11 @@ require 'syslog'
 
 log = Logger.new(STDOUT)
 
-pmshost = 'cqc.jp'
-pmahost = 'cqc.jp'
+pmshost = 'ec2-46-51-229-175.ap-northeast-1.compute.amazonaws.com'
+pmahost = 'ec2-46-51-229-175.ap-northeast-1.compute.amazonaws.com'
 
-#pmshost = 'pms_domain'
-#pmahost = 'pms_domain'
+#pmshost = 'ec2-46-51-229-175.ap-northeast-1.compute.amazonaws.com'
+#pmahost = 'ec2-46-51-229-175.ap-northeast-1.compute.amazonaws.com'
 
 Syslog.open();
 Syslog.info('start pma_notifier');

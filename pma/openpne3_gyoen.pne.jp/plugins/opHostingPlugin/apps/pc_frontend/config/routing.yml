@@ -1,0 +1,7 @@
+member_timeline:
+  url: /community/sns_manage
+  param: { module: community, action: sNSManage }
+
+manage_community:
+  url: /manage/community
+  param: { module: manage, action: manageCommunity }
