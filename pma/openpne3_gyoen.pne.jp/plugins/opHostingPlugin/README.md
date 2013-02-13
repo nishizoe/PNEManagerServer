@@ -1,4 +1,0 @@
-opHostingPlugin
-===============
-
-OpenPNEホスティングで使うプラグイン

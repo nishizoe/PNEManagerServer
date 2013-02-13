@@ -1,8 +1,0 @@
-all:
-  stylesheets: [/opCommunityTopicPlugin/css/communityTopic]
-
-smtListCommunitySuccess:
-  layout: smtLayoutSns
-
-smtShowSuccess:
-  layout: smtLayoutGroup
