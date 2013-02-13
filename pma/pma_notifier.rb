@@ -7,8 +7,8 @@ require 'syslog'
 
 log = Logger.new(STDOUT)
 
-pmshost = 'a3.cqc.jp'
-pmahost = 'a3.cqc.jp'
+pmshost = 'a3.xpne.info'
+pmahost = 'a3.xpne.info'
 
 #pmshost = 'ec2-46-51-229-175.ap-northeast-1.compute.amazonaws.com'
 #pmahost = 'ec2-46-51-229-175.ap-northeast-1.compute.amazonaws.com'
