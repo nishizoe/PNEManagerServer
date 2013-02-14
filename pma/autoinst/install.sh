@@ -9,8 +9,8 @@ G_INSTALL_OPTIONS=$3
 #G_TARGET=NULL
 G_TARGET="master"
 G_SNSDIR=/var/www/sites
-G_DBCONF_FILE=/var/www/sites/a3.xpne.info/pma/autoinst/db.conf
-G_USED_DOMAIN_LIST_FILE=/var/www/sites/a3.xpne.info/pma/autoinst/used_domain_list.txt
+G_DBCONF_FILE=/var/www/sites/SITE_DOMAIN/pma/autoinst/db.conf
+G_USED_DOMAIN_LIST_FILE=/var/www/sites/SITE_DOMAIN/pma/autoinst/used_domain_list.txt
 G_EXEC_USER="admin"
 
 function pne_log(){
@@ -158,7 +158,8 @@ function exec_pne_install(){
 function install_pne(){
   pne_log "start install OpenPNE to ${G_SNSDIR}/${G_HOSTNAME}"
 
-  local PNESRC=/opt/tejimaya/openpne/openpne3_gyoen.pne.jp
+  #local PNESRC=/opt/tejimaya/openpne/openpne3_gyoen.pne.jp
+  local PNESRC=OPENPNE
   LOGFILE=$G_DATABASE.log
 
   if [ -e "${G_SNSDIR}/${G_HOSTNAME}" ]; then
@@ -371,8 +372,8 @@ set_install_options
 
 php symfony project:clear-controllers
 
-echo "$G_HOSTNAME" >> /var/www/sites/a3.xpne.info/pma/autoinst/used_domain_list.txt
-echo "$G_HOSTNAME" >> /var/www/sites/a3.xpne.info/pma/autoinst/installed_domain_list.txt
+echo "$G_HOSTNAME" >> /var/www/sites/SITE_DOMAIN/pma/autoinst/used_domain_list.txt
+echo "$G_HOSTNAME" >> /var/www/sites/SITE_DOMAIN/pma/autoinst/installed_domain_list.txt
 
 pne_log "OpenPNE installation and settings is completed" "info"
 echo "${member_pass} ${admin_pass}"
