@@ -22,6 +22,8 @@ $('#select-mode').change( function() {
   $('#plane-mode').hide();
   $('#business-mode').hide();
   $('#game-mode').hide();
+  $('#renrakumou-mode').hide();
+  $('#all-mode').hide();
   switch (mode) {
     case 'plane':
       $('#plane-mode').show();
@@ -31,6 +33,12 @@ $('#select-mode').change( function() {
       break;
     case 'game':
       $('#game-mode').show();
+      break;
+    case 'renrakumou':
+      $('#renrakumou-mode').show();
+      break;
+    case 'all':
+      $('#all-mode').show();
       break;
     default:
       $('#plane-mode').show();
