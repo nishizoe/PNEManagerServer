@@ -28,7 +28,7 @@ end
 FileUtils.touch('/tmp/.pmalock')
 
 pmshost = 'pms_domain'
-pmahost = 'pms_domain'
+pmahost = 'pma_domain'
 installScriptPlace = '/var/www/sites/pms_domain/pma'
 
 

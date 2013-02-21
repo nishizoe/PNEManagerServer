@@ -19,11 +19,7 @@ $('#sendbutton2').click( function() {
 
 $('#select-mode').change( function() {
   var mode = $('#select-mode option:selected').val();
-  $('#plane-mode').hide();
-  $('#business-mode').hide();
-  $('#game-mode').hide();
-  $('#renrakumou-mode').hide();
-  $('#all-mode').hide();
+  $('#mode-description').children().hide();
   switch (mode) {
     case 'plane':
       $('#plane-mode').show();
@@ -34,17 +30,21 @@ $('#select-mode').change( function() {
     case 'game':
       $('#game-mode').show();
       break;
-    case 'renrakumou':
-      $('#renrakumou-mode').show();
-      break;
     case 'all':
       $('#all-mode').show();
       break;
+    case 'renrakumou':
+      $('#renrakumou-mode').show();
+      break;
+    case 'googleApps':
+      $('#google-apps-mode').show();
+      break;
+    case 'ldap':
+      $('#ldap-mode').show();
+      break;
     default:
-      $('#plane-mode').show();
+      $('#bussiness-mode').show();
   }
-  $('#mode-image-link').attr('href', 'img/' + mode + '.png');
-  $('#mode-image').attr('src', 'img/' + mode + '.png');
 });
 
 $(function(){

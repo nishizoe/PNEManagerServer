@@ -9,8 +9,6 @@ G_INSTALL_OPTIONS=$3
 #G_TARGET=NULL
 G_TARGET="master"
 G_SNSDIR=/var/www/sites
-#G_DBCONF_FILE=/var/www/sites/xpne.info/pma/autoinst/db.conf
-#G_USED_DOMAIN_LIST_FILE=/var/www/sites/xpne.info/pma/autoinst/used_domain_list.txt
 G_DBCONF_FILE=/var/www/sites/SITE_DOMAIN/pma/autoinst/db.conf
 G_USED_DOMAIN_LIST_FILE=/var/www/sites/SITE_DOMAIN/pma/autoinst/used_domain_list.txt
 G_EXEC_USER="admin"
@@ -298,66 +296,59 @@ function set_install_options(){
   local ARGS=`get_db_args`
 
   mysql $ARGS <<EOF
-INSERT INTO plugin (name, is_enabled, created_at, updated_at)
-values ("opTimelinePlugin", "1", NOW(), NOW()),
-("opLikePlugin", "1", NOW(), NOW()),
-("opSkinThemePlugin", "1", NOW(), NOW()),
-("opSkinBasicPlugin", "0", NOW(), NOW()),
-("opDiaryPlugin", "0", NOW(), NOW()),
-("opAutoFriendPlugin", "0", NOW(), NOW()),
-("opUploadFilePlugin", "0", NOW(), NOW()),
-("opMessagePlugin", "0", NOW(), NOW()),
-("opChatTaskPlugin", "0", NOW(), NOW()),
-("opAction2MailPlugin", "0", NOW(), NOW()),
-("opAlbumPlugin", "0", NOW(), NOW()),
-("opAshiatoPlugin", "0", NOW(), NOW()),
-("opAuthGoogleAppsPlugin", "0", NOW(), NOW()),
-("opAuthLDAPPlugin", "0", NOW(), NOW()),
-("opAuthMailAddressPlugin", "0", NOW(), NOW()),
-("opAuthMobileUIDPlugin", "0", NOW(), NOW()),
-("opAuthOpenIDPlugin", "0", NOW(), NOW()),
-("opBlogPlugin", "0", NOW(), NOW()),
-("opCalendarPlugin", "0", NOW(), NOW()),
-("opCommunityTopicPlugin", "0", NOW(), NOW()),
-("opFavoritePlugin", "0", NOW(), NOW()),
-("opHostingBetaPlugin", "0", NOW(), NOW()),
-("opHostingPlugin", "0", NOW(), NOW()),
-("opIntroFriendPlugin", "0", NOW(), NOW()),
-("opOpenSocialPlugin", "0", NOW(), NOW()),
-("opPMReportPlugin", "0", NOW(), NOW()),
-("opProfile2CommunityPlugin", "0", NOW(), NOW()),
-("opRankingPlugin", "0", NOW(), NOW()),
-("opRenrakumouPlugin", "0", NOW(), NOW()),
-("opTimelinePlugin", "0", NOW(), NOW()),
-("opWebAPIPlugin", "0", NOW(), NOW());
+INSERT INTO plugin (name, is_enabled, created_at, updated_at) values ("opTimelinePlugin", "1", NOW(), NOW()), ("opLikePlugin", "1", NOW(), NOW()), ("opSkinThemePlugin", "1", NOW(), NOW()), ("opSkinBasicPlugin", "0", NOW(), NOW()), ("opDiaryPlugin", "0", NOW(), NOW()), ("opAutoFriendPlugin", "0", NOW(), NOW()), ("opUploadFilePlugin", "0", NOW(), NOW()), ("opMessagePlugin", "0", NOW(), NOW()), ("opChatTaskPlugin", "0", NOW(), NOW()), ("opAction2MailPlugin", "0", NOW(), NOW()), ("opAlbumPlugin", "0", NOW(), NOW()), ("opAshiatoPlugin", "0", NOW(), NOW()), ("opAuthGoogleAppsPlugin", "0", NOW(), NOW()), ("opAuthLDAPPlugin", "0", NOW(), NOW()), ("opAuthMobileUIDPlugin", "0", NOW(), NOW()), ("opAuthOpenIDPlugin", "0", NOW(), NOW()), ("opBlogPlugin", "0", NOW(), NOW()), ("opCalendarPlugin", "0", NOW(), NOW()), ("opCommunityTopicPlugin", "0", NOW(), NOW()), ("opFavoritePlugin", "0", NOW(), NOW()), ("opHostingBetaPlugin", "0", NOW(), NOW()), ("opHostingPlugin", "1", NOW(), NOW()), ("opIntroFriendPlugin", "0", NOW(), NOW()), ("opOpenSocialPlugin", "0", NOW(), NOW()), ("opPMReportPlugin", "0", NOW(), NOW()), ("opProfile2CommunityPlugin", "0", NOW(), NOW()), ("opRankingPlugin", "0", NOW(), NOW()), ("opRenrakumouPlugin", "0", NOW(), NOW()), ("opWebAPIPlugin", "0", NOW(), NOW());
 INSERT INTO sns_config (name, value) values ("Theme_used", "united"), ("sns_name", "MySNS");
 EOF
 
   case $G_INSTALL_OPTIONS in
     "business") mysql $ARGS <<EOF
 UPDATE sns_config SET value = "cerulean" WHERE name = "Theme_used";
-UPDATE plugin SET is_enabled = "1" where name = "opDiaryPlugin" OR name = "opAutoFriendPlugin" OR name = "opUploadFilePlugin" OR name = "opMessagePlugin" OR name = "opChatTaskPlugin";
+UPDATE plugin SET is_enabled = "1" where name = "opAction2MailPlugin" OR name = "opAutoFriendPlugin" OR name = "opChatTaskPlugin" OR name = "opMessagePlugin" OR name = "opLikePlugin" OR name = "opSkinThemePlugin" OR name = "opTimelinePlugin" OR name = "opUploadFilePlugin" OR name = "opProfile2CommunityPlugin";
 INSERT INTO gadget (type, name, sort_order, created_at, updated_at) value ("sideBannerContents", "fMenu", 20, NOW(), NOW());
 EOF
 ;;
     "game") mysql $ARGS <<EOF
 UPDATE sns_config SET value = "superhero" WHERE name = "Theme_used";
-UPDATE plugin SET is_enabled = "1" where name = "opDiaryPlugin" OR name = "opAutoFriendPlugin" OR name = "opMessagePlugin";
-INSERT INTO gadget (type, name, sort_order, created_at, updated_at) value ("sideBannerContents", "fMenu", 20, NOW(), NOW());
-EOF
-;;
-    "renrakumou") mysql $ARGS <<EOF
-UPDATE sns_config SET value = "united" WHERE name = "Theme_used";
-UPDATE plugin SET is_enabled = "0" where name like "op%";
-UPDATE plugin SET is_enabled = "1" where name = "opRenrakumouPlugin";
+UPDATE plugin SET is_enabled = "1" where name = "opAction2MailPlugin" OR name = "opAshiatoPlugin" OR name = "opCommunityTopicPlugin" OR name = "opDiaryPlugin" OR name = "opLikePlugin" OR name = "opSkinThemePlugin" OR name = "opTimelinePlugin";
 EOF
 ;;
     "all") mysql $ARGS <<EOF
 UPDATE sns_config SET value = "united" WHERE name = "Theme_used";
 UPDATE plugin SET is_enabled = "1" where name <> "opSkinBasicPlugin";
+UPDATE plugin SET is_enabled = "0" where name = "opHostingPlugin";
 INSERT INTO gadget (type, name, sort_order, created_at, updated_at) value ("sideBannerContents", "fMenu", 20, NOW(), NOW());
 EOF
-#      cd $G_SNSDIR/$G_HOSTNAME
+      wget http://framework.zend.com/releases/ZendFramework-1.11.11/ZendFramework-1.11.11-minimal.zip
+      unzip ZendFramework-1.11.11-minimal.zip
+      rm -rf lib/vendor/Zend
+      cp -Rv ZendFramework-1.11.11-minimal/library/Zend lib/vendor/
+      ./symfony cc
+;;
+    "renrakumou") mysql $ARGS <<EOF
+UPDATE sns_config SET value = "united" WHERE name = "Theme_used";
+UPDATE plugin SET is_enabled = "0" where name like "op%";
+UPDATE plugin SET is_enabled = "1" where name = "opRenrakumouPlugin";
+UPDATE plugin SET is_enabled = "1" where name = "opCommunityTopicPlugin";
+UPDATE plugin SET is_enabled = "1" where name = "opSkinThemePlugin";
+UPDATE plugin SET is_enabled = "1" where name = "opAuthMailAddressPlugin";
+UPDATE plugin SET is_enabled = "1" where name = "opHostingPlugin";
+EOF
+;;
+    "googleApps") mysql $ARGS <<EOF
+UPDATE sns_config SET value = "united" WHERE name = "Theme_used";
+UPDATE plugin SET is_enabled = "0" where name like "op%";
+UPDATE plugin SET is_enabled = "1" where name = "opAuthGoogleAppsPlugin";
+UPDATE plugin SET is_enabled = "1" where name = "opSkinThemePlugin";
+UPDATE plugin SET is_enabled = "1" where name = "opAuthMailAddressPlugin";
+EOF
+;;
+    "ldap") mysql $ARGS <<EOF
+UPDATE sns_config SET value = "united" WHERE name = "Theme_used";
+UPDATE plugin SET is_enabled = "0" where name like "op%";
+UPDATE plugin SET is_enabled = "1" where name = "opAuthLDAPPlugin";
+UPDATE plugin SET is_enabled = "1" where name = "opSkinThemePlugin";
+UPDATE plugin SET is_enabled = "1" where name = "opAuthMailAddressPlugin";
+EOF
       wget http://framework.zend.com/releases/ZendFramework-1.11.11/ZendFramework-1.11.11-minimal.zip
       unzip ZendFramework-1.11.11-minimal.zip
       rm -rf lib/vendor/Zend
