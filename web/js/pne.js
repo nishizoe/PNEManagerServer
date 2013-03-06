@@ -20,31 +20,7 @@ $('#sendbutton2').click( function() {
 $('#select-mode').change( function() {
   var mode = $('#select-mode option:selected').val();
   $('#mode-description').children().hide();
-  switch (mode) {
-    case 'plane':
-      $('#plane-mode').show();
-      break;
-    case 'business':
-      $('#business-mode').show();
-      break;
-    case 'game':
-      $('#game-mode').show();
-      break;
-    case 'all':
-      $('#all-mode').show();
-      break;
-    case 'renrakumou':
-      $('#renrakumou-mode').show();
-      break;
-    case 'googleApps':
-      $('#google-apps-mode').show();
-      break;
-    case 'ldap':
-      $('#ldap-mode').show();
-      break;
-    default:
-      $('#bussiness-mode').show();
-  }
+  $('#' + mode + '-mode').show();
 });
 
 $(function(){
