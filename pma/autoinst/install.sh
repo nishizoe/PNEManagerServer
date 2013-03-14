@@ -161,7 +161,7 @@ function install_pne(){
   pne_log "start install OpenPNE to ${G_SNSDIR}/${G_HOSTNAME}"
 
   #local PNESRC=/opt/tejimaya/openpne/openpne3_gyoen.pne.jp
-  local PNESRC=OPENPNE
+  local PNESRC=/opt/tejimaya/openpne/openpne3_gyoen.pne.jp
   LOGFILE=$G_DATABASE.log
 
   if [ -e "${G_SNSDIR}/${G_HOSTNAME}" ]; then
@@ -312,6 +312,11 @@ UPDATE sns_config SET value = "superhero" WHERE name = "Theme_used";
 UPDATE plugin SET is_enabled = "1" where name = "opAction2MailPlugin" OR name = "opAshiatoPlugin" OR name = "opAuthMobileUIDPlugin" OR name = "opCommunityTopicPlugin" OR name = "opDiaryPlugin" OR name = "opLikePlugin" OR name = "opSkinThemePlugin" OR name = "opTimelinePlugin";
 EOF
 ;;
+    "support") mysql $ARGS <<EOF
+UPDATE plugin SET is_enabled = "1" where name = "opMessagePlugin" OR name = "opTimelinePlugin" OR name = "opUploadFilePlugin" OR name = "opChatTaskPlugin" OR name = "opCommunityTopicPlugin";
+INSERT INTO gadget (type, name, sort_order, created_at, updated_at) value ("sideBannerContents", "fMenu", 20, NOW(), NOW());
+EOF
+;;
     "all") mysql $ARGS <<EOF
 UPDATE plugin SET is_enabled = "1" where name <> "opSkinBasicPlugin";
 UPDATE plugin SET is_enabled = "0" where name = "opHostingPlugin";
@@ -407,8 +412,18 @@ UPDATE plugin SET is_enabled = "1" where name = "opRankingPlugin";
 EOF
 ;;
     "renrakumou") mysql $ARGS <<EOF
-UPDATE plugin SET is_enabled = "1" where name = "opRenrakumouPlugin";
+UPDATE plugin SET is_enabled = "1" where name = "opRenrakumouPlugin" OR name = "opChatTaskPlugin" OR name = "opSkinThemePlugin";
+UPDATE sns_config SET value = "cerulean" WHERE name = "Theme_used";
 EOF
+    cat << EOF >> web/.htaccess
+SetEnv boundioMode develop
+SetEnv userSerialId QRF2HF4G3KBB984L
+SetEnv appId eSxAwZ1qzHY5Bpy6
+SetEnv authKey YLed9hIDGxxhzfRSkxusR0SmMj1UKdXt
+SetEnv smtpUsername noreply@pne.jp
+SetEnv smtpPassword RvUa83Xo4uYNyLqq
+EOF
+    patch -p0 < /opt/tejimaya/openpne/renrakumou.diff
 ;;
     "skin") mysql $ARGS <<EOF
 UPDATE plugin SET is_enabled = "1" where name = "opSkinThemePlugin";
