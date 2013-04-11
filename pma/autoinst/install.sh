@@ -6,7 +6,7 @@ G_DATABASE=`echo "${G_HOSTNAME}" | sed -e 's/[\.-]/_/g'`
 
 G_ADMIN_EMAIL=$2
 G_INSTALL_OPTIONS=$3
-G_SITE_DOMAIN="site_domain"
+G_SITE_DOMAIN="SITE_DOMAIN"
 #G_TARGET=NULL
 G_TARGET="master"
 G_SNSDIR=/var/www/sites
