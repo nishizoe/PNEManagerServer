@@ -14,4 +14,6 @@ app/config/parameters.ini
 *.swp
 nbproject
 pma/autoinst/db.conf
+pma/autoinst/installed_domain_list.txt
+pma/autoinst/used_domain_list.txt
 .elasticbeanstalk/

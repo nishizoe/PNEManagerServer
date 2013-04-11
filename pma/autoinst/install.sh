@@ -6,11 +6,12 @@ G_DATABASE=`echo "${G_HOSTNAME}" | sed -e 's/[\.-]/_/g'`
 
 G_ADMIN_EMAIL=$2
 G_INSTALL_OPTIONS=$3
+G_SITE_DOMAIN="site_domain"
 #G_TARGET=NULL
 G_TARGET="master"
 G_SNSDIR=/var/www/sites
-G_DBCONF_FILE=/var/www/sites/SITE_DOMAIN/pma/autoinst/db.conf
-G_USED_DOMAIN_LIST_FILE=/var/www/sites/SITE_DOMAIN/pma/autoinst/used_domain_list.txt
+G_DBCONF_FILE=/var/www/sites/$G_SITE_DOMAIN/pma/autoinst/db.conf
+G_USED_DOMAIN_LIST_FILE=/var/www/sites/$G_SITE_DOMAIN/pma/autoinst/used_domain_list.txt
 G_EXEC_USER="admin"
 
 function pne_log(){
@@ -116,6 +117,10 @@ function get_pne_from_git(){
     pne_log "Fail to get OpenPNE code" "error"
     exit 1
   fi
+  cd $G_SNSDIR/$G_HOSTNAME
+  rm -rf plugins
+  ln -s $PNESRCREPOS/plugins plugins
+  cd $G_SNSDIR
 }
 
 function get_pne_from_local(){
@@ -146,7 +151,7 @@ function set_pne_config(){
 
 function ch_pne_ver(){
   cd $G_SNSDIR/$G_HOSTNAME
-  git checkout ${G_TARGET}
+  #git checkout ${G_TARGET}
 }
 
 function exec_pne_install(){
@@ -296,7 +301,7 @@ function set_install_options(){
   local ARGS=`get_db_args`
 
   mysql $ARGS <<EOF
-INSERT INTO plugin (name, is_enabled, created_at, updated_at) values ("opAuthMailAddressPlugin", "1" , NOW(), NOW()), ("opTimelinePlugin", "0", NOW(), NOW()), ("opLikePlugin", "0", NOW(), NOW()), ("opSkinThemePlugin", "1", NOW(), NOW()), ("opSkinBasicPlugin", "0", NOW(), NOW()), ("opDiaryPlugin", "0", NOW(), NOW()), ("opAutoFriendPlugin", "0", NOW(), NOW()), ("opUploadFilePlugin", "0", NOW(), NOW()), ("opMessagePlugin", "0", NOW(), NOW()), ("opChatTaskPlugin", "0", NOW(), NOW()), ("opAction2MailPlugin", "0", NOW(), NOW()), ("opAlbumPlugin", "0", NOW(), NOW()), ("opAshiatoPlugin", "0", NOW(), NOW()), ("opAuthGoogleAppsPlugin", "0", NOW(), NOW()), ("opAuthLDAPPlugin", "0", NOW(), NOW()), ("opAuthMobileUIDPlugin", "0", NOW(), NOW()), ("opAuthOpenIDPlugin", "0", NOW(), NOW()), ("opBlogPlugin", "0", NOW(), NOW()), ("opCalendarPlugin", "0", NOW(), NOW()), ("opCommunityTopicPlugin", "0", NOW(), NOW()), ("opFavoritePlugin", "0", NOW(), NOW()), ("opHostingBetaPlugin", "0", NOW(), NOW()), ("opHostingPlugin", "1", NOW(), NOW()), ("opIntroFriendPlugin", "0", NOW(), NOW()), ("opOpenSocialPlugin", "0", NOW(), NOW()), ("opPMReportPlugin", "0", NOW(), NOW()), ("opProfile2CommunityPlugin", "0", NOW(), NOW()), ("opRankingPlugin", "0", NOW(), NOW()), ("opRenrakumouPlugin", "0", NOW(), NOW()), ("opWebAPIPlugin", "0", NOW(), NOW());
+INSERT INTO plugin (name, is_enabled, created_at, updated_at) values ("opAuthMailAddressPlugin", "1" , NOW(), NOW()), ("opTimelinePlugin", "0", NOW(), NOW()), ("opLikePlugin", "0", NOW(), NOW()), ("opSkinThemePlugin", "1", NOW(), NOW()), ("opSkinBasicPlugin", "0", NOW(), NOW()), ("opDiaryPlugin", "0", NOW(), NOW()), ("opAutoFriendPlugin", "0", NOW(), NOW()), ("opUploadFilePlugin", "0", NOW(), NOW()), ("opMessagePlugin", "0", NOW(), NOW()), ("opChatTaskPlugin", "0", NOW(), NOW()), ("opAction2MailPlugin", "0", NOW(), NOW()), ("opAlbumPlugin", "0", NOW(), NOW()), ("opAshiatoPlugin", "0", NOW(), NOW()), ("opAuthGoogleAppsPlugin", "0", NOW(), NOW()), ("opAuthLDAPPlugin", "0", NOW(), NOW()), ("opAuthMobileUIDPlugin", "0", NOW(), NOW()), ("opAuthOpenIDPlugin", "0", NOW(), NOW()), ("opBlogPlugin", "0", NOW(), NOW()), ("opCalendarPlugin", "0", NOW(), NOW()), ("opCommunityTopicPlugin", "0", NOW(), NOW()), ("opFavoritePlugin", "0", NOW(), NOW()), ("opHostingBetaPlugin", "0", NOW(), NOW()), ("opHostingPlugin", "1", NOW(), NOW()), ("opIntroFriendPlugin", "0", NOW(), NOW()), ("opOpenSocialPlugin", "0", NOW(), NOW()), ("opPMReportPlugin", "0", NOW(), NOW()), ("opProfile2CommunityPlugin", "0", NOW(), NOW()), ("opRankingPlugin", "0", NOW(), NOW()), ("opRenrakumouPlugin", "0", NOW(), NOW()), ("opWebAPIPlugin", "0", NOW(), NOW()), ("opSkinUnitedPlugin", "0", NOW(), NOW());
 INSERT INTO sns_config (name, value) values ("Theme_used", "united"), ("sns_name", "MySNS");
 EOF
 
@@ -315,6 +320,11 @@ EOF
     "support") mysql $ARGS <<EOF
 UPDATE plugin SET is_enabled = "1" where name = "opMessagePlugin" OR name = "opTimelinePlugin" OR name = "opUploadFilePlugin" OR name = "opChatTaskPlugin" OR name = "opCommunityTopicPlugin";
 INSERT INTO gadget (type, name, sort_order, created_at, updated_at) value ("sideBannerContents", "fMenu", 20, NOW(), NOW());
+EOF
+;;
+    "standard") mysql $ARGS <<EOF
+UPDATE plugin SET is_enabled = "1" where name = "opMessagePlugin" OR name = "opTimelinePlugin" OR name = "opCommunityTopicPlugin" OR name = "opDiaryPlugin" OR name = "opSkinUnitedPlugin";
+UPDATE plugin SET is_enabled = "0" where name = "opSkinThemePlugin";
 EOF
 ;;
     "all") mysql $ARGS <<EOF
@@ -412,18 +422,8 @@ UPDATE plugin SET is_enabled = "1" where name = "opRankingPlugin";
 EOF
 ;;
     "renrakumou") mysql $ARGS <<EOF
-UPDATE plugin SET is_enabled = "1" where name = "opRenrakumouPlugin" OR name = "opChatTaskPlugin" OR name = "opSkinThemePlugin";
-UPDATE sns_config SET value = "cerulean" WHERE name = "Theme_used";
+UPDATE plugin SET is_enabled = "1" where name = "opRenrakumouPlugin";
 EOF
-    cat << EOF >> web/.htaccess
-SetEnv boundioMode develop
-SetEnv userSerialId QRF2HF4G3KBB984L
-SetEnv appId eSxAwZ1qzHY5Bpy6
-SetEnv authKey YLed9hIDGxxhzfRSkxusR0SmMj1UKdXt
-SetEnv smtpUsername noreply@pne.jp
-SetEnv smtpPassword RvUa83Xo4uYNyLqq
-EOF
-    patch -p0 < /opt/tejimaya/openpne/renrakumou.diff
 ;;
     "skin") mysql $ARGS <<EOF
 UPDATE plugin SET is_enabled = "1" where name = "opSkinThemePlugin";
@@ -501,8 +501,8 @@ set_install_options
 
 php symfony project:clear-controllers
 
-echo "$G_HOSTNAME" >> /var/www/sites/SITE_DOMAIN/pma/autoinst/used_domain_list.txt
-echo "$G_HOSTNAME" >> /var/www/sites/SITE_DOMAIN/pma/autoinst/installed_domain_list.txt
+echo "$G_HOSTNAME" >> /var/www/sites/$G_SITE_DOMAIN/pma/autoinst/used_domain_list.txt
+echo "$G_HOSTNAME" >> /var/www/sites/$G_SITE_DOMAIN/pma/autoinst/installed_domain_list.txt
 
 pne_log "OpenPNE installation and settings is completed" "info"
 echo "${member_pass} ${admin_pass}"
