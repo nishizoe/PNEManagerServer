@@ -32,6 +32,7 @@ class Mailer
             'domain' =>  $sns->getDomain(),
             'memberDefaultPassword' => $passwords->getMemberPassword(),
             'adminDefaultPassword' => $passwords->getAdminPassword(),
+            'isPCallEdition' => !!strpos($edition, 'renrakumou'),
         ));
 
         $this->sendEmailMessage($rendered, $this->parameters['from_email']['confirmation'], $account->getEmail());

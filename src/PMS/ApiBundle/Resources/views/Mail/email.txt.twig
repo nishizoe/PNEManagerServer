@@ -10,10 +10,12 @@ SNSの設置が完了致しましたので、以下の通りお知らせ致し�
 【SNSユーザID=1番のメールアドレス】{{ email }}
 【Password】{{ memberDefaultPassword }}
 
+{% if isPCallEdition != true %}
 【管理画面(URL)】http://{{ domain }}/pc_backend.php
 【管理画面のアカウントID】{{ email }}
 【Password】{{ adminDefaultPassword }}
 【SNSに届くメールの転送先】{{ email }}
+{% endif %}
 ※パスワードに関しましては、ログイン後すぐにご変更ください。
 ==========================================
 
